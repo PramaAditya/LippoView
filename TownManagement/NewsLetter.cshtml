@@ -73,18 +73,66 @@
 							<!--/ Pagination -->
 								<!--/ .itemList -->
 							</div>
+
+                            @{
+                                // Assuming ViewBag.currentPage and ViewBag.totalPage are set as numbers but not necessarily integers.
+                                // Use Convert.ToInt32 to safely convert them to integers.
+                                int currentPage = Convert.ToInt32(ViewBag.currentPage); // Convert currentPage to integer.
+                                int totalPage = Convert.ToInt32(ViewBag.totalPage); // Convert totalPage to integer.
+                                int range = 5; // Number of pages to display in the pagination.
+
+                                // Calculate the start and end range for page numbers.
+                                // Math.Max and Math.Min will return an integer if both arguments are integers.
+                                int startRange = Math.Max(1, currentPage - 2); // Starting page number in the pagination.
+                                int endRange = Math.Min(totalPage, currentPage + 2); // Ending page number in the pagination.
+
+                                // Adjust the ranges to avoid overlap with static first and last page links.
+                                if (currentPage <= 4)
+                                {
+                                    // If close to the start, extend the start range and reduce the end range.
+                                    startRange = 1;
+                                    endRange = Math.Min(totalPage, 5); // Show the first five pages.
+                                }
+                                else if (currentPage >= totalPage - 3)
+                                {
+                                    // If close to the end, reduce the start range and extend the end range.
+                                    startRange = Math.Max(1, totalPage - 4); // Show the last five pages.
+                                    endRange = totalPage;
+                                }
+                            }
                             <ul class="pagination">
-                                <li class="pagination-prev">
-                                    <a href="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                                            <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
+                                <!-- First and Previous Page Links -->
+                                <li class="pagination-first @(currentPage == 1 ? "disabled" : "")">
+                                    <a href="@Url.Content("~/TownManagement/NewsLetter/1")">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18.4099 7.41L16.9999 6L10.9999 12L16.9999 18L18.4099 16.59L13.8299 12L18.4099 7.41ZM12.4099 7.41L10.9999 6L4.99991 12L10.9999 18L12.4099 16.59L7.82991 12L12.4099 7.41Z" fill="currentColor" />
                                         </svg>
                                     </a>
                                 </li>
-                                @for (int pageNo = 1; pageNo <= ViewBag.totalPage; pageNo++)
+                                <li class="pagination-prev @(currentPage == 1 ? "disabled" : "")">
+                                    <a href="@Url.Content("~/TownManagement/NewsLetter/" + (int)Math.Max(1, currentPage - 1))">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.9999 6L15.4099 7.41L10.8299 12L15.4099 16.59L13.9999 18L7.99991 12L13.9999 6Z" fill="currentColor" />
+                                        </svg>
+
+                                    </a>
+                                </li>
+
+                                <!-- Page Number Links -->
+                                @if (currentPage > totalPage - 4)
                                 {
-                                    <li class="@(ViewBag.currentPage == pageNo ? "active" : "")">
-                                        @if (ViewBag.currentPage == pageNo)
+        <!-- Show the first three pages if not close to start -->
+                                    <li><a href="@Url.Content("~/TownManagement/NewsLetter/1")">1</a></li>
+                                    <li><a href="@Url.Content("~/TownManagement/NewsLetter/2")">2</a></li>
+                                    <li><a href="@Url.Content("~/TownManagement/NewsLetter/3")">3</a></li>
+                                    <li class="disabled"><span>...</span></li>
+
+                                }
+
+                                @for (int pageNo = startRange; pageNo <= endRange; pageNo++)
+                                {
+                                    <li class="@(currentPage == pageNo ? "active" : "")">
+                                        @if (currentPage == pageNo)
                                         {
                                             <span>@pageNo</span>
                                         }
@@ -94,18 +142,77 @@
                                                 <span>@pageNo</span>
                                             </a>
                                         }
-
                                     </li>
                                 }
-                                <li class="pagination-next">
-                                    <a href="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                                            <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+
+                                @if (currentPage < totalPage - 4)
+                                {
+        <!-- Show ellipsis and last three pages if not close to end -->
+                                    <li class="disabled"><span>...</span></li>
+                                    <li><a href="@Url.Content("~/TownManagement/NewsLetter/" + (totalPage - 2))">@(totalPage - 2)</a></li>
+                                    <li><a href="@Url.Content("~/TownManagement/NewsLetter/" + (totalPage - 1))">@(totalPage - 1)</a></li>
+                                    <li><a href="@Url.Content("~/TownManagement/NewsLetter/" + totalPage)">@totalPage</a></li>
+                                }
+
+                                <!-- Next and Last Page Links -->
+                                <li class="pagination-next @(currentPage == totalPage ? "disabled" : "")">
+                                    <a href="@Url.Content("~/TownManagement/NewsLetter/" + (int)Math.Min(totalPage, currentPage + 1))">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.0001 6L8.59009 7.41L13.1701 12L8.59009 16.59L10.0001 18L16.0001 12L10.0001 6Z" fill="currentColor" />
                                         </svg>
                                     </a>
                                 </li>
-							</ul>
-                            
+                                <li class="pagination-last @(currentPage == totalPage ? "disabled" : "")">
+                                    <a href="@Url.Content("~/TownManagement/NewsLetter/" + totalPage)">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M5.59009 7.41L7.00009 6L13.0001 12L7.00009 18L5.59009 16.59L10.1701 12L5.59009 7.41ZM11.5901 7.41L13.0001 6L19.0001 12L13.0001 18L11.5901 16.59L16.1701 12L11.5901 7.41Z" fill="currentColor" />
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                            <style>
+                                .pagination-first.disabled a,
+                                .pagination-last.disabled a,
+                                .pagination-next.disabled a,
+                                .pagination-prev.disabled a {
+                                    pointer-events: none; /* Disables click events */
+                                    color: #ccc; /* Gray out the icon */
+                                }
+                                .pagination-first a,
+                                .pagination-last a,
+                                .pagination-next a,
+                                .pagination-prev a,
+                                .pagination {
+                                    display: flex !important;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+
+                                .pagination .active span{
+
+
+ 
+                                        /* Auto layout */
+ 
+                                        background: #00BD13;
+                                        border-radius: 2px;
+                                        border-width: 0px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+
+                                        color: #FAFAFA !important;
+  
+                                    }
+
+                                .pagination li:first-child {
+                                    margin-right: 0px !important;
+                                }
+
+                                .pagination li:last-child {
+                                    margin-left: 0px !important;
+                                }
+                            </style>
 							<!--/ .itemListView -->
 						</div>
 						<!--/ .zn_blog_archive_element -->
