@@ -1,0 +1,536 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Admin";
+}
+
+@Lippo.Helpers.ToastHelper.error(ViewData.ModelState)
+
+
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <!-- BEGIN: Subheader -->
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    Publication
+                </h3>
+                <select class="lang-select" id="lang">
+                    <option value="EN">EN </option>
+                    <option value="IND" selected="selected">IN </option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <!-- END: Subheader -->
+    <div class="m-content" id="accordion">
+        <div class="section m-portlet m-portlet--tabs" id="sec">
+            <ul id="listInputTab" class="nav nav-tabs m-tabs m-tabs-line   m-tabs-line--right m-tabs-line-danger" style="float: none; padding-left: 10px;" role="tablist">
+                <li class="nav-item m-tabs__item" id="list">
+                    <a class="nav-link m-tabs__link active show" data-toggle="tab" href="#" role="tab" aria-selected="true" onclick="showList()">
+                        List
+                    </a>
+                </li>
+                <li class="nav-item m-tabs__item" id="input">
+                    <a id="inputLabel" class="nav-link m-tabs__link" data-toggle="tab" href="#" role="tab" aria-selected="false" onclick="showInput()">
+                        New Input
+                    </a>
+                </li>
+            </ul>
+            <div id="listContent" class="m_datatable m-datatable m-datatable--default m-datatable--loaded">
+                <table class="m-datatable__table" id="tb">
+                    <thead class="m-datatable__head">
+                        <tr class="m-datatable__row">
+                            <th class="m-datatable__cell" data-sort="asc" style="width: 15%">
+                                <span>Date</span>
+                            </th>
+                            <th class="m-datatable__cell" data-sort="asc" style="width: 70%">
+                                <span>Name</span>
+                            </th>
+                            <th class="m-datatable__cell" data-sort="asc" style="width: 15%">
+                                <span>#Generate</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="m-datatable__body" id="rowList">
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="inputContent" class="m-form m-form--fit m-form--label-align-right hide">
+                <input type="hidden" name="id" value="" class="form-control m-input">
+                <div class="m-portlet m-portlet--bordered-semi m-portlet--full-height ">
+                    <div class="m-portlet__body">
+                        <div class="form-group m-form__group" style="padding: 0">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <label>Nama</label>
+                                    <div class="control STRING">
+                                        <input type="text" name="name" value="" class="form-control m-input" style="height: 42px">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Tanggal</label>
+                                    <div class="control STRING">
+                                        <input type="date" name="lastUpdateDate" value="" class="form-control m-input" style="height: 42px">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">
+                                    Isi Publikasi
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="m-portlet__head-tools">
+                            <button type="button" class="btn btn-sm m-btn--pill btn-brand m-btn--icon btn-outline-primary" id="addContent">
+                                <span>
+                                    <i class="flaticon-plus"></i>
+                                    <span>
+                                        Tambah
+                                    </span>
+                                </span>
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="m-portlet__body">
+                        <div class="m_datatable m-datatable m-datatable--default m-datatable--loaded">
+                            <table class="m-datatable__table" id="tb">
+                                <thead class="m-datatable__head">
+                                    <tr class="m-datatable__row">
+                                        <th class="m-datatable__cell" data-sort="asc" style="width: 15%">
+                                            <span>Date</span>
+                                        </th>
+                                        <th class="m-datatable__cell" data-sort="asc" style="width: 20%">
+                                            <span>Source</span>
+                                        </th>
+                                        <th class="m-datatable__cell" data-sort="asc" style="width: 40%">
+                                            <span>Title</span>
+                                        </th>
+                                        <th class="m-datatable__cell" data-sort="asc" style="width: 25%">
+                                            <span></span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="m-datatable__body" id="publicationItems"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="m-form__actions m-form__actions">
+                        <button class="btn m-btn--pill btn-primary m-btn m-btn--hover-brand m-btn--custom" onclick="save()">
+                            Save
+                        </button>
+                        <button class="btn m-btn--pill btn-primary m-btn m-btn--hover-brand m-btn--custom" id="btnGenerate" onclick="generate()">
+                            Generate
+                        </button>
+                        <button class="btn m-btn--pill btn-secondary m-btn m-btn--hover-brand m-btn--custom" onclick="resetToNewInput()">
+                            New Input
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="chooseContent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="padding-right: 17px;">
+        <div class="modal-dialog" role="document" style="max-width: 95vw">
+            <div class="modal-content" style="height: calc(100vh - 50px)">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Pilih Isi Publikasi
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeChooseContent()">
+                        <span aria-hidden="true">
+                            ×
+                        </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group m-form__group" style="padding: 0">
+                        <label>Tanggal</label>
+                        <div class="control DATE">
+                            <input type="date" id="startDate" class="form-control m-input" style="width: calc(50% - 70px); float: left;">
+                            <span style="width: 20px; text-align:center; float: left;">-</span>
+                            <input type="date" id="endDate" class="form-control m-input" style="width: calc(50% - 70px); float: left;">
+                            <button type="button" class="btn btn-primary" style="width: 100px; float:right;" onclick="showSelectionData()">
+                                Tampilkan
+                            </button>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="m-scrollable mCustomScrollbar _mCS_2 mCS-autoHide" data-scrollbar-shown="true" data-scrollable="true" style="position: relative; overflow: visible; height: calc(100vh - 300px);">
+                        <div id="mCSB_2" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical mCSB_outside" tabindex="0" style="max-height: none;">
+                            <div id="mCSB_2_container" class="mCSB_container" style="position: relative; top: 0px; left: 0px;" dir="ltr">
+                                <div class="m_datatable m-datatable m-datatable--default m-datatable--loaded">
+                                    <table class="m-datatable__table" id="tb">
+                                        <thead class="m-datatable__head">
+                                            <tr class="m-datatable__row">
+                                                <th class="m-datatable__cell" data-sort="asc" style="width: 5%">
+                                                    <span></span>
+                                                </th>
+                                                <th class="m-datatable__cell" data-sort="asc" style="width: 15%">
+                                                    <span>Date</span>
+                                                </th>
+                                                <th class="m-datatable__cell" data-sort="asc" style="width: 20%">
+                                                    <span>Source</span>
+                                                </th>
+                                                <th class="m-datatable__cell" data-sort="asc" style="width: 60%">
+                                                    <span>Title</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="m-datatable__body" id="selectionResult">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div><div id="mCSB_2_scrollbar_vertical" class="mCSB_scrollTools mCSB_2_scrollbar mCS-minimal-dark mCSB_scrollTools_vertical" style="display: block;"><div class="mCSB_draggerContainer"><div id="mCSB_2_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; top: 0px; display: block; height: 57px; max-height: 180px;"><div class="mCSB_dragger_bar" style="line-height: 50px;"></div></div><div class="mCSB_draggerRail"></div></div></div>
+                    </div>
+                    @*<ul class="pagination" style="margin-top: 0px">
+                         <li>
+                            <span>1</span>
+                        </li>
+                        <li>
+                            <span>2</span>
+                        </li>
+                    </ul>*@
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeChooseContent()">
+                        Tutup
+                    </button>
+                    <button type="button" class="btn btn-primary" id="chooseButton">
+                        Pilih
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [year, month, day].join('-');
+        }
+
+        String.prototype.replaceAll = function (search, replacement) {
+            var target = this;
+            return target.split(search).join(replacement);
+        };
+
+
+        function stopWaitMe() {
+            $('#admin').waitMe('hide');
+        }
+
+        function runWaitMe() {
+            $('#admin').waitMe({
+                effect: 'bounce',
+                text: 'Harap menunggu...',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#000'
+            });
+        }
+
+        function clearDetail() {
+            $("input[name='id']").val('');
+            $("input[name='name']").val('');
+            $("#publicationItems").html('');
+            $("#selectionResult").html('');
+            resetButtonGenerate();
+        }
+
+        function resetButtonGenerate() {
+            if ($("input[name='id']").val() !== '') {
+                $('#btnGenerate').removeClass('hide');
+            } else {
+                $('#btnGenerate').addClass('hide');
+            }
+        }
+
+        function getLang() {
+            var lang = $('#lang').val();
+            if (lang == undefined || lang == '') {
+                toastr.error("Pilih bahasa");
+                return;
+            }
+            return lang;
+        }
+
+        function showDetail(id) {
+            var lang = getLang();
+            if (lang == undefined) return;
+
+            $("#inputLabel").text('Edit Data');
+            clearDetail();
+            showInput();
+            runWaitMe();
+            $.ajax({
+                url: "/api/Publication?id=" + id + "&lang=" + lang, success: function (respond) {
+                    $("input[name='name']").val(respond.Name);
+                    $("input[name='id']").val(respond.Id);
+                    $("input[name='lastUpdateDate']").val(formatDate(respond.LastUpdateDate));
+                    setSelectedContent(respond.Items);
+                    resetButtonGenerate();
+                    stopWaitMe();
+                }, error: function (jqXHR, textStatus, errorThrown) {
+                    stopWaitMe();
+                    toastr.error(errorThrown);
+                }
+            });
+        }
+        
+        function loadList() {
+            var tbResult = $("#rowList");
+            var template = '<tr class="m-datatable__row clickable" data="[[id]]" onclick="showDetail([[id]])">';
+            template += '<td class="m-datatable__cell" style="width: 15%" ><span>[[date]]</span></td>';
+            template += '<td class="m-datatable__cell" style="width: 70%"><span>[[name]]</span></td>';
+            template += '<td class="m-datatable__cell" style="width: 15%"><span>[[count]]</span></td>';
+            template += '</tr>';
+            tbResult.html("");
+            runWaitMe();
+            $.ajax({
+                url: "/api/PublicationList", success: function (respond) {
+                    var result = '';
+                    for (var i = 0; i < respond.length; i++) {
+                        result += mapDataHeader(template, respond[i]);
+                    }
+                    tbResult.html(result);
+                    stopWaitMe();
+                }, error: function (jqXHR, textStatus, errorThrown) {
+                    stopWaitMe();
+                    toastr.error(errorThrown);
+                }
+            });
+        }
+
+
+        function save() {
+            var id = $("input[name='id']").val();
+            var name = $("input[name='name']").val();
+            if (name == undefined || name == '') {
+                toastr.error("Masukkan nama");
+                return;
+            }
+            var date = $("input[name='lastUpdateDate']").val();
+            if (date == undefined || date == '') {
+                toastr.error("Masukkan tanggal");
+                return;
+            }
+            var result = [];
+            var rowList = $("#publicationItems").children();
+            for (var rowIdx = 0; rowIdx < rowList.length; rowIdx++) {
+                var resultItem = JSON.parse(atob($(rowList[rowIdx]).attr('data')));
+                resultItem.OrderNo = rowIdx + 1;
+                result.push(resultItem);
+            }
+
+            var data = {
+                Id: id,
+                Name: name,
+                Items: result,
+                LastUpdateDate: (new Date(date)).getTime()
+            };
+
+            runWaitMe();
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json',
+                dataType: 'json',
+                data: JSON.stringify(data),
+                processData: false,
+                url: "/api/Publication/",
+                success: function (respond) {
+                    toastr.success('Data Berhasil Disimpan');
+                    $("input[name='id']").val(respond.Value);
+                    resetButtonGenerate();
+                    loadList();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    stopWaitMe();
+                    toastr.error(errorThrown);
+                }
+            });
+        }
+
+        function generate() {
+            var id = $("input[name='id']").val();
+            var lang = getLang();
+            if (lang == undefined) return;
+            runWaitMe();
+            $.ajax({
+                url: "/api/PublicationGenerator?id=" + id + "&lang=" + lang, success: function (content, status, response) {
+                    var fileName = (function getFileName() {
+                        var disposition = response.getResponseHeader("content-disposition");
+                        var idxfileName = disposition.indexOf("filename")
+                        var fileName = disposition.substr(idxfileName);
+                        idxfileName = fileName.indexOf("=");
+                        fileName = fileName.substr(idxfileName + 1).trim();
+                        return fileName;
+                    })();
+                    var contentType = response.getResponseHeader("content-type");
+                    var file = new Blob([content], { type: contentType });
+                    saveAs(file, fileName);
+                    stopWaitMe();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    stopWaitMe();
+                    toastr.error(errorThrown);
+                }
+            });
+        }
+
+        function showSelectionData() {
+            var startDate = $("#startDate").val();
+            var endDate = $("#endDate").val();
+            var startDateMs = new Date(startDate).getTime();
+            var endDateMs = new Date(endDate).getTime();
+            var lang = getLang();
+            if (lang == undefined) return;
+
+            var tbResult = $("#selectionResult");
+            var template = '<tr class="m-datatable__row" data="[[data]]">';
+            template += '<td class="m-datatable__cell" style= "width: 5%" ><span><input type="checkbox"/></span></td>';
+            template += '<td class="m-datatable__cell" style="width: 15%" ><span>[[date]]</span></td>';
+            template += '<td class="m-datatable__cell" style="width: 20%"><span>[[source]]</span></td>';
+            template += '<td class="m-datatable__cell" style="width: 60%"><span>[[title]]</span></td>';
+            template += '</tr>';
+            tbResult.html("");
+            runWaitMe();
+            $.ajax({
+                url: "/api/PublicationSelection?dateStart=" + startDateMs + "&dateEnd=" + endDateMs + "&pageId=0&lang=" + lang, success: function (respond) {
+                    var result = '';
+                    for (var i = 0; i < respond.Items.length; i++) {
+                        result += mapDataItem(template, respond.Items[i]);
+                    }
+                    tbResult.html(result);
+                    stopWaitMe();
+                }, error: function (jqXHR, textStatus, errorThrown) {
+                    stopWaitMe();
+                    toastr.error(errorThrown);
+                }
+
+            });
+        }
+
+        function mapDataHeader(template, data) {
+            return template.replaceAll('[[id]]', data.Id)
+                .replace('[[date]]', data.LastUpdateDate)
+                .replace('[[count]]', data.GenerateCount)
+                .replace('[[name]]', data.Name);
+        }
+
+        function mapDataItem(template, data) {
+            return template.replace('[[data]]', btoa(JSON.stringify(data)))
+                .replace('[[date]]', data.Date)
+                .replace('[[source]]', data.Source)
+                .replace('[[title]]', data.Title);
+        }
+
+        function resetToNewInput() {
+            clearDetail();
+            $("#inputLabel").text('New Input');
+        }
+
+        function showList(sectionId) {
+            var inputLabel$ = $("#inputLabel");
+            if (inputLabel$.text() !== 'New Input') {
+                resetToNewInput();
+            }
+            $("#listInputTab a").attr('aria-selected', 'false');
+            $("#list a").attr('aria-selected', 'true');
+            $("#inputContent").addClass("hide");
+            $("#listContent").removeClass("hide");
+        }
+
+        function showInput(sectionId) {
+            $("#listInputTab a").attr('aria-selected', 'false');
+            $("#input a").attr('aria-selected', 'true');
+            $("#inputContent").removeClass("hide");
+            $("#listContent").addClass("hide");
+            $("#inputLabel").addClass("active");
+            $("#list > a").removeClass("active");
+            resetButtonGenerate();
+        }
+
+        function closeChooseContent() {
+            $("#chooseContent").removeClass('show');
+            $("#chooseContent").css('display', '');
+        }
+
+        function setSelectedContent(dataList) {
+            var tb = $('#publicationItems');
+            var template = '<tr class="m-datatable__row" data="[[data]]">';
+            template += '<td class="m-datatable__cell" style="width: 15%" ><span>[[date]]</span></td>';
+            template += '<td class="m-datatable__cell" style="width: 20%"><span>[[source]]</span></td>';
+            template += '<td class="m-datatable__cell" style="width: calc(65% - 110px)"><span>[[title]]</span></td>';
+            template += '<td class="m-datatable__cell action" style= "width: 110px"><span><i name="removeItem" class="fa fa-times-circle"></i><i name="upItem" class="fa fa-arrow-circle-up"></i><i name="downItem" class="fa fa-arrow-circle-down"></i></span></td>';
+            template += '</tr>';
+
+            var result = tb.html();
+            for (var i = 0; i < dataList.length; i++) {
+                result += mapDataItem(template, dataList[i]);
+            }
+            tb.html(result);
+            $("i[name='removeItem']").click(function () {
+                var currRow = $(this).parents('tr');
+                currRow.remove();
+            });
+            $("i[name='upItem']").click(function () {
+                var currRow = $(this).parents('tr');
+                var prevRow = currRow.prev();
+                if (prevRow.length > 0) {
+                    currRow.insertBefore(prevRow);
+                }
+            });
+            $("i[name='downItem']").click(function () {
+                var currRow = $(this).parents('tr');
+                var nextRow = currRow.next();
+                if (nextRow.length > 0) {
+                    currRow.insertAfter(nextRow);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $("#addContent").click(function () {
+                $("#chooseContent").addClass('show');
+                $("#chooseContent").css('display', 'block');
+                var endDate = new Date();
+                var startDate = new Date();
+                startDate.setDate(endDate.getDate() - 30);
+                $("#startDate").val(formatDate(startDate));
+                $("#endDate").val(formatDate(endDate));
+            });
+
+            $("#chooseButton").click(function () {
+                var result = [];
+                var rowList = $("#selectionResult").children();
+                for (var rowIdx = 0; rowIdx < rowList.length; rowIdx++) {
+                    var cellList = $(rowList[rowIdx]).children();
+                    if (cellList.find('input:checked').length > 0) {
+                        result.push(JSON.parse(atob($(rowList[rowIdx]).attr('data'))));
+                    }
+                }
+                closeChooseContent();
+                setSelectedContent(result);
+            });
+
+            loadList();
+        })
+    </script>
+}

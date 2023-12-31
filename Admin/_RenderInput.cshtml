@@ -1,0 +1,110 @@
+﻿@model Lippo.Models.ContentModel
+
+@if (Model.feature.Type == Lippo.Models.Admin.FeatureType.IMAGE || Model.feature.Type == Lippo.Models.Admin.FeatureType.FILE)
+{
+    if (Model.singleValue != null && Model.singleValue.Value != "")
+    {
+        <div class="m-input-icon m-input-icon--right">
+            <div class="form-control m-input" id="@Model.feature.name">@Model.singleValue.Value</div>
+            <span onclick="removeImage('@Model.feature.name')" class="btn m-input-icon__icon m-input-icon__icon--right">
+                <span>
+                    <i class="la la-remove"></i>
+                </span>
+            </span>
+            <input type="hidden" name="@Model.feature.name" value="@Model.singleValue.Value" class="form-control m-input"/>
+            <span onclick="cancelRemoveImage('@Model.feature.name')" class="btn hide m-input-icon__icon m-input-icon__icon--right">
+                <span>
+                    <i class="la la-undo"></i>
+                </span>
+            </span>
+        </div>
+    }
+    else
+    {
+        <input type="file" name="@Model.feature.name" class="form-control m-input"/>
+    }
+
+}
+else if (Model.feature.Type == Lippo.Models.Admin.FeatureType.STRING)
+{
+    if (!Model.feature.IsList && Model.singleValue != null)
+    {
+        <input type="text" name="@Model.feature.name" value="@Model.singleValue.Value" class="form-control m-input"/>
+    }
+    else
+    {
+        <input type="text" name="@Model.feature.name" value="" class="form-control m-input"/>
+    }
+}
+else if (Model.feature.Type == Lippo.Models.Admin.FeatureType.TEXT)
+{
+    if (!Model.feature.IsList && Model.singleValue != null)
+    {
+        <textarea name="@Model.feature.name" class="text_input form-control m-input" >@Model.singleValue.Value</textarea>
+    }
+    else
+    {
+        <textarea name="@Model.feature.name" class="text_input form-control m-input" ></textarea>
+    }
+}
+else if (Model.feature.Type == Lippo.Models.Admin.FeatureType.DATE)
+{
+    if (!Model.feature.IsList && Model.singleValue != null)
+    {
+        <input type="date" name="@Model.feature.name" class="form-control m-input" value='@Lippo.Helpers.GenHelper.ParseDateToYYYYMMDD(Model.singleValue.Value)' />
+    }
+    else
+    {
+        <input type="date" name="@Model.feature.name" class="form-control m-input"/>
+    }
+}
+else if (Model.feature.Type == Lippo.Models.Admin.FeatureType.COMBO || Model.feature.Type == Lippo.Models.Admin.FeatureType.MULTI_SELECT)
+{
+    string value = "";
+    if (!Model.feature.IsList && Model.singleValue != null)
+    {
+        value = Model.singleValue.Value;
+    }
+    var additionalType = "";
+    if (Model.feature.Type == Lippo.Models.Admin.FeatureType.MULTI_SELECT)
+    {
+        additionalType = "multiple='multiple'";
+        value = value + ",";
+    }
+    <select name="@Model.feature.name" class="form-control m-input" @Html.Raw(additionalType)>
+        @foreach (var item in Model.feature.ComboData)
+        {
+            var selected = false;
+            if (Model.feature.Type == Lippo.Models.Admin.FeatureType.MULTI_SELECT)
+            {
+                selected = (value.IndexOf(@item.Key + ',') > -1);
+            }
+            else
+            {
+
+                selected = (value == @item.Key && value != "");
+            }
+            if (selected)
+            {
+                <option value="@item.Key" selected="selected">@item.Value</option>
+            } else {
+                <option value="@item.Key">@item.Value</option>
+            }
+        }
+    </select>
+}
+else if (Model.feature.Type == Lippo.Models.Admin.FeatureType.BOOL)
+{
+    var bWithValue  = false;
+    if (!Model.feature.IsList && Model.singleValue != null)
+    {
+        if (Lippo.Models.GenLib.isAdminValueChecked( Model.singleValue.Value))
+        {
+            bWithValue = true;
+            <input type="checkbox" value="true" name="@Model.feature.name"  checked/>
+        }
+    }
+    if (!bWithValue) {
+        <input type="checkbox" value="true" name="@Model.feature.name"/>
+    }
+}

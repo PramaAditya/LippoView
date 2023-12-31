@@ -1,0 +1,114 @@
+﻿@model Lippo.Models.WhatsOnModel
+      <!-- Alternative Blog content section -->
+		<section class="hg_section ptop-50">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="zn_blog_archive_element">
+							<div class="itemListView clearfix eBlog">
+								<div class="itemList zn_blog_columns">
+                                    @foreach(var item in Model.itemList) {
+									<!-- Blog item 1 -->
+									<div class="col-sm-6 col-lg-4 blog-isotope-item" style="height: 507px">
+										<div class="itemContainer zn_columns zn_columns3">
+											<!-- Post thumbnail -->
+											<div class="itemThumbnail">
+												<!-- Image -->
+												<a href="@Url.Content("~/Whatson/" + item.rowId)">
+													<img width="760" height="508" src="@Url.Content("~/PImages/" + item.imageUrl)" class="wp - post - image" alt="blog09">
+
+     </a>
+												<!--/ Image -->
+
+												<!-- Overlay + Read more button -->
+												<div class="overlay">
+													<div class="overlay__inner">
+														<a href="@Url.Content("~/Whatson/" + item.rowId)" class="readMore" title="" data-readmore="Read More"></a>
+													</div>
+												</div>
+												<!--/ Overlay + Read more button -->
+											</div>
+											<!--/ Post thumbnail -->
+
+											<!-- Post header -->
+											<div class="itemHeader">
+												<!-- Post title -->
+												<h3 class="itemTitle">
+													<a href="@Url.Content("~/Whatson/" + item.rowId)">@item.title</a>
+												</h3>
+												<!--/ Post title -->
+
+												<!-- Post details -->
+												<div class="post_details">
+													<span class="catItemDateCreated"><span class="glyphicon glyphicon-calendar"></span> @item.date.ToString("dddd, dd MMMM yyyy")</span>
+													<span class="catItemAuthor">by <a href="#" title="Posts by danut" rel="author">@item.author</a></span>
+												</div>
+												<!--/ Post details -->
+											</div>
+											<!--/ Post header -->
+
+											<!-- Post content body -->
+											<div class="itemBody">
+												<!-- Intro text -->
+												<div class="itemIntroText" style="height: 80px; overflow: hidden;">
+													<p>
+                                                        @item.shortDesc  
+													</p>
+												</div>
+												<!--/ Intro text -->
+												<div class="clear">
+												</div>
+											</div>
+											<!--/ Post content body -->
+											<div class="clear">
+											</div>
+										</div>
+										<!--/ Blog item container -->
+									</div>
+									<!--/ Blog item 1 -->
+                                    }
+								</div>
+                                                            <!-- Pagination -->
+							
+							<!--/ Pagination -->
+								<!--/ .itemList -->
+							</div>
+                            <ul class="pagination">
+                                <li class="pagination-prev">
+                                    <span>
+                                        <span></span>
+                                    </span>
+                                </li>
+                                @for (int pageNo = 1; pageNo <= ViewBag.totalPage; pageNo++)
+                                {
+                                    <li class="@(ViewBag.currentPage == pageNo ? "active" : "")">
+                                        @if (ViewBag.currentPage == pageNo)
+                                        {
+                                            <span>@pageNo</span>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Content("~/Whatson-At-Page/" + pageNo)">
+                                                <span>@pageNo</span>
+                                            </a>
+                                        }
+
+                                    </li>
+                                }
+								<li class="pagination-next hide">
+									<a href="#">
+										<span class="glyphicon glyphicon-menu-right"></span>
+									</a>
+								</li>
+							</ul>
+							<!--/ .itemListView -->
+						</div>
+						<!--/ .zn_blog_archive_element -->
+					</div>
+					<!--/ col-md-12 col-sm-12 -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		<!--/ Alternative Blog content section -->

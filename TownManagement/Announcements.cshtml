@@ -1,0 +1,88 @@
+﻿@model Lippo.Models.AnnouncementIndexModel
+@{
+    ViewBag.Title = "Announcements";
+}
+
+<section class="hg_section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<!-- Latest posts style 2 element -->
+						<div class="latest_posts style2">
+							<!-- Title -->
+							@*<h3 class="m_title">LOREM IPSUM</h3>*@
+							<!--/ Title -->
+
+							
+
+							<!-- Posts -->
+							<ul class="posts">
+								
+                                @foreach (var item in Model.itemList)
+                                {
+                                    <!-- Post -->
+                                    <li class="post">
+                                        <!-- Details & tags -->
+                                        <div class="details">
+                                            <span class="date">@item.date.ToString("dd/MM/yyyy")</span>
+                                        </div>
+                                        <!-- Details & tags -->
+                                        <!-- Title with link -->
+                                        <h4 class="title"><a href="#">@item.title</a></h4>
+                                        <!--/ Title with link -->
+                                        <!-- Content text -->
+                                        <div class="text">
+                                            @Html.Raw(item.text)
+                                        </div>
+                                        <!--/ Content text -->
+                                    </li>
+                                    <!--/ Post -->
+                                }
+							</ul>
+							<!--/ Posts -->
+						</div>
+
+                        
+
+						<!--/ Latest posts style 2 element -->
+					</div>
+					<!--/ col-md-8 col-sm-8 -->
+
+				</div>
+				<!--/ row -->
+                <ul class="pagination">
+                    <li class="pagination-prev">
+                        <a href=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+    <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
+</svg>
+</a>
+                    </li>
+                    @for (int pageNo = 1; pageNo <= ViewBag.totalPage; pageNo++)
+                    {
+                        <li class="@(ViewBag.currentPage == pageNo ? "active" : "")">
+                            @if (ViewBag.currentPage == pageNo)
+                            {
+                                <span>@pageNo</span>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Announcements", new { page = pageNo })">
+                                    <span>@pageNo</span>
+                                </a>
+                            }
+
+                        </li>
+                    }
+                    <li class="pagination-next">
+                        <a href=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+    <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+</svg>
+</a>
+                    </li>
+                </ul>
+                
+
+
+			</div>
+			<!--/ container -->
+		</section>

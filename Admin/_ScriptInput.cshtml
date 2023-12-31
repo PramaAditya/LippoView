@@ -1,0 +1,72 @@
+﻿function setupHomeView() {
+    function setupTextableView() {
+        var jthis = $("input[name='textable']");
+        if(jthis.length === 0) return;
+        var currLi = jthis.parent().parent();
+        if(!jthis[0].checked) {
+            currLi.next().addClass('hide');
+            currLi.next().next().addClass('hide');
+        } else {
+            currLi.next().removeClass('hide');
+            currLi.next().next().removeClass('hide');
+            //var list = currLi.parent().find(".text_input").cleditor();
+            //enableEditor(list);
+        }
+    }
+
+    $("input[name='textable']").change(function() {
+        setupTextableView(); 
+    });
+    setupTextableView();
+
+    function setupButtonableView() {
+        var jthis = $("input[name='buttonable']");
+        if(jthis.length === 0) return;        
+        var nextLi = jthis.parent().parent().next(); 
+        if(!jthis[0].checked) {
+            nextLi.addClass('hide');
+            nextLi.next().addClass('hide');
+            nextLi.next().next().addClass('hide');
+        } else {
+            nextLi.removeClass('hide');
+            nextLi.next().removeClass('hide');
+            nextLi.next().next().removeClass('hide');
+        }
+    }
+    $("input[name='buttonable']").change(function() {
+        setupButtonableView();    
+    });
+    setupButtonableView();
+}
+            
+setupHomeView();
+$("input[name='order']").inputmask("9{1,2}");
+
+/*
+ var jResearchCategory = $("#sec_Research form select[name='category']");
+            if (jResearchCategory.length > 0) {
+                var jResearchIndustry = $("#sec_Research form select[name='industry']");
+                var jResearchAnalyst = $("#sec_Research form select[name='analyst']");
+                var jResearchTicker = $("#sec_Research form select[name='ticker']");
+                function setupResearchForm() {
+                    if (jResearchCategory.val() === "1") { //strategy 
+                        jResearchIndustry.parent().parent().hide();
+                        jResearchAnalyst.parent().parent().hide();
+                        jResearchTicker.parent().parent().hide();
+                    } else if (jResearchCategory.val() === "2") { //industry update
+                        jResearchIndustry.parent().parent().show();
+                        jResearchAnalyst.parent().parent().show();
+                        jResearchTicker.parent().parent().hide();
+                    } else {
+                        jResearchIndustry.parent().parent().show();
+                        jResearchAnalyst.parent().parent().show();
+                        jResearchTicker.parent().parent().show();
+                    }
+                }
+                jResearchCategory.change(function(){
+                    setupResearchForm();
+                });
+                setupResearchForm();
+            }
+*/
+            $("select[multiple='multiple']").tokenize();

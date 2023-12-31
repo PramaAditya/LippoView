@@ -1,0 +1,133 @@
+﻿@model Lippo.Models.EditModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+    
+@if (Model.Data != null)
+{
+    <div class="m-grid__item m-grid__item--fluid m-wrapper">
+         <div class="m-subheader ">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h3 class="m-subheader__title m-subheader__title--separator">
+                            @Model.PageName - @Model.Section.Name
+                        </h3>
+                        <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                            <li class="m-nav__item">
+                                <a class="m-nav__link" href="@Model.ReturnUrl" id="back">
+                                    <span class="m-nav__link-text">
+                                        Back
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <div class="m-content" id="accordion">
+            @{
+                object htmlAttr = null;
+                bool hasImage = false;
+
+        <div class="section" id="sec_@Model.Section.Name.Replace(' ', '_')">
+            @{
+            foreach (var feature in Model.Section.Features)
+            {
+                if (feature.Type == Lippo.Models.Admin.FeatureType.IMAGE || feature.Type == Lippo.Models.Admin.FeatureType.FILE)
+                {
+                    htmlAttr = new { enctype = "multipart/form-data", @class = "m-form m-form--fit m-form--label-align-right" };
+                    hasImage = true;
+                }
+            }
+            if (htmlAttr == null)
+            {
+                htmlAttr = new { @class = "m-form m-form--fit m-form--label-align-right" };
+            }
+            using (Html.BeginForm("SaveContent", "Content", FormMethod.Post, htmlAttr))
+            {
+            <div class="m-portlet__body">
+                <input type="hidden" name="pageId" value="@Model.Data.PageId" />
+                <input type="hidden" name="sectionId" value="@Model.Data.SectionId" />
+                <input type="hidden" name="idRow" value="@Model.Data.IdRow" />
+                @foreach (var feature in Model.Section.Features)
+                    {
+                    <div class="form-group m-form__group">
+                        <label>@feature.label</label>
+                        <div class="control @feature.Type.ToString()">
+                            @{
+                                    var sharedModel = new Lippo.Models.ContentModel();
+                                    sharedModel.feature = feature;
+                                    sharedModel.singleValue = Model.FindSingleValueInFeature(feature.Id);
+                            }
+                            @Html.Partial("_RenderInput", sharedModel)
+                        </div>
+                    </div>
+                        }
+                <div class="m-form__actions m-form__actions">
+                    <button type="submit" class="btn m-btn--pill btn-secondary m-btn m-btn--hover-brand m-btn--custom">
+                        Save
+                    </button>
+
+                </div>
+            </div>
+            }
+
+            }
+        </div>
+            }
+        </div>
+    </div>
+}
+
+        @section Scripts {
+            <script>
+        function removeImage(name) {
+            var jText = $("#" + name);
+            var parent = jText.parent();
+            var childList = parent.children();
+            for(var i = 0; i < childList.length; i++) {
+                if (i == 2) {
+                    $(childList[i]).attr("type", "file");
+                    $(childList[i]).attr("value", "");
+                } else if (i == 3) {
+                    $(childList[i]).removeClass("hide");
+                } else {
+                    $(childList[i]).addClass("hide");
+                }
+            }
+        }
+
+        function cancelRemoveImage(name) {
+            var jText = $("#" + name);
+            var parent = jText.parent();
+            var childList = parent.children();
+            for(var i = 0; i < childList.length; i++) {
+                if (i == 2) {
+                    $(childList[i]).attr("type", "hidden");
+                    $(childList[i]).attr("value", jText.text());
+                } else if (i == 3) {
+                    $(childList[i]).addClass("hide");
+                } else {
+                    $(childList[i]).removeClass("hide");
+                }
+            }
+        }
+
+        $(document).ready(function () {
+            function enableEditor(list) {
+                var i;
+                for (i = 0; i < list.length; i++) {
+                    list[i].disable(false).refresh();
+                }
+            }
+
+            setTimeout(function() {
+                var list = $(".text_input").cleditor();
+                enableEditor(list);
+            }, 0);
+            @Html.Partial("_ScriptInput")
+     });
+            </script>
+        }
+

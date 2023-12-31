@@ -1,0 +1,41 @@
+﻿@model Lippo.Models.AccountListModel
+
+<div class="m_datatable m-datatable m-datatable--default m-datatable--loaded">
+    <table class="m-datatable__table">
+        <thead class="m-datatable__head">
+            <tr class="m-datatable__row">
+                <th class="m-datatable__cell" style="width: 30%">
+                    <span>User Name</span>
+                </th>
+                <th class="m-datatable__cell" style="width: 50%">
+                    <span>Roles</span>
+                </th>
+                <th class="m-datatable__cell" style="width: 20%">
+                    <span>&nbsp;</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody class="m-datatable__body">
+            @foreach (var item in Model.Items)
+            {
+                <tr class="m-datatable__row">
+                    <td class="m-datatable__cell" style="width: 30%"><span>@item.UserName</span></td>
+                    <td class="m-datatable__cell" style="width: 50%"><span>@item.Roles</span></td>
+                    <td class="m-datatable__cell" style="width: 20%">
+                        <div class="btn-group" role="group">
+                            <a href="@Url.Action("EditUser", "Account", new { username = item.UserName })" class="m-btn btn btn-secondary">
+                                <i class="la la-edit"></i>
+                            </a>
+                            <a href="@Url.Action("ResetPassword", "Account", new { username = item.UserName, returnUrl = ViewBag.ReturnUrl })" class="m-btn btn btn-secondary">
+                                <i class="la la-key"></i>
+                            </a>
+                            <a href="@Url.Action("DeleteUser", "Account", new { username = item.UserName })" class="m-btn btn btn-outline-danger">
+                                <i class="la la-remove"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

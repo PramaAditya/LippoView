@@ -1,0 +1,281 @@
+﻿@{
+    Layout = null;
+}
+<ul class="m-menu__nav  m-menu__nav--submenu-arrow " id="topMenu">
+    @if (Roles.GetRolesForUser().Contains(Lippo.Models.GenLib.ROLE_ADMIN))
+    {
+        <li class="m-menu__item  m-menu__item  m-menu__item--submenu m-menu__item--rel" data-menu-submenu-toggle="click" aria-haspopup="true" pageId="0" id="menuSystem">
+            <a href="#" class="m-menu__link m-menu__toggle">
+                <span class="m-menu__item-here"></span>
+                <span class="m-menu__link-text">
+                    System
+                </span>
+                <i class="m-menu__hor-arrow la la-angle-down"></i>
+                <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+            <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left">
+                <span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                <ul class="m-menu__subnav">
+                    <li class="m-menu__item  m-menu__item--active " aria-haspopup="true">
+                        <a href="@Url.Action("NewAdmin", "Account")" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-diagram"></i>
+                            <span class="m-menu__link-title">
+                                <span class="m-menu__link-wrap">
+                                    <span class="m-menu__link-text">
+                                        New Admin
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item  m-menu__item" aria-haspopup="true">
+                        <a href="@Url.Action("Admins", "Account")" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-diagram"></i>
+                            <span class="m-menu__link-title">
+                                <span class="m-menu__link-wrap">
+                                    <span class="m-menu__link-text">
+                                        Admin
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                 </ul>
+             </div>
+        </li>
+    }
+    @if (Roles.GetRolesForUser().Contains(Lippo.Models.GenLib.ROLE_CONTENT_ADMIN))
+    {
+        <li class="m-menu__item " aria-haspopup="true" pageId="|@Lippo.Models.Admin.PageManager.GENERAL.PAGE_ID|">
+            <a href="@Url.Action("Index", "Admin", new { pageId = Lippo.Models.Admin.PageManager.GENERAL.PAGE_ID })" class="m-menu__link ">
+                <span class="m-menu__item-here"></span>
+                <span class="m-menu__link-text">
+                    General
+                </span>
+            </a>
+        </li>
+        <li class="m-menu__item " aria-haspopup="true" pageId="|@Lippo.Models.Admin.PageManager.LANDING.PAGE_ID|">
+            <a href="@Url.Action("Index", "Admin", new { pageId = Lippo.Models.Admin.PageManager.LANDING.PAGE_ID })" class="m-menu__link ">
+                <span class="m-menu__item-here"></span>
+                <span class="m-menu__link-text">
+                    Landing
+                </span>
+            </a>
+        </li>
+        <li class="m-menu__item " aria-haspopup="true" pageId="|@Lippo.Models.Admin.PageManager.HOME.PAGE_ID|">
+            <a href="@Url.Action("Index", "Admin", new { pageId = Lippo.Models.Admin.PageManager.HOME.PAGE_ID })" class="m-menu__link ">
+                <span class="m-menu__item-here"></span>
+                <span class="m-menu__link-text">
+                    Home
+                </span>
+            </a>
+        </li>
+        <li class="m-menu__item  m-menu__item  m-menu__item--submenu m-menu__item--rel" data-menu-submenu-toggle="click" aria-haspopup="true" 
+            pageId="|@Lippo.Models.Admin.PageManager.EXPLORE_TABDOC.PAGE_GETTING_AROUND|@Lippo.Models.Admin.PageManager.EXPLORE_TABDOC.PAGE_EDUCATION|@Lippo.Models.Admin.PageManager.WHATS_ON.PAGE_ID|@Lippo.Models.Admin.PageManager.EXPLORE_TABDOC.PAGE_HEALTH_CARE|@Lippo.Models.Admin.PageManager.EXPLORE_TABDOC.PAGE_RECREATION|@Lippo.Models.Admin.PageManager.EXPLORE_TABDOC.PAGE_TRANSPORTATION|">
+            <a href="#" class="m-menu__link m-menu__toggle">
+                <span class="m-menu__item-here"></span>
+                <span class="m-menu__link-text">
+                    Explore
+                </span>
+                <i class="m-menu__hor-arrow la la-angle-down"></i>
+                <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+            <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left">
+                <span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                <ul class="m-menu__subnav">
+                    <li class="m-menu__item  m-menu__item " aria-haspopup="true">
+                        <a href="@Url.Action("Index", "Admin", new { pageId = Lippo.Models.Admin.PageManager.EXPLORE_TABDOC.PAGE_GETTING_AROUND })" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-diagram"></i>
+                            <span class="m-menu__link-title">
+                                <span class="m-menu__link-wrap">
+                                    <span class="m-menu__link-text">
+                                        Getting Arround
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item  m-menu__item " aria-haspopup="true">
+                        <a href="@Url.Action("Index", "Admin", new { pageId = Lippo.Models.Admin.PageManager.EXPLORE_TABDOC.PAGE_EDUCATION })" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-diagram"></i>
+                            <span class="m-menu__link-title">
+                                <span class="m-menu__link-wrap">
+                                    <span class="m-menu__link-text">
+                                        Education
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item  m-menu__item " aria-haspopup="true">
+                        <a href="@Url.Action("Index", "Admin", new { pageId = Lippo.Models.Admin.PageManager.WHATS_ON.PAGE_ID })" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-diagram"></i>
+                            <span class="m-menu__link-title">
+                                <span class="m-menu__link-wrap">
+                                    <span class="m-menu__link-text">
+                                        Whats On
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item  m-menu__item " aria-haspopup="true">
+                        <a href="@Url.Action("Index", "Admin", new { pageId = Lippo.Models.Admin.PageManager.EXPLORE_TABDOC.PAGE_HEALTH_CARE })" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-diagram"></i>
+                            <span class="m-menu__link-title">
+                                <span class="m-menu__link-wrap">
+                                    <span class="m-menu__link-text">
+                                        Healthcare
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item  m-menu__item " aria-haspopup="true">
+                        <a href="@Url.Action("Index", "Admin", new { pageId = Lippo.Models.Admin.PageManager.EXPLORE_TABDOC.PAGE_RECREATION })" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-diagram"></i>
+                            <span class="m-menu__link-title">
+                                <span class="m-menu__link-wrap">
+                                    <span class="m-menu__link-text">
+                                        Recreation & Leisure
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item  m-menu__item " aria-haspopup="true">
+                        <a href="@Url.Action("Index", "Admin", new { pageId = Lippo.Models.Admin.PageManager.EXPLORE_TABDOC.PAGE_TRANSPORTATION })" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-diagram"></i>
+                            <span class="m-menu__link-title">
+                                <span class="m-menu__link-wrap">
+                                    <span class="m-menu__link-text">
+                                        Transportation
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="m-menu__item  m-menu__item  m-menu__item--submenu m-menu__item--rel" data-menu-submenu-toggle="click" aria-haspopup="true"
+            pageId="|@Lippo.Models.Admin.PageManager.TOWN_ABOUT.PAGE_ID|@Lippo.Models.Admin.PageManager.HOW_DO_I.PAGE_ID|@Lippo.Models.Admin.PageManager.PUBLICATION.PAGE_ID|@Lippo.Models.Admin.PageManager.ANNOUNCEMENT.PAGE_ID">
+            <a href="#" class="m-menu__link m-menu__toggle">
+                <span class="m-menu__item-here"></span>
+                <span class="m-menu__link-text">
+                    Town Management
+                </span>
+                <i class="m-menu__hor-arrow la la-angle-down"></i>
+                <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+            <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left">
+                <span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                <ul class="m-menu__subnav">
+                    <li class="m-menu__item  m-menu__item " aria-haspopup="true">
+                        <a href="@Url.Action("Index", "Admin", new { pageId = Lippo.Models.Admin.PageManager.TOWN_ABOUT.PAGE_ID })" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-diagram"></i>
+                            <span class="m-menu__link-title">
+                                <span class="m-menu__link-wrap">
+                                    <span class="m-menu__link-text">
+                                        About
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item  m-menu__item " aria-haspopup="true">
+                        <a href="@Url.Action("Index", "Admin", new { pageId = Lippo.Models.Admin.PageManager.HOW_DO_I.PAGE_ID})" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-diagram"></i>
+                            <span class="m-menu__link-title">
+                                <span class="m-menu__link-wrap">
+                                    <span class="m-menu__link-text">
+                                        How Do I
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item  m-menu__item " aria-haspopup="true">
+                        <a href="@Url.Action("Index", "Admin", new { pageId = Lippo.Models.Admin.PageManager.PUBLICATION.PAGE_ID})" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-diagram"></i>
+                            <span class="m-menu__link-title">
+                                <span class="m-menu__link-wrap">
+                                    <span class="m-menu__link-text">
+                                        News Letter
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item  m-menu__item " aria-haspopup="true">
+                        <a href="@Url.Action("Index", "Admin", new { pageId = Lippo.Models.Admin.PageManager.ANNOUNCEMENT.PAGE_ID })" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-diagram"></i>
+                            <span class="m-menu__link-title">
+                                <span class="m-menu__link-wrap">
+                                    <span class="m-menu__link-text">
+                                        Announcement
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="m-menu__item  m-menu__item " aria-haspopup="true">
+                        <a href="@Url.Action("Publication", "Admin", new { })", class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-diagram"></i>
+                            <span class="m-menu__link-title">
+                                <span class="m-menu__link-wrap">
+                                    <span class="m-menu__link-text">
+                                        Publication
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="m-menu__item  m-menu__item  m-menu__item--submenu m-menu__item--rel" data-menu-submenu-toggle="click" aria-haspopup="true"
+            pageId="|@Lippo.Models.Admin.PageManager.COMMERCIAL_AREAS_TABDOC.PAGE_ID|@Lippo.Models.Admin.PageManager.DIRECTORIES.PAGE_ID|">
+            
+            <a href="#" class="m-menu__link m-menu__toggle">
+                <span class="m-menu__item-here"></span>
+                <span class="m-menu__link-text">
+                    Business
+                </span>
+                <i class="m-menu__hor-arrow la la-angle-down"></i>
+                <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+            <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left">
+                <span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                <ul class="m-menu__subnav">
+                    <li class="m-menu__item  m-menu__item " aria-haspopup="true">
+                        <a href="@Url.Action("Index", "Admin", new { pageId = Lippo.Models.Admin.PageManager.COMMERCIAL_AREAS_TABDOC.PAGE_ID })" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-diagram"></i>
+                            <span class="m-menu__link-title">
+                                <span class="m-menu__link-wrap">
+                                    <span class="m-menu__link-text">
+                                        Commercial Areas
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item  m-menu__item " aria-haspopup="true">
+                        <a href="@Url.Action("Index", "Admin", new { pageId = Lippo.Models.Admin.PageManager.DIRECTORIES.PAGE_ID})" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-diagram"></i>
+                            <span class="m-menu__link-title">
+                                <span class="m-menu__link-wrap">
+                                    <span class="m-menu__link-text">
+                                        Directories
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    }
+</ul>
+    

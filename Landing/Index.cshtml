@@ -1,0 +1,208 @@
+﻿@model Lippo.Models.LandingModel
+@{
+    ViewBag.Title = "Landing Page";
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+@section Head {
+	<!--  Desktop Favicons  -->
+    <link rel="shortcut icon" type="image/icon" href="assets/favicon.ico" />
+    <!-- <link rel="icon" type="image/png" href="images/favicons/favicon-32x32.png" sizes="32x32"> -->
+    <!-- <link rel="icon" type="image/png" href="images/favicons/favicon-96x96.png" sizes="96x96"> -->
+    <!-- Google Fonts CSS Stylesheet // More here http://www.google.com/fonts#UsePlace:use/Collection:Open+Sans -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,600italic,700,800,800italic" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- ***** Boostrap Custom / Addons Stylesheets ***** -->
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all">
+    <link rel="stylesheet" id="th-theme-options-styles-css" href="css/zn_dynamic.css" type="text/css" media="all">
+    <!-- Required CSS file for IOS Slider element  -->
+    <link rel="stylesheet" href="css/sliders/ios/style.css" type="text/css" media="all">
+    <!-- ***** Main + Responsive & Base sizing CSS Stylesheet ***** -->
+    <link rel="stylesheet" href="css/template.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/base-sizing.css" type="text/css" media="all">
+    <!-- Custom CSS Stylesheet (where you should add your own css rules) -->
+    <link rel="stylesheet" href="css/custom.css" type="text/css" />
+
+    @Scripts.Render("~/Scripts/jquery-1.9.1.min.js")
+    <!-- Modernizr Library -->
+    <script type="text/javascript" src="js/modernizr.min.js"></script>
+}
+
+	<!-- Page Wrapper -->
+    <div id="page_wrapper">
+      <!-- Header style 1 -->
+      <header id="header" class="site-header style1 cta_button">
+        <!-- header bg -->
+        <div class="kl-header-bg"></div>
+        <!--/ header bg -->
+        <!-- siteheader-container -->
+        <div class="container siteheader-container">
+          <!-- top-header -->
+          <div class="kl-top-header clearfix">
+            <!-- HEADER ACTION -->
+            <div class="header-links-container ">
+              <!-- Languages -->
+              <ul class="topnav navLeft topnav--lang">
+                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-134">
+                  <select class="lang-select" id="lang">
+                    <option value="EN">EN </option>
+                    <option value="IND">IN </option>
+                  </select>
+                </li>
+              </ul>
+              <!--/ Languages -->	
+            </div>
+            <!--/ HEADER ACTION -->
+            <!-- HEADER ACTION left -->
+            <div class="header-leftside-container ">
+              @{ 
+                  var emergencyNoFeatures = ViewBag.general.findSingleValueInFeature(Lippo.Models.Admin.PageManager.GENERAL.PAGE_ID, Lippo.Models.Admin.PageManager.GENERAL.TOP, Lippo.Models.Admin.PageManager.GENERAL.Top.EMERGENCY_CALL);
+                  var callCenterFeatures = ViewBag.general.findSingleValueInFeature(Lippo.Models.Admin.PageManager.GENERAL.PAGE_ID, Lippo.Models.Admin.PageManager.GENERAL.TOP, Lippo.Models.Admin.PageManager.GENERAL.Top.CALL_CENTER);
+                  var emergencyNo = "";
+                  var callCenter = "";
+                  if (emergencyNoFeatures != null) { emergencyNo = emergencyNoFeatures.Value; }
+                  if (callCenterFeatures != null) { callCenter = callCenterFeatures.Value; }
+              }
+                <!--/ Header Social links -->
+              <div class="clearfix visible-xxs">
+              </div>
+              <span class="emergency">24 Hours Emergency &nbsp; 
+              </span>
+              @Lippo.Helpers.GenHelper.ToTelpNumbers(emergencyNo);
+              <span class="emergency">&nbsp; Call Center &nbsp; </span>
+              @Lippo.Helpers.GenHelper.ToTelpNumbers(callCenter);
+            </div>
+            <!--/ HEADER ACTION left -->
+          </div>
+          <!--/ top-header -->				
+          <!-- separator -->
+          <div class="separator"></div>
+          <!--/ separator -->
+          <!-- left side -->
+          <!-- logo container-->
+          <div class="logo-container hasInfoCard logosize--yes">
+            <!-- Logo -->
+            <h1 class="site-logo logo" id="logo">
+              <a href="home" title="">
+              <img src="assets/lippologowhite.png" class="logo-img" alt="lippologowhite" title="logo white lippo" />
+              </a>
+            </h1>
+            <!--/ Logo -->
+          </div>
+          <!--/ logo container-->
+        </div>
+        <!--/ siteheader-container -->
+      </header>
+      <!-- / Header style 1 -->
+      <!-- Slideshow - iOS Slider element with animateme scroll efect -->
+      <div class="kl-slideshow iosslider-slideshow uh_light_gray maskcontainer--mask3 iosslider--custom-height fullscreen scrollme">
+        <div class="bgback">
+        </div>
+        <!-- Animated Sparkles -->
+        <div class="th-sparkles"></div>
+        <!--/ Animated Sparkles -->
+        <!-- iOS Slider wrapper with animateme scroll efect -->
+        <div class="iosSlider kl-slideshow-inner animateme">
+          <!-- Slides -->
+          <div class="kl-iosslider hideControls">
+            <!-- Slide 1 -->
+            <div class="item iosslider__item">
+              <!-- Video background container -->
+              <!-- Image -->
+                @{
+                    if (!Model.backgroundImageUrl.IsEmpty())
+                    {
+                  <div class="slide-item-bg" style="background-image:url(@Url.Content("~/PImages/" + Model.backgroundImageUrl)">
+				  <video autoplay muted loop id="landingVideo">
+				   <!-- edit video url -->
+                    <source src="/Video/lippo.mp4" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                  </video>
+                      <style>
+                          #landingVideo {
+                              height: 100%;
+                              width: 100%;
+                              object-fit: cover;
+                          }
+                      </style>
+                  </div>
+                    }
+                }
+              <!--/ Image -->
+              <!--/ Video background container -->
+              <!-- Captions container -->
+              <div class="container kl-iosslide-caption kl-ioscaption--style5 sfb klios-aligncenter kl-caption-posv-middle">
+                <!-- Captions animateme wrapper -->
+                <div class="animateme" data-when="span" data-from="0" data-to="0.75" data-opacity="0.1" data-easing="linear">
+                  <!-- Main Title -->
+                  <h3 class="main_title has_klios-line">
+                      @if (!Model.backgroundText.IsEmpty()) {
+                    <span>@Model.backgroundText</span>
+                      }
+                                                        
+                  </h3>
+                  <!-- Separator -->
+                  <div class="klios-separator-line">
+                    <div class="klios--inner">
+                      <span></span>
+                    </div>
+                  </div>
+                  <!--/ Separator -->
+                  <!-- Link more buttons -->
+                  <div class="more">
+                    <!-- Button full color medium style -->
+                    <a class="btn btn-lined btn-md" href="http://www.lippohomes.com" target="_blank" title="BUYING A PROPERTI">BUYING A PROPERTY</a>
+                    <!-- Button lined medium style -->
+                    <a class="btn btn-lined btn-md" href="@Url.Action("Index", "Home")" target="_self" title="RESIDENT">RESIDENT</a>
+                  </div>
+                </div>
+                <!--/ Captions animateme wrapper -->
+              </div>
+              <!--/ Captions container -->
+            </div>
+            <!--/ Slide 1 -->		
+          </div>
+          <!--/ Slides -->
+          <!-- Navigation Controls - Prev -->				
+          <!--/ Navigation Controls - Next -->
+        </div>
+        <div class="scrollbarContainer">
+        </div>
+      </div>
+      <!--/ Slideshow - iOS Slider element with animateme scroll efect-->		
+    </div>
+    <!--/ Page Wrapper -->
+    <!-- ToTop trigger -->
+    <a href="#" id="totop">TOP</a>
+    <!--/ ToTop trigger -->
+
+	
+@section BottomScript {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#lang').val('@ViewBag.lang');
+            $('#lang').on('change', function () {
+                @{
+                    var controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
+                    var actionName = this.ViewContext.RouteData.Values["action"].ToString();
+                    var url = "/Language/" + actionName + "/" + controllerName + "/";
+                }
+                location.href = '@url' + $('#lang').val();
+            });
+        });
+    </script>
+
+    <!-- JS FILES // These should be loaded in every page -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- Required js script for iOS slider element -->
+    <script type="text/javascript" src="js/plugins/_sliders/ios/jquery.iosslider.min.js"></script>
+    <!-- Required js trigger for iOS Slider element -->
+    <script type="text/javascript" src="js/trigger/slider/ios/kl-ios-slider.js"></script>
+    <!-- Custom Kallyas JS codes -->
+    <script type="text/javascript" src="js/kl-scripts.js"></script>
+    <!-- Custom user JS codes -->
+    <script type="text/javascript" src="js/kl-custom.js"></script>
+
+    
+}

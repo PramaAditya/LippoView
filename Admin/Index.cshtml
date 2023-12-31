@@ -1,0 +1,313 @@
+﻿@model Lippo.Models.AdminModel.Index
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Admin";
+}
+
+@Lippo.Helpers.ToastHelper.error(ViewData.ModelState)
+
+@if (Model.pageData.Page != null)
+{
+     <!-- BEGIN: Left Aside -->
+    <button class="m-aside-left-close m-aside-left-close--skin-light" id="m_aside_left_close_btn">
+        <i class="la la-close"></i>
+    </button>
+    <div id="m_aside_left" class="m-grid__item m-aside-left ">
+        <!-- BEGIN: Aside Menu -->
+        <div id="m_ver_menu"
+                class="m-aside-menu  m-aside-menu--skin-light m-aside-menu--submenu-skin-light "
+                data-menu-vertical="true"
+                data-menu-scrollable="false" data-menu-dropdown-timeout="500">
+            <ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
+                @{
+                    foreach (var sectionItem in Model.pageData.Page.Sections)
+                    {
+                        <li key="sec_@sectionItem.Name.Replace(' ', '_')" class="m-menu__item " aria-haspopup="true" data-redirect="true">
+                            <a href="#" class="m-menu__link ">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">
+                                    @sectionItem.Name
+                                </span>
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+        <!-- END: Aside Menu -->
+    </div>
+    <!-- END: Left Aside -->
+
+    <div class="m-grid__item m-grid__item--fluid m-wrapper">
+        <!-- BEGIN: Subheader -->
+        <div class="m-subheader ">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto">
+                    <h3 class="m-subheader__title m-subheader__title--separator">
+                        @Model.pageData.Page.Name
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <!-- END: Subheader -->
+        <div class="m-content" id="accordion">
+            @foreach (var sectionItem in Model.pageData.Page.Sections)
+            {
+
+                object htmlAttr = null;
+                bool hasImage = false;
+                bool uploadOnlyInput = true;
+                var sectionId = sectionItem.Name.Replace(' ', '_');
+                var formClassName = "m-form m-form--fit m-form--label-align-right";
+
+                foreach (var feature in sectionItem.Features)
+                {
+                    if (feature.Type != Lippo.Models.Admin.FeatureType.IMAGE && feature.Type != Lippo.Models.Admin.FeatureType.FILE)
+                    {
+                        uploadOnlyInput = false;
+                    }
+                }
+                if (sectionItem.IsList || hasImage)
+                {
+                    formClassName += " hide";
+                }
+
+                <div class ="section m-portlet m-portlet--tabs" id ="sec_@sectionId">
+                    @{
+                        foreach (var feature in sectionItem.Features)
+                        {
+                            if (feature.Type == Lippo.Models.Admin.FeatureType.IMAGE || feature.Type == Lippo.Models.Admin.FeatureType.FILE)
+                            {
+                                htmlAttr = new {@id = "inputContent_" + sectionId, enctype = "multipart/form-data", @class = formClassName };
+                                hasImage = true;
+                            }
+                        }
+
+
+                        if (sectionItem.IsList || hasImage)
+                        {
+                            <ul id="listInputTab_@sectionId" class="nav nav-tabs m-tabs m-tabs-line   m-tabs-line--right m-tabs-line-danger" style="float: none; padding-left: 10px;" role="tablist">
+                                <li class="nav-item m-tabs__item" id="list_@sectionId">
+                                    <a class="nav-link m-tabs__link active show" data-toggle="tab" href="#" role="tab" aria-selected="true" onclick="showList('@sectionId')">
+                                        List
+                                    </a>
+                                </li>
+                                <li class="nav-item m-tabs__item" id="input_@sectionId">
+                                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#" role="tab" aria-selected="false" onclick="showInput('@sectionId')">
+                                        New Input
+                                    </a>
+                                </li>
+                            </ul>
+                            
+
+                            <div id="listContent_@sectionId" class="m_datatable m-datatable m-datatable--default m-datatable--loaded">    
+                                <table class="m-datatable__table" id="tb_@sectionId">
+                                <thead class="m-datatable__head">
+                                    <tr class="m-datatable__row">
+                                        @foreach (var feature in sectionItem.FeaturesInTable)
+                                        {
+                                            <th class="m-datatable__cell" data-sort="asc" style="width: @feature.width">
+                                                <span>@feature.label</span>
+                                            </th>
+                                        }
+                                        <th class="m-datatable__cell" data-sort="asc" style="width: 20%">
+                                            <span>&nbsp;</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="m-datatable__body">
+                                        @{
+                                            var headerList = Model.pageData.getValueInSection(Model.pageData.Page.Id, sectionItem.Id);
+                                            foreach (var header in headerList)
+                                            {
+                                                var trAttr = "";
+
+                                                <tr class="m-datatable__row" style="left: 0px;" @Html.Raw(trAttr)>
+                                                    @foreach (var feature in sectionItem.FeaturesInTable)
+                                                    { 
+                                                        var item = header.getItem(feature.Id);
+                                                        if (item == null)
+                                                        {
+                                                            <td class="m-datatable__cell" style="width: @feature.width">
+                                                                <span></span>
+                                                            </td>
+                                                        }
+                                                        else
+                                                        {
+                                                            if (feature.Type == Lippo.Models.Admin.FeatureType.COMBO)
+                                                            {
+
+                                                                <td class="m-datatable__cell" style="width: @feature.width">
+                                                                    <span>
+                                                                        @feature.GetComboName(item.Value)
+                                                                        </span>
+                                                                </td>
+                                                            }
+                                                            else if (feature.Type == Lippo.Models.Admin.FeatureType.FILE || feature.Type == Lippo.Models.Admin.FeatureType.IMAGE)
+                                                            {
+                                                                <td class="m-datatable__cell" style="width: @feature.width">
+                                                                    <span>
+                                                                        <a href="/PImages/@item.Value" target="_blank">@item.Value</a>
+                                                                        </span>
+                                                                </td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td class="m-datatable__cell" style="width: @feature.width">
+                                                                    <span>
+                                                                        @item.Value
+                                                                    </span>
+                                                                </td>
+                                                            }
+                                                        }
+                                                    }
+                                                    <td class="m-datatable__cell  text-right" style="width: 20%">
+                                                        <div class="btn-group" role="group">
+                                                            @if (!uploadOnlyInput)
+                                                            {
+                                                                <a href="@Url.Action("Edit", "Admin", new { pageId = Model.pageData.Page.Id, sectionId = sectionItem.Id, idRow = header.IdRow })" class="m-btn btn btn-secondary">
+                                                                    <i class="la la-edit"></i>
+                                                                </a>
+                                                            }
+                                                            
+                                                            <a href="@Url.Action("DeleteSection", "Content", new { pageId = Model.pageData.Page.Id, sectionId = sectionItem.Id, idRow = header.IdRow })" class="m-btn btn btn-outline-danger">
+                                                                <i class="la la-remove"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </table>
+                           </div>
+                                        }
+                                        if (htmlAttr == null)
+                                        {
+                                            htmlAttr = new { @id="inputContent_" + sectionId, @class = formClassName };
+                                        }
+                                        using (Html.BeginForm("SaveContent", "Content", FormMethod.Post, htmlAttr))
+                                        {
+                                            <div class="m-portlet__body">
+                                                <input type="hidden" name="pageId" value="@Model.pageData.Page.Id" />
+                                                <input type="hidden" name="sectionId" value="@sectionItem.Id" />
+                                                
+                                                @foreach (var feature in sectionItem.Features)
+                                                {
+                                                    <div class="form-group m-form__group">
+                                                        <label>@feature.label</label>
+                                                        <div class="control @feature.Type.ToString()">
+                                                            @{
+                                                                var sharedModel = new Lippo.Models.ContentModel();
+                                                                sharedModel.feature = feature;
+                                                                if (!sectionItem.IsList)
+                                                                {
+                                                                    sharedModel.singleValue = Model.pageData.findSingleValueInFeature(Model.pageData.Page.Id, sectionItem.Id, feature.Id);
+                                                                }
+                                                            }
+                                                            @Html.Partial("_RenderInput", sharedModel)
+                                                        </div>
+                                                    </div>
+                                                 }
+
+                                                <div class="m-form__actions m-form__actions">
+                                                    <button type="submit" class="btn m-btn--pill btn-secondary m-btn m-btn--hover-brand m-btn--custom">
+                                                        Save
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                                                    }
+                    }
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        function enableEditor(list) {
+            var i;
+            for (i = 0; i < list.length; i++) {
+                list[i].disable(false).refresh();
+            }
+        }
+
+        function showList(sectionId) {
+            $("#listInputTab_" + sectionId + " a").attr('aria-selected', 'false');
+            $("#list_" + sectionId + " a").attr('aria-selected', 'true');
+            $("#inputContent_" + sectionId).addClass("hide");
+            $("#listContent_" + sectionId).removeClass("hide");
+        }
+
+        function showInput(sectionId) {
+            $("#listInputTab_" + sectionId + " a").attr('aria-selected', 'false');
+            $("#input_" + sectionId + " a").attr('aria-selected', 'true');
+            $("#inputContent_" + sectionId).removeClass("hide");
+            $("#listContent_" + sectionId).addClass("hide");
+            var list = $(".text_input").cleditor();
+            enableEditor(list);
+        }
+
+        $(document).ready(function () {
+            var currPageId = @Html.Raw(Model.pageData.PageId);
+            var allTopMenu = $("#topMenu > li");
+            allTopMenu.addClass('m-menu__item');
+            allTopMenu.removeClass('m-menu__item--active');
+            $("#topMenu > li[pageId*='|@Model.pageData.PageId|']").addClass('m-menu__item--active');
+
+            var currSectionId = @Html.Raw(Model.currSection);
+            if(currSectionId > 0) currSectionId -= 1;
+
+            $("#m_aside_left li").removeClass("active");
+            $("#m_aside_left li > a > i").addClass("m-menu__link-bullet--dot");
+            var currAsideMenuStr = "#m_aside_left li:nth-child(" + (currSectionId + 1) + ")";
+            $(currAsideMenuStr).addClass("active");
+            $(currAsideMenuStr + " > a > i").removeClass("m-menu__link-bullet--dot")
+            function setupMenuPanel() {
+                $(".section").addClass("hide");
+                var key = $("#m_aside_left li.active").attr("key");
+                $("#" + key).removeClass("hide");
+                setTimeout(function() {
+                    var list = $(".text_input").cleditor();
+                    enableEditor(list);
+                }, 0);
+            }
+            $("#m_aside_left li").click(function() {
+                $("#m_aside_left li").removeClass("active");
+                $(this).addClass("active");
+                setupMenuPanel();
+            });
+            setupMenuPanel();
+
+            @Html.Partial("_ScriptInput")
+
+            //var jCategoryFilter = $("#categoryFilter");
+            //if (jCategoryFilter.length > 0) {
+            //    function showTrBasedOnCategory() {
+            //        //$("#tb_Research>tbody>tr").hide();
+            //        //$("tr[category='" + jCategoryFilter.val() + "']").show();
+            //        //var key = jCategoryFilter.children("[value='" + jCategoryFilter.val() + "']").attr("key")
+            //        var key = jCategoryFilter.val();
+            //        if (key == '1') {
+            //            $("#tb_Research td:nth-child(3)").hide();
+            //            $("#tb_Research td:nth-child(7)").hide();
+            //        } else {
+            //            $("#tb_Research td:nth-child(3)").show();
+            //            $("#tb_Research td:nth-child(7)").show();
+            //        }
+            //    }
+            //    jCategoryFilter.change(function(){
+            //        showTrBasedOnCategory();
+            //    });
+            //    showTrBasedOnCategory();
+            //}
+
+
+        });
+    </script>
+}
+

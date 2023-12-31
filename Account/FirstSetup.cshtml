@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "FirstSetup";
+    Layout = null;
+}
+
+<html>
+    <head>
+<!-- Google Tag Manager --> 
+<script> 
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-5BH97D2'); 
+</script> 
+<!-- End Google Tag Manager -->
+
+    </head>
+    <body>
+        <h2>FirstSetup</h2>
+
+        <p>Halaman ini dipakai untuk inisiasi data pertama kali. 
+            @if(ViewBag.EnableFirstSetup) {
+                <span>Jangan lupa EnableFirstSetup menjadi false di web.config pada saat production.</span>
+                <h3>Hasil: </h3>
+                <ol>
+                    @foreach(String process in ViewBag.ProcessList) {
+                        <li>@process</li>
+                    }
+                </ol>
+            } else {
+                <span>EnableFirstSetup di set false di web.config sehingga proses inisiasi data tidak dapat dilakukan</span>
+            }
+        </p>
+    </body>
+</html>

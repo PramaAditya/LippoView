@@ -1,0 +1,119 @@
+﻿@model Lippo.Models.NewsLetterModel
+      <!-- Alternative Blog content section -->
+		<section class="hg_section ptop-50">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="zn_blog_archive_element">
+							<div class="itemListView clearfix eBlog">
+								<div class="itemList zn_blog_columns">
+                                    @foreach(var item in Model.itemList) {
+									<!-- Blog item 1 -->
+									<div class="col-sm-6 col-lg-4 blog-isotope-item" style="width: 507px">
+										<div class="itemContainer zn_columns zn_columns3">
+											<!-- Post thumbnail -->
+											<div class="itemThumbnail">
+												<!-- Image -->
+												<a href="@Url.Content("~/TownManagement/NewsLetterDetail/" + item.rowId)">
+													<img width="760" height="508" src="@Url.Content("~/PImages/" + item.imageUrl)" class="wp - post - image" alt="blog09">
+
+     </a>
+												<!--/ Image -->
+
+												<!-- Overlay + Read more button -->
+												<div class="overlay">
+													<div class="overlay__inner">
+														<a href="@Url.Content("~/TownManagement/NewsLetterDetail/" + item.rowId)" class="readMore" title="" data-readmore="Read More"></a>
+													</div>
+												</div>
+												<!--/ Overlay + Read more button -->
+											</div>
+											<!--/ Post thumbnail -->
+
+											<!-- Post header -->
+											<div class="itemHeader">
+												<!-- Post title -->
+												<h3 class="itemTitle">
+													<a href="@Url.Content("~/TownManagement/NewsLetterDetail/" + item.rowId)">@item.title</a>
+												</h3>
+												<!--/ Post title -->
+
+												<!-- Post details -->
+												<div class="post_details">
+													<span class="catItemDateCreated"><span class="glyphicon glyphicon-calendar"></span> @item.date.ToString("dddd, dd MMMM yyyy")</span>
+													<span class="catItemAuthor">by <a href="#" title="Posts by danut" rel="author">@item.author</a></span>
+												</div>
+												<!--/ Post details -->
+											</div>
+											<!--/ Post header -->
+
+											<!-- Post content body -->
+											<div class="itemBody">
+												<!-- Intro text -->
+												<div class="itemIntroText" style="height: 80px; overflow: hidden;">
+													<p>
+                                                        @item.shortDesc  
+													</p>
+												</div>
+												<!--/ Intro text -->
+												<div class="clear">
+												</div>
+											</div>
+											<!--/ Post content body -->
+											<div class="clear">
+											</div>
+										</div>
+										<!--/ Blog item container -->
+									</div>
+									<!--/ Blog item 1 -->
+                                    }
+								</div>
+                                                            <!-- Pagination -->
+							
+							<!--/ Pagination -->
+								<!--/ .itemList -->
+							</div>
+                            <ul class="pagination">
+                                <li class="pagination-prev">
+                                    <a href="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                                            <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
+                                        </svg>
+                                    </a>
+                                </li>
+                                @for (int pageNo = 1; pageNo <= ViewBag.totalPage; pageNo++)
+                                {
+                                    <li class="@(ViewBag.currentPage == pageNo ? "active" : "")">
+                                        @if (ViewBag.currentPage == pageNo)
+                                        {
+                                            <span>@pageNo</span>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Content("~/TownManagement/NewsLetter/" + pageNo)">
+                                                <span>@pageNo</span>
+                                            </a>
+                                        }
+
+                                    </li>
+                                }
+                                <li class="pagination-next">
+                                    <a href="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                                            <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                        </svg>
+                                    </a>
+                                </li>
+							</ul>
+                            
+							<!--/ .itemListView -->
+						</div>
+						<!--/ .zn_blog_archive_element -->
+					</div>
+					<!--/ col-md-12 col-sm-12 -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		<!--/ Alternative Blog content section -->
