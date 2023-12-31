@@ -1,0 +1,40 @@
+﻿@model Lippo.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new {@class = "m-login__form m-form"})) {
+    @Html.AntiForgeryToken()
+
+    @Lippo.Helpers.ToastHelper.error(ViewData.ModelState)
+    
+    <div class="form-group m-form__group">
+        @Html.TextBoxFor(m => m.UserName, new { @placeholder = "username", @class = "form-control m-input", @autocomplete="off" })
+        @Html.ValidationMessageFor(m => m.UserName)
+    </div>
+    <div class="form-group m-form__group">
+        @Html.PasswordFor(m => m.Password, new { @placeholder = "password", @class = "form-control m-input" })
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+    <div class="form-group m-form__group">
+        @Html.Partial("_Captcha", new Uco.Models.Captcha())
+        @Html.Partial("_InvisibleCaptcha", new Uco.Models.InvisibleCaptcha())
+    </div>
+    <div class="row m-login__form-sub">
+        <div class="col m--align-left">
+            <label class="m-checkbox m-checkbox--focus">
+                @Html.CheckBoxFor(m => m.RememberMe)
+                Remember me
+                <span></span>
+            </label>
+        </div>>
+    </div>
+    <div class="m-login__form-action">
+        <button id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
+            LOG IN
+        </button>
+    </div>
+}
+

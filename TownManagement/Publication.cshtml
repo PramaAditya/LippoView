@@ -1,0 +1,165 @@
+﻿@*@model Lippo.Models.PublicationModel
+<section class="hg_section bg-white ptop-20 pbottom-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <!-- Title element with bottom line -->
+                <!-- Tabs element style 1 -->
+                <div class="tabbable tabs_style1">
+                    <!-- Navigation menu -->
+                    <ul id="tab" class="nav fixclear">
+                        <!-- Tab #1 -->
+                        <li class="active">
+                            <a href="#" onclick="onTabClick(0)">Magazine</a>
+                        </li>
+                        <!--/ Tab #1 -->
+                        <!-- Tab #2 -->
+                        <li>
+                            <a href="#" onclick="onTabClick(1)">Other</a>
+                        </li>
+                        <!--/ Tab #2 -->
+                        <!-- Tab #3 -->
+
+                    </ul>
+                    <!--/ Navigation menu -->
+                    <!-- Tabs content -->
+                    <div id="tabContent" class="tab-content">
+                        <!-- Tab #1 -->
+                        <div class="tab-pane">
+                            <section class="hg_section pt-10 pb-10">
+                                <div class="container">
+                                    <div class="row">
+                                        @foreach (var item in Model.magazineList)
+                                        {
+                                        <div class="col-sm-3 col-md-3">
+                                            <!-- Media container with custom content -->
+                                            <div class="media-container media-container--type-pb h-300">
+                                                <!-- Background -->
+                                                <div class="kl-bg-source">
+                                                    <!-- Background image -->
+                                                    <div class="kl-bg-source__bgimage" style="background-image:url(@Url.Content("~/PImages/" + item.imageUrl));background-repeat:repeat;background-attachment:scroll;background-position:center center;background-size:cover">
+                                                    </div>
+                                                    <!-- Overlay -->
+                                                    <div class="kl-bg-source__overlay" style="background: rgba(10,10,10,0.16); background: -moz-linear-gradient(top,  rgba(10,10,10,0.16) 0%, rgba(20,20,20,0.76) 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(10,10,10,0.16)), color-stop(100%,rgba(20,20,20,0.76))); background: -webkit-linear-gradient(top,  rgba(10,10,10,0.16) 0%,rgba(20,20,20,0.76) 100%); background: -o-linear-gradient(top,  rgba(10,10,10,0.16) 0%,rgba(20,20,20,0.76) 100%); background: -ms-linear-gradient(top,  rgba(10,10,10,0.16) 0%,rgba(20,20,20,0.76) 100%); background: linear-gradient(to bottom,  rgba(10,10,10,0.16) 0%,rgba(20,20,20,0.76) 100%); ">
+                                                    </div>
+                                                </div>
+                                                <!--/ Background -->
+                                                <div class="media-container-pb media-container-pb--alg-bottom">
+                                                    <div class="row">
+                                                        <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-md-8 col-sm-8">
+                                                            <!-- Title -->
+                                                            <div class="kl-title-block clearfix text-center tbk-icon-pos--after-title">
+                                                                <h2 class="white fw-bold">@item.title</h2>
+                                                            </div>
+                                                        </div>
+                                                        <!--/ col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-md-8 col-sm- -->
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <!-- Content -->
+                                                            <div class="prt-hover-slidein">
+                                                                <!-- Sub-title -->
+                                                                <div class="kl-title-block clearfix text-center tbk-icon-pos--after-title">
+                                                                    <a href="@Url.Content("~/PImages/" + item.fileUrl)">
+                                                                        <h4 class="tbk__subtitle">Download</h4>
+                                                                    </a>
+                                                                </div>
+                                                                <!--/ Sub-title -->
+                                                            </div>
+                                                            <!--/ Content -->
+                                                        </div>
+                                                        <!--/ col-md-12 col-sm-12 -->
+                                                    </div>
+                                                    <!--/ row -->
+                                                </div>
+                                                <!--/ media container content -->
+                                            </div>
+                                            <!--/ Media container with custom content -->
+                                        </div>
+                                        }
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="tab-pane">
+                            <section class="hg_section pt-10 pb-10">
+                                <div class="container">
+                                    <div class="row">
+                                        @foreach (var item in Model.otherList)
+                                        {
+                                            <div class="col-sm-3 col-md-3">
+                                                <!-- Media container with custom content -->
+                                                <div class="media-container media-container--type-pb h-300">
+                                                    <!-- Background -->
+                                                    <div class="kl-bg-source">
+                                                        <!-- Background image -->
+                                                        <div class="kl-bg-source__bgimage" style="background-image:url(@Url.Content("~/PImages/" + item.imageUrl));background-repeat:repeat;background-attachment:scroll;background-position:center center;background-size:cover">
+                                                        </div>
+                                                        <!-- Overlay -->
+                                                        <div class="kl-bg-source__overlay" style="background: rgba(10,10,10,0.16); background: -moz-linear-gradient(top,  rgba(10,10,10,0.16) 0%, rgba(20,20,20,0.76) 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(10,10,10,0.16)), color-stop(100%,rgba(20,20,20,0.76))); background: -webkit-linear-gradient(top,  rgba(10,10,10,0.16) 0%,rgba(20,20,20,0.76) 100%); background: -o-linear-gradient(top,  rgba(10,10,10,0.16) 0%,rgba(20,20,20,0.76) 100%); background: -ms-linear-gradient(top,  rgba(10,10,10,0.16) 0%,rgba(20,20,20,0.76) 100%); background: linear-gradient(to bottom,  rgba(10,10,10,0.16) 0%,rgba(20,20,20,0.76) 100%); ">
+                                                        </div>
+                                                    </div>
+                                                    <!--/ Background -->
+                                                    <div class="media-container-pb media-container-pb--alg-bottom">
+                                                        <div class="row">
+                                                            <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-md-8 col-sm-8">
+                                                                <!-- Title -->
+                                                                <div class="kl-title-block clearfix text-center tbk-icon-pos--after-title">
+                                                                    <h2 class="white fw-bold">@item.title</h2>
+                                                                </div>
+                                                            </div>
+                                                            <!--/ col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-md-8 col-sm- -->
+                                                            <div class="col-md-12 col-sm-12">
+                                                                <!-- Content -->
+                                                                <div class="prt-hover-slidein">
+                                                                    <!-- Sub-title -->
+                                                                    <div class="kl-title-block clearfix text-center tbk-icon-pos--after-title">
+                                                                        <a href="@Url.Content("~/PImages/" + item.fileUrl)">
+                                                                            <h4 class="tbk__subtitle">Download</h4>
+                                                                        </a>
+                                                                    </div>
+                                                                    <!--/ Sub-title -->
+                                                                </div>
+                                                                <!--/ Content -->
+                                                            </div>
+                                                            <!--/ col-md-12 col-sm-12 -->
+                                                        </div>
+                                                        <!--/ row -->
+                                                    </div>
+                                                    <!--/ media container content -->
+                                                </div>
+                                                <!--/ Media container with custom content -->
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <!--/ row -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section ExecuteJavaScriptAtLayout {
+    function onTabClick(idx) {
+       var liList = $("#tab").children();
+        if (liList.length > 0) {
+            liList.removeClass('active');
+            var currLi = liList.eq(idx);
+            currLi.addClass('active');
+            $("#lastBCItem").text(currLi.children().first().text());
+        }
+
+        var contentList = $("#tabContent").children();
+        if (contentList.length > 0) {
+            contentList.removeClass('active');
+            var currContent = contentList.eq(idx);
+            currContent.addClass('active');
+        }
+    }
+
+    $(document).ready(function() {
+        onTabClick(0);
+    });
+}*@

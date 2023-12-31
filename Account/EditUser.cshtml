@@ -1,0 +1,70 @@
+﻿@model Lippo.Models.EditAdminModel
+
+@{
+    ViewBag.Title = "Edit Admin User";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@Lippo.Helpers.ToastHelper.error(ViewData.ModelState)
+@Lippo.Helpers.ToastHelper.success(ViewBag.Status)
+
+
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    Edit Admin User
+                </h3>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm("EditUser", "Account", FormMethod.Post, new { @class = "m-form m-form--fit m-form--label-align-right" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.UserName)
+        <div class="form-group m-form__group">
+            <label>@Html.LabelFor(m => m.UserName)</label>
+            <div class="control">
+                <input type="text" disabled="true" value="@Model.UserName"> 
+            </div>
+        </div>
+        <div class="form-group m-form__group">
+            <label>Roles</label>
+            <div class="list">
+                @foreach (String item in ViewBag.Roles)
+            {
+                    <div class="checkbox">
+                        @if (Model != null && Model.Roles.Contains(item))
+                {
+                            <input type="checkbox" name="Roles" value="@item" checked /><label>@item</label>
+                        }
+                        else
+                        {
+                            <input type="checkbox" name="Roles" value="@item" /><label>@item</label>
+                        }
+                    </div>
+
+                }
+            </div>
+        </div>
+
+        <div class="m-form__actions m-form__actions">
+            <button type="submit" class="btn m-btn--pill btn-secondary m-btn m-btn--hover-brand m-btn--custom">
+                Update
+            </button>
+        </div>
+    }
+</div>
+@section scripts {
+<script>
+        $(function () {
+            var allTopMenu = $("#topMenu > li");
+            allTopMenu.addClass('m-menu__item');
+            allTopMenu.removeClass('m-menu__item--active');
+            $("#menuSystem").addClass('m-menu__item--active');
+        });
+</script>
+    }

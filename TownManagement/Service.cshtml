@@ -1,0 +1,95 @@
+﻿@model Lippo.Models.ServiceDetailModel
+
+<section class="site-content" id="content">
+    <div class="container">
+        <div class="row">
+            <div class="right_sidebar col-sm-8 col-md-9" itemprop="mainContentOfPage" role="main">
+                <div id="th-content-post">
+                    <div class="kl-single-layout--modern post-109 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized prodpage-style3" id="post-109">
+                        <div class="itemView clearfix eBlog kl-blog kl-blog-list-wrapper kl-blog--style-light">
+                            <div class="kl-blog-post" itemscope="itemscope" itemtype="https://schema.org/Blog">
+                                <div class="kl-blog-single-head-wrapper">
+                                    <img alt="" height="588" src="@Url.Content("~/PImages/" + Model.imageUrl)" title="finance.jpg" width="1200">
+                                </div>
+                                <div class="clearfix"></div>
+                                <h1 class="page-title kl-blog-post-title entry-title" itemprop="headline">@Model.howDoI.title</h1>
+                                <div class="itemBody kl-blog-cols-1" itemprop="text">
+                                    @Html.Raw(Model.description)
+                                </div>
+                                <div class="hg_accordion_element style3">
+                                    <!-- Accordions wrapper -->
+                                    <div class="th-accordion">
+                                        <!-- Acc group #13 -->
+                                        @{var idx = 0;}
+                                        @foreach (var item in Model.howDoI.itemList)
+                                                {
+                                                    idx++;
+                                        <div class="acc-group">
+                                            <!-- Title group button acc #13 -->
+                                            <a data-toggle="collapse" data-target="@("#acca" + idx)" class="collapsed">
+                                                @item.title
+                                                <span class="acc-icon">
+                                                </span>
+                                            </a>
+                                            <!--/ Title group button acc #13 -->
+                                            <!-- Acc #13 -->
+                                            <div id="@("acca" + idx)" class="collapse">
+                                                <!-- Content -->
+                                                <div class="content">
+                                                    @Html.Raw(item.description)
+                                                </div>
+                                                <!--/ Content -->
+                                            </div>
+                                            <!--/ Acc #13 -->
+                                        </div>
+                                        <!--/ Acc group #13 -->
+                                        }
+                                    </div>
+                                    <!--/ Accordions wrapper -->
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <aside class=" col-sm-4 col-md-3" itemscope="itemscope" itemtype="" role="complementary">
+                <div class="zn_sidebar sidebar kl-sidebar--light element-scheme--light">
+                    <div class="widget zn-sidebar-widget widget_meta" id="meta-2">
+                        <h3 class="widgettitle zn-sidebar-widget-title title">EXPLORE</h3>
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("Index", "Explore", new { id = "getting-around" })">Getting Arround</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Explore", new { id = "Whatson" })">Whats On</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Explore", new { id = "education" })">Education</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Explore", new { id = "recreation" })">Recreation & Leisure</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Explore", new { id = "transportation" })">Transportation</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="widget zn-sidebar-widget widget_archive" id="archives-2">
+                        <h3 class="widgettitle zn-sidebar-widget-title title">PROMOTION</h3>
+                        @foreach (var promoItem in Model.promotionList)
+                        {
+                            <span class="hoverBorderWrapper">
+                                <img alt="" src="@Url.Content("~/PImages/" + promoItem.imageUrl)" title="promo.jpg" width="400">
+                                <span class="theHoverBorder"></span>
+                            </span>
+                        }
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+

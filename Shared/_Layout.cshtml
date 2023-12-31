@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@section HeadCSS {
+    <style type="text/css">
+	.gm-style-pbc{transition:opacity ease-in-out;background-color:rgba(0,0,0,0.45);text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}
+
+@section HeadScript {
+    @RenderSection("Scripts", false)
+}
+<div class="page-subheader page-subheader--auto page-subheader--inherit-hp zn_def_header_style psubhead-stheader--absolute sh-tcolor--light" id="page_header">
+    <div class="bgback"></div>
+    <div class="th-sparkles"></div>
+    <div class="ph-content-wrap">
+        <div class="ph-content-v-center">
+            <div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <ul class="breadcrumbs fixclear bread-style--minimal" typeof="BreadcrumbList" vocab="http://schema.org/">
+                        <li property="itemListElement" typeof="ListItem"><a href="@Url.Action("Index", "Home")" property="item" typeof="WebPage">Home</a></li>
+                        @if (ViewBag.breadCrumbList != null)
+                        {
+                            foreach (var breadCrumb in ViewBag.breadCrumbList)
+                            {
+                            <li property="itemListElement" typeof="ListItem"><a href="@Url.Content(breadCrumb.url)" property="item" typeof="WebPage">@breadCrumb.text</a></li>
+                            }
+                        }
+                        <li>@((ViewBag.group == "") ? "" : (ViewBag.group + " - ")) <span id="lastBCItem">@ViewBag.tabName</span></li>
+                        </ul>
+                        &nbsp;										
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="subheader-titles">
+                        <h2 class="subheader-maintitle" itemprop="headline">@ViewBag.head</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="zn_header_bottom_style"></div>
+</div>
+<div class="zn_pb_wrapper clearfix zn_sortable_content" data-droplevel="0">
+    @RenderBody()
+</div>
+
+@section BottomJS {
+    @RenderSection("BottomJSAtLayout", false)
+}
+
+@section ExecuteJavaScript {
+    @RenderSection("ExecuteJavaScriptAtLayout", false)
+}

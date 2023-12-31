@@ -1,0 +1,84 @@
+﻿@model Lippo.Models.DirectoryModel
+@{
+    ViewBag.Title = "Directories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="hg_section ptop-80 pbottom-80" id="directories">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<!-- Title -->
+						<div class="clearfix text-center tbk-symbol--line tbk-icon-pos--after-title">
+							<h4 class="tbk__title fw-bold">TOWN MANAGEMENT</h4>
+							<div class="tbk__symbol ">
+								<span></span>
+							</div>
+						</div>
+						<!--/ Title -->
+					</div>
+					<!--/ col-md-12 col-sm-12 -->
+
+					<div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-md-6 col-sm-6">
+						<!-- Price list element -->
+						<div class="priceListElement">
+							<ul>
+                                @foreach(var content in Model.townManagement) {
+								<li class="priceListElement-item-0">
+									<div class="priceListElement-itemRight">
+										<div class="priceListElement-itemMain">
+											<h4 class="priceListElement-itemTitle">@content.contact</h4>
+											<div class="priceListElement-dottedSeparator"></div>
+											<div class="priceListElement-itemPrice">
+                                            @Lippo.Helpers.GenHelper.ToTelpNumbers(content.contactNo)</div>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</li>
+                                }
+
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+						
+						<div class="clearfix text-center tbk-symbol--line tbk-icon-pos--after-title">
+							
+							
+							<br>
+							<h4 class="tbk__title fw-bold">EMERGENCY SERVICES</h4>
+							<div class="tbk__symbol ">
+								<span></span>
+							</div>
+						</div>
+						<!--/ Title -->
+					</div>
+					<!--/ col-md-12 col-sm-12 -->
+
+					<div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-md-6 col-sm-6">
+						<!-- Price list element -->
+						<div class="priceListElement">
+							<ul>
+                                @foreach(var content in Model.emergencyService) {
+								<li class="priceListElement-item-0">
+									<div class="priceListElement-itemRight">
+										<div class="priceListElement-itemMain">
+											<h4 class="priceListElement-itemTitle">@content.contact</h4>
+											<div class="priceListElement-dottedSeparator"></div>
+											<div class="priceListElement-itemPrice">@Lippo.Helpers.GenHelper.ToTelpNumbers(content.contactNo)</div>
+										</div>
+                                    </div>
+										
+									<div class="clearfix"></div>
+								</li>
+                                }
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+						<!--/ Price list element -->
+					</div>
+					<!--/ col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-md-6 col-sm-6 -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>

@@ -1,0 +1,348 @@
+﻿@model Lippo.Models.TownManagementModel
+@{
+    ViewBag.Title = "About";
+}
+<section class="hg_section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<!-- Title element with bottom line and sub-title with custom paddings -->
+						<div class="kl-title-block clearfix tbk--left tbk-symbol--line tbk-icon-pos--after-title ptop-15 pbottom-20">
+							<!-- Title with custom montserrat font, size and black color -->
+							<h2 class="tbk__title montserrat fs-34 black"><strong>@Model.topContent.title</strong></h2>
+
+							<!-- Title bottom symbol -->
+							<div class="tbk__symbol ">
+								<span></span>
+							</div>
+						</div>
+						<!--/ Title element with bottom line and sub-title -->
+					</div>
+					<!--/ col-md-12 col-sm-12 -->
+
+					<div class="col-md-4 col-sm-4">
+						<!-- Title element with bottom line -->
+						<div class="kl-title-block clearfix tbk-symbol--line tbk-icon-pos--after-title">
+							<!-- Title with custom font size, gray color and extrabold style -->
+							<h3 class="tbk__title fs-36 gray fw-extrabold">
+                                                           @Model.topContent.left
+                                                        </h3>
+							<!-- Title bottom symbol -->
+							<div class="tbk__symbol ">
+								<span></span>
+							</div>
+							<!--/ Title bottom symbol -->
+						</div>
+						<!--/ Title element with bottom line -->
+					</div>
+					<!--/ col-md-4 col-sm-4 -->
+
+					<div class="col-md-4 col-sm-4">
+						<!-- Text box element -->
+						<div class="text_box">
+                            @Html.Raw(Model.topContent.middle)
+						</div>
+						<!--/ Text box element -->	
+					</div>
+					<!--/ col-md-4 col-sm-4 -->
+
+					<div class="col-md-4 col-sm-4">
+						<!-- Text box element -->
+						<div class="text_box">
+                            @Html.Raw(Model.topContent.right)
+                        </div>
+						<!--/ Text box element -->
+					</div>
+					<!--s/ col-md-4 col-sm-4 -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+</section>
+		<!--/ Content section -->
+         <section class="hg_section ptop-10">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<!-- Title -->
+						<div class="kl-title-block clearfix text-left tbk-symbol-- tbk-icon-pos--before-title">
+							<h3 class="tbk__title "> @Model.middleContent.title</h3>
+						</div>
+						<!--/ Title -->
+
+						<!-- Text box -->
+						<div class="text_box">
+                            @Html.Raw(Model.middleContent.text)
+						</div>
+						<!--/ Text box -->
+					</div>
+					<!--/ col-md-6 col-sm-6 -->
+
+					<div class="col-md-6 col-sm-6">
+						<!-- RIGHT SIDED FRAME & SMARTPHONE element -->
+						<div class="el-devimages el-devimages--type-vector el-devimages--ltr">
+							<!-- Frame -->
+							<div class="el-devimages__frame el--appear el--appear-sfr el--appeared">
+								<!-- Background image -->
+								<div class="el-devimages__frame-img" style="background-image:url(@Url.Content("~/PImages/" + Model.middleContent.imageUrl));background-repeat:repeat;background-position:center center;background-size:cover;">
+								</div>
+								<!--/ Background image -->
+							</div>
+							<!--/ Frame -->
+
+						</div>
+						<!--/ RIGHT SIDED FRAME & SMARTPHONE element -->
+					</div>
+					<!--/ col-md-6 col-sm-6 -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+          <section class="hg_section ptop-10 pbottom-10">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<!-- Section title -->
+						<div class="kl-title-block clearfix text-center tbk-symbol--line tbk--colored tbk-icon-pos--after-title">
+							<!-- Title -->
+							<h3 class="tbk__title ">VISION & MISSION</h3>
+							<!--/ Title -->
+
+							<!-- Title bottom symbol -->
+							<div class="tbk__symbol ">
+								<span class="tbg"></span>
+							</div>
+							<!--/ Title bottom symbol -->
+						</div>
+						<!--/ Section title -->
+
+						<!-- Screenshot box element -->
+						<div class="screenshot-box kl-style-2 fixclear">
+							<div class="row">
+								<div class="col-sm-12 col-md-9">
+									<!-- Left side -->
+                                                                    <div class="left-side tbk-symbol--line">
+										<!-- title -->  
+                                                                         <div class="tbk__symbol ">
+                                                                                    <span></span>
+                                                                            </div>       
+                                                                        <h3 class="title">
+                                                                            @Html.Raw(Model.visiMisi)
+                                                                        </h3>
+										
+									</div>
+									<!--/ Left side -->
+								</div>
+								<!--/ col-sm-6 -->
+
+								<div class="col-sm-12 col-md-3">
+								<div class="el-devimages el-devimages--type-vector el-devimages--ltr">
+                                                                          <img alt="" src="assets/lippoflag.png" title="lippoflag.png" width="200">
+                                                                    </div>
+								</div>
+								<!--/ col-sm-6 -->
+							</div>
+							<!--/ row -->
+						</div>
+						<!--/ Screenshot box element -->
+					</div>
+					<!--/ col-md-12 col-sm-12 -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+        <!-- Services boxes section -->
+		<section class="hg_section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<!-- Title element -->
+						<div class="kl-title-block clearfix text-center tbk-symbol--border tbk-icon-pos--after-title">
+							<!-- Title -->
+							<h3 class="tbk__title ">THE SERVICES</h3>
+							<!--/ Title -->
+
+							<!-- Title bottom symbol -->
+							<div class="tbk__symbol ">
+								<span></span>
+							</div>
+							<!--/ Title bottom symbol -->
+						</div>
+						<!--/ Title element -->
+					</div>
+					<!--/ col-md-12 col-sm-12 -->
+
+                    @foreach (var service in Model.serviceList)
+                    {
+                        <a href="@Url.Content("~/Service/" + service.rowId)">
+                            <div class="col-md-3 col-sm-3">
+                                <!-- Services box element boxed style -->
+                                <div class="services_box services_box--boxed sb--hasicon">
+                                    <!-- Service box wrapper -->
+                                    <div class="services_box__inner clearfix">
+                                        <!-- Icon content -->
+                                        <div class="services_box__icon">
+                                            <!-- Icon wrapper -->
+                                            <div class="services_box__icon-inner">
+                                                <img class="grid-ibx__icon" src="@Url.Content("~/PImages/" + service.iconUrl)" width="45" height="45" alt="" title="" />
+                                            </div>
+                                            <!--/ Icon wrapper -->
+                                        </div>
+                                        <!--/ Icon content -->
+                                        <!-- Content -->
+                                        <div class="services_box__content">
+                                            <!-- Title -->
+                                            <h4 class="services_box__title">@service.title</h4>
+                                            <!--/ Title -->
+                                            <!-- Description -->
+                                            <div class="services_box__desc">
+                                                <p>
+                                                    @service.shortText
+                                                </p>
+                                            </div>
+                                            <!--/ Description -->
+
+
+                                        </div>
+                                        <!--/ Content -->
+                                    </div>
+                                    <!--/ Service box wrapper -->
+                                </div>
+                                <!--/ Services box element boxed style -->
+                            </div>
+                        </a>
+                    }
+                                        
+
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		
+        <br>
+		<hr>
+        
+       <section class="hg_section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+
+					</div>
+					<!--/ col-md-12 col-sm-12 -->
+                                        <div class="col-md-3 col-sm-3">
+						<!-- Services box element boxed style -->
+						<div class="contact_box__content">
+									<!-- Title -->
+									<h2 class="contact_box__title">How to contact us</h2>
+									<!--/ Title -->
+
+					
+                                                </div>
+						<!--/ Services box element boxed style -->
+					</div>
+                                        <div class="col-md-3 col-sm-3">
+						<!-- Services box element boxed style -->
+						<div class="contact_box__content">
+									<!-- Title -->
+									<h4 class="contact_box__title">24 Hours Emergency </h4>
+									<!--/ Title -->
+
+									<!-- Description -->
+									<div class="contact_box__desc">
+										<p>T. <span><a href="tel:+628001900911">0800 1900 911</a></span>
+									</div>
+									<!--/ Description -->		
+                                                </div>
+						<!--/ Services box element boxed style -->
+					</div>
+                                        <div class="col-md-3 col-sm-3">
+						<!-- Services box element boxed style -->
+						<div class="contact_box__content">
+									<!-- Title -->
+									<h4 class="contact_box__title">Call Center </h4>
+									<!--/ Title -->
+
+									<!-- Description -->
+									<div class="contact_box__desc">
+										<p>T. <span><a href="tel:+622155777557">021 55 777 557</a></span></p>
+									</div>
+									<!--/ Description -->		
+                                                </div>
+						<!--/ Services box element boxed style -->
+					</div>
+                                        <div class="col-md-3 col-sm-3">
+						<!-- Services box element boxed style -->
+						<div class="contact_box__content">
+									<!-- Title -->
+									<h4 class="contact_box__title">Email</h4>
+									<!--/ Title -->
+
+									<!-- Description -->
+									<div class="contact_box__desc">
+										<p><a href="mailto:TMD@lippokarawaci.co.id">TMD@lippokarawaci.co.id</a></p>
+									</div>
+									<!--/ Description -->		
+                                                </div>
+						<!--/ Services box element boxed style -->
+					</div>
+					<!--/ col-md-4 col-sm-4 -->
+
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+        </section>
+		<!--/ Services boxes section -->
+                
+     <!-- Google map full width element -->
+		<div class="kl-slideshow static-content__slideshow scontent__maps">
+			<!-- Google map content -->
+			<div class="th-google_map" style="height: 700px;">
+			</div>
+			<!--/ Google map content -->
+
+			<!-- Map slide info panel -->
+    		<div class="kl-contentmaps__panel">
+    			<!-- Toggle close button -->
+				<a href="#" class="js-toggle-class kl-contentmaps__panel-tgg hidden-xs" data-target=".kl-contentmaps__panel" data-target-class="is-closed"></a>
+				<!--/ Toggle close button -->
+
+				<!-- Image & image pop-up -->
+				<a href="assets/tmd-contact.jpg" data-lightbox="image" class="kl-contentmaps__panel-img" style="background-image:url(assets/tmd-contact.jpg)"></a>
+				<!--/ Image & image pop-up -->
+
+				<!-- Slide info panel content wrapper -->
+				<div class="kl-contentmaps__panel-info">
+					<!-- Title -->
+					<h5 class="kl-contentmaps__panel-title">TMD Office</h5>
+					<!--/ Title -->
+
+					<!-- Content -->
+					<div class="kl-contentmaps__panel-info-text">
+						<p>
+							7 Boulevard Palem Raya<br>Menara Matahari, Ground Floor<br> 
+                                                        <br class="hidden-xs">
+                                                        Lippo Karawaci Sentral
+                                                        <br class="hidden-xs">
+                                                        Tangerang 15811, Banten
+                                                        <br class="hidden-xs">
+                                                        T. 021 55 777 557  
+						</p>
+					</div>
+					<!--/ Content -->
+				</div>
+				<!--/ Slide info panel content wrapper -->
+			</div>
+			<!--/ Map slide info panel -->
+		</div>
+		<!--/ Google map full width section -->           
+                
+@section BottomJSAtLayout {
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsTRims0-mGIvhfA3feddb8_ULGxqf6g0"></script>
+    <script type="text/javascript" src="js/plugins/jquery.gmap.min.js"></script>
+    <!-- Requried js trigger for Google Maps element -->
+    <script type="text/javascript" src="js/trigger/kl-google-maps-style2.js"></script>
+}

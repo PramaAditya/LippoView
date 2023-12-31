@@ -1,0 +1,86 @@
+﻿@model Lippo.Models.TabDocModel
+
+<!-- Tabs section with custom paddings and white background -->				
+               <section class="hg_section bg-white ptop-20 pbottom-20">
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                           <!-- Title element with bottom line -->								<!-- Tabs element style 1 -->								
+                           <div class="tabbable tabs_style1">
+                              <!-- Navigation menu -->									
+                              <ul id="tab" class="nav fixclear">
+                                 <!-- Tab #1 -->										
+                                  @for (int tabIdx = 0; tabIdx < Model.tabList.Count; tabIdx++)
+                                  {
+                                      var tab = Model.tabList[tabIdx];
+                                 <li>											
+                                     <a href="#" onclick="onTabClick(@tabIdx)">@tab.title</a>										</li>
+                                  }																		                                                                                                                                                                
+                                    <!--/ Tab #1 -->		
+                              </ul>
+                              <!--/ Navigation menu -->									<!-- Tabs content -->									
+                              <div id="tabContent" class="tab-content">
+                                  @foreach(var tab in Model.tabList) {
+                                 <!-- Tab #1 -->										
+                                 <div class="tab-pane">
+                                    <h1 class="page-title kl-blog-post-title entry-title" itemprop="headline">@tab.title</h1>
+                                    @if(tab.contentList.Count > 0) {
+                                        var firstItem = tab.contentList[0];
+                                         <span class="hoverBorderWrapper">
+                                            <img height="588" src="@Url.Content("~/PImages/" + firstItem.imageUrl)" title="@firstItem.imageUrl" width="1200">                                                                                      
+                                            <span class="theHoverBorder"></span>                                                                                    
+                                        </span>                                                                                
+                                        <div class="itemBody kl-blog-post-body kl-blog-cols-1" itemprop="text">
+                                            <br>                                                                                  
+                                            <p> @Html.Raw(firstItem.rawText) </p>
+                                            @for(int idx = 1; idx < tab.contentList.Count; idx++) {
+                                                var tabItem = tab.contentList[idx];
+                                                <img src="@Url.Content("~/PImages/" + tabItem.imageUrl)" title="@tabItem.imageUrl" width="1200"> <br><br> 
+                                                <p>@Html.Raw(tabItem.rawText)</p>
+                                            }
+                                       </div>
+                                    }
+                                    
+                                    <div class="itemBottom" itemprop="text">                                                                                        
+                                        <a class="fa fa-facebook" href="#"></a> 
+                                        <a class="fa fa-twitter" href="#"></a> 
+                                        <a class="fa fa-google" href="#"></a> 
+                                        <a class="fa fa-linkedin" href="#"></a> 
+                                        <a class="fa fa-pinterest" href="#"></a>                                                                                </div>
+                                  </div>
+                                  }    
+                                 <!--/ Tab #1 -->																			
+                              </div>
+                              <!--/ Tabs content -->								
+                           </div>
+                           <!--/ Tabs element style 1 -->							
+                        </div>
+                        <!--/ col-md-12 col-sm-12 -->						
+                     </div>
+                     <!--/ row -->					
+                  </div>
+                  <!--/ container -->				
+               </section>
+               <!--/ Tabs section with custom paddings and white background -->
+
+
+@section ExecuteJavaScriptAtLayout {
+    function onTabClick(idx) {
+        var liList = $("#tab").children();
+        if (liList.length > 0) {
+            liList.removeClass('active');
+            var currLi = liList.eq(idx);
+            currLi.addClass('active');
+            $("#lastBCItem").text(currLi.children().first().text());
+        }
+
+        var contentList = $("#tabContent").children();
+        if (contentList.length > 0) {
+            contentList.removeClass('active');
+            var currContent = contentList.eq(idx);
+            currContent.addClass('active');
+        }
+    }
+
+    onTabClick(0);
+}

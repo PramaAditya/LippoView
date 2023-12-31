@@ -1,0 +1,146 @@
+﻿@model Lippo.Models.WhatsOnDetailModel
+
+<section class="hg_section ptop-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-3">
+                <!-- Sidebar -->
+                <div id="sidebar-widget" class="sidebar">
+                    <div class="widget zn-sidebar-widget widget_meta" id="meta-2">
+                        <h3 class="widgettitle zn-sidebar-widget-title title">EXPLORE</h3>
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("Index", "Explore", new { id = "getting-around" })">Getting Arround</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Explore", new { id = "Whatson" })">Whats On</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Explore", new { id = "education" })">Education</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Explore", new { id = "recreation" })">Recreation & Leisure</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Explore", new { id = "transportation" })">Transportation</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="widget zn-sidebar-widget widget_archive" id="archives-2">
+                        <h3 class="widgettitle zn-sidebar-widget-title title">PROMOTION</h3>
+                        @foreach (var promoItem in Model.promotionList)
+                        {
+						 <a data-lightbox="image" href="@Url.Content("~/PImages/" + promoItem.imageUrl)" class="hoverBorder">
+                            <span class="hoverBorderWrapper">
+                                <img alt="promo.jpg" src="@Url.Content("~/PImages/" + promoItem.imageUrl)" title="promo.jpg" width="400">
+                                <span class="theHoverBorder"></span>
+                            </span>
+						</a>
+                        }
+                    </div>
+                </div>
+                <!--/ Sidebar -->
+            </div>
+            <!--/ col-md-3 col-sm-3 -->
+            <div class="col-md-9 col-sm-9">
+                <!-- Post content -->
+
+                <div id="th-content-post">
+                    <!-- Post div wrapper -->
+                    <div>
+                        @if (Model.whatsOn != null)
+                        {
+                        <!-- Post page title -->
+                        <h1 class="page-title black">@Model.whatsOn.title</h1>
+                        <!--/ Post page title -->
+                        }
+                        <!-- Post layout -->
+                        <div class="itemView clearfix eBlog">
+                            @if (Model.whatsOn != null)
+                            {
+                            <!-- Post header -->
+                            <div class="itemHeader">
+                                <!-- Post details -->
+                                <div class="post_details">
+                                    <!-- Author -->
+                                    <span class="itemAuthor">
+                                        by <a href="#"><strong>@Model.whatsOn.author</strong></a>
+                                    </span>
+                                    <!--/ Author -->
+                                    <!-- Separator -->
+                                    <span class="infSep"> / </span>
+                                    <!--/ Separator -->
+                                    <!-- Date created -->
+                                    <span class="itemDateCreated"><span class="glyphicon glyphicon-calendar"></span> @Model.whatsOn.date.ToString("dddd, dd MMMM yyyy")</span>
+                                    <!--/ Date created -->
+                                    <!-- Separator -->
+                                    <span class="infSep"> / </span>
+                                    <!--/ Separator -->
+                                    <!-- Comments block -->
+                                    <span class="itemCommentsBlock"></span>
+                                    <!--/ Comments block -->
+                                </div>
+                                <!--/ Post details -->
+                            </div>
+                            <!--/ Post header -->
+                            <!-- Post body -->
+                            <div class="itemBody">
+                                <!-- Blog Image -->
+                                <a data-lightbox="image" href="@Url.Content("~/PImages/" + Model.whatsOn.imageUrl)" class="hoverBorder pull-left" style="margin-right: 20px;margin-bottom:4px;">
+                                    <span class="hoverBorderWrapper">
+                                        <img src="@Url.Content("~/PImages/" + Model.whatsOn.imageUrl)" alt="Post Image" title="whatsond" />
+                                        <span class="theHoverBorder"></span>
+                                    </span>
+                                </a>
+                                <!--/ Blog Image -->
+                                <!-- Blog Content -->
+                                @Html.Raw(Model.whatsOn.description)
+                                <!--/ Blog Content -->
+                            </div>
+                            <!--/ Post body -->
+                            <div class="clear"></div>
+                            }
+                            <!-- Related articles -->
+                            <div class="related-articles">
+                                <!-- Title -->
+                                <h3 class="rta-title">WHAT YOU CAN READ NEXT</h3>
+                                <!--/ Title -->
+                                <div class="row">
+                                    @foreach (var other in Model.others)
+                                    {
+                                    <div class="col-sm-4">
+                                        <!-- Related article post -->
+                                        <div class="rta-post">
+                                            <!-- Image -->
+                                            <a href="@Url.Content("~/WhatsOn/" + other.rowId)">
+                                                <img src="@Url.Content("~/PImages/" + other.imageUrl)" class="img-responsive" width="370" height="240" alt="">
+                                            </a>
+                                            <!--/ Image -->
+                                            <!-- Title -->
+                                            <h5>
+                                                <a href="@Url.Content("~/WhatsOn/" + other.rowId)">@other.shortDesc</a>
+                                            </h5>
+                                            <!--/ Title -->
+                                        </div>
+                                        <!--/ Related article post .rta-post -->
+                                    </div>
+                                    <!--/ col-sm-4 -->
+                                    }
+                                </div>
+                                <!--/ row -->
+                            </div>
+                            <!--/ Related articles -->
+                        </div>
+                        <!--/ Post layout -->
+                    </div>
+                    <!--/ Post div wrapper -->
+                </div>
+                <!--/ Post content -->
+            </div>
+            <!--/ col-md-9 col-sm-9 -->
+        </div>
+        <!--/ row -->
+    </div>
+    <!--/ container -->
+</section>

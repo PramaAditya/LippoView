@@ -1,0 +1,122 @@
+﻿@model Lippo.Models.HowDoIModel
+
+<section class="hg_section bg-white ptop-20 pbottom-20">
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                           <!-- Title element with bottom line -->
+                           <!-- Tabs element style 1 -->
+                           <div class="tabbable tabs_style1">
+                              <!-- Navigation menu -->
+                              <ul id="tab" class="nav fixclear">
+                                 <!-- Tab #1 -->
+                                  @for (int tabIdxTop = 0; tabIdxTop < Model.tabList.Count; tabIdxTop++)
+                                  {
+                                      var tab = Model.tabList[tabIdxTop];
+                                      <li>
+                                          <a href="#" onclick="onTabClick(@tabIdxTop)">@tab.title</a>
+                                      </li>
+                                  }	
+                                 <!--/ Tab #1 -->
+                              </ul>
+                              <!--/ Navigation menu -->
+                              <!-- Tabs content -->
+                              <div id="tabContent" class="tab-content">
+                                 <!-- Tab #1 -->
+                                @{var tabIdx = 0; foreach (var tab in Model.tabList)
+                                    {
+                                        tabIdx++;
+
+                                 <div class="tab-pane">
+                                    <div class="hg_accordion_element style3">
+                                       <!-- Title -->
+                                       <h3>@tab.title</h3>
+                                       <!--/ Title -->
+                                       <!-- Accordions wrapper -->
+                                       <div class="th-accordion">
+                                          <!-- Acc group #11 -->
+                                           @{ 
+                                               int dataTargetIdx = 0;
+                                        }
+                                           @foreach (var tabItem in tab.itemList)
+                                           {
+                                               dataTargetIdx++;
+                                          <div class="acc-group">
+                                             @if (dataTargetIdx == 1)
+                                             {
+                                                 <!-- Title group button acc #11 -->
+                                                <a data-toggle="collapse" data-target="@("#acc" + tabIdx + "" + dataTargetIdx)" class="" aria-expanded="true">@tabItem.title<span class="acc-icon"></span></a>
+                                             <!--/ Title group button acc #11 -->
+                                             <!-- Acc #11 -->
+                                                <div id="@("acc" + tabIdx + "" + dataTargetIdx)" class="collapse in" aria-expanded="true">
+                                                    <!-- Content -->
+                                                    <div class="content">
+                                                        <!-- Description -->
+                                                        @Html.Raw(tabItem.description)
+                                                        <!--/ Description -->
+                                                    </div>
+                                                    <!--/ Content -->
+                                                </div>
+                                             <!--/ Acc #11 -->
+                                             }
+                                             else
+                                             {
+                                                 <!-- Title group button acc #11 -->
+                                                <a data-toggle="collapse" data-target="@("#acc" + tabIdx + "" + dataTargetIdx)" class="collapsed" >@tabItem.title<span class="acc-icon"></span></a>
+                                             <!--/ Title group button acc #11 -->
+                                             <!-- Acc #11 -->
+                                                <div id="@("acc" + tabIdx + "" + dataTargetIdx)" class="collapse">
+                                                    <!-- Content -->
+                                                    <div class="content">
+                                                        <!-- Description -->
+                                                        @Html.Raw(tabItem.description)
+                                                        <!--/ Description -->
+                                                    </div>
+                                                    <!--/ Content -->
+                                                </div>
+                                             <!--/ Acc #11 -->
+                                             }
+
+                                          </div>
+                                           }
+                                          <!--/ Acc group #11 -->                                          
+                                       </div>
+                                       <!--/ Accordions wrapper -->
+                                    </div>
+                 
+                                 </div>
+                                                   }
+                                               }
+                                 <!--/ Tab #1 -->                  
+                              </div>
+                              <!--/ Tabs content -->
+                           </div>
+                           <!--/ Tabs element style 1 -->
+                        </div>
+                        <!--/ col-md-12 col-sm-12 -->
+                     </div>
+                     <!--/ row -->
+                  </div>
+                  <!--/ container -->
+               </section>
+
+@section ExecuteJavaScriptAtLayout {
+    function onTabClick(idx) {
+    var liList = $("#tab").children();
+    if (liList.length > 0) {
+    liList.removeClass('active');
+    var currLi = liList.eq(idx);
+    currLi.addClass('active');
+    $("#lastBCItem").text(currLi.children().first().text());
+    }
+
+    var contentList = $("#tabContent").children();
+    if (contentList.length > 0) {
+    contentList.removeClass('active');
+    var currContent = contentList.eq(idx);
+    currContent.addClass('active');
+    }
+    }
+
+    onTabClick(0);
+}

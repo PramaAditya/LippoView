@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+<!-- Google Tag Manager --> 
+<script> 
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-5BH97D2'); 
+</script> 
+<!-- End Google Tag Manager -->
+        <meta charset="utf-8" />
+        <title>LIPPO - @ViewBag.Title</title>
+        <meta name="description" content="Latest updates and statistic charts">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!--begin::Web font -->
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+        <script>
+            WebFont.load({
+                google: { "families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"] },
+                active: function () {
+                    sessionStorage.fonts = true;
+                }
+            });
+        </script>
+        <!--end::Web font -->
+        <!--begin::Base Styles -->
+        <!--begin::Page Vendors -->
+        <!-- css -->
+        @Styles.Render("~/Content/toastr.min.css")
+        @Styles.Render("~/Content/jquery-ui.min.css")
+        @Styles.Render("~/Content/style.css")
+        @Styles.Render("~/Content/style2.css")
+        @Styles.Render("~/Content/jquery.cleditor.css")
+        @Styles.Render("~/Content/jquery.tokenize.css")
+        @Styles.Render("~/Content/waitme.css")
+        @*<link href="assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />*@
+        <!--end::Page Vendors -->
+        <link href="~/assets/metronic/vendors.bundle.css" rel="stylesheet" type="text/css" />
+        <link href="~/assets/metronic/admin/style.bundle.css" rel="stylesheet" type="text/css" />
+
+        <link href="~/assets/metronic/admin/custom.css" rel="stylesheet" type="text/css" />
+        <!--end::Base Styles -->
+        <link rel="shortcut icon" href="/assets/favicon.ico" />
+
+        @Scripts.Render("~/Scripts/jquery-1.9.1.min.js")
+        @Scripts.Render("~/Scripts/jquery-ui.min.js")
+        <script src="~/assets/metronic/vendors.bundle.js" type="text/javascript"></script>
+        <script src="~/assets/metronic/admin/scripts.bundle.js" type="text/javascript"></script>
+        <script src="~/assets/metronic/admin/dashboard.js" type="text/javascript"></script>
+        @Scripts.Render("~/Scripts/jquery.cleditor.min.js")
+        @Scripts.Render("~/Scripts/toastr.min.js")
+        @Scripts.Render("~/Scripts/inputmask.js")
+        @Scripts.Render("~/Scripts/inputmask.numeric.extensions.js")
+        @Scripts.Render("~/Scripts/jquery.inputmask.js")
+        @Scripts.Render("~/Scripts/jquery.tokenize.js")
+        @Scripts.Render("~/Scripts/FileSaver.js")
+        @Scripts.Render("~/Scripts/waitme.js")
+        <script>
+            
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            
+        </script>
+
+        @RenderSection("Head", false)
+    </head>
+    
+    
+    <body id="admin" class="m-page--wide m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
+    
+        <div class="m-grid m-grid--hor m-grid--root m-page">
+            <!-- begin::Header -->
+            <header class="m-grid__item		m-header " data-minimize="minimize" data-minimize-offset="200" data-minimize-mobile-offset="200">
+                <div class="m-header__top">
+                    <div class="m-container m-container--responsive m-container--xxl m-container--full-height m-page__container">
+                        <div class="m-stack m-stack--ver m-stack--desktop">
+                            <!-- begin::Brand -->
+                            <div class="m-stack__item m-brand">
+                                <div class="m-stack m-stack--ver m-stack--general m-stack--inline">
+                                    <div class="m-stack__item m-stack__item--middle m-brand__logo">
+                                        <a href="@Url.Action("Index", "Admin")" class="m-brand__logo-wrapper">
+                                            <img alt="" src="~/assets/lippologo.png" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end::Brand -->
+                            <!-- begin::Topbar -->
+                            <div class="m-stack__item m-stack__item--fluid m-header-head" id="m_header_nav">
+                                <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
+                                    <div class="m-stack__item m-topbar__nav-wrapper">
+                                        <ul class="m-topbar__nav m-nav m-nav--inline">
+                                            <li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
+                                                <a href="#" class="m-nav__link m-dropdown__toggle">
+                                                    <span class="m-topbar__welcome">
+                                                        Hello,&nbsp;
+                                                    </span>
+                                                    <span class="m-topbar__username">
+                                                        @User.Identity.Name
+                                                    </span>
+                                                    <span class="m-topbar__userpic">
+                                                        <img src="assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt="" />
+                                                    </span>
+                                                </a>
+                                                <div class="m-dropdown__wrapper">
+                                                    <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
+                                                    <div class="m-dropdown__inner">
+                                                        <div class="m-dropdown__header m--align-center" style="background: url(/assets/metronic/admin/img/user_profile_bg.jpg); background-size: cover;">
+                                                            <div class="m-card-user m-card-user--skin-dark">
+                                                                <div class="m-card-user__pic">
+                                                                    <img src="assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt="" />
+                                                                </div>
+                                                                <div class="m-card-user__details">
+                                                                    <span class="m-card-user__name m--font-weight-500">
+                                                                        @User.Identity.Name
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="m-dropdown__body">
+                                                            <div class="m-dropdown__content">
+                                                                <ul class="m-nav m-nav--skin-light">
+                                                                    <li class="m-nav__item">
+                                                                        @if (Request.IsAuthenticated)
+                                                                        {
+                                                                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { Id = "logoff" }))
+                                                                            {
+                                                                                @Html.AntiForgeryToken()
+                                                                                <a id='logoffLnk' href="#" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder" onclick="$('form#logoff').submit()">Logout</a>
+                                                                            }
+                                                                        }
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end::Topbar -->
+                        </div>
+                    </div>
+                </div>
+                <div class="m-header__bottom">
+                    <div class="m-container m-container--responsive m-container--xxl m-container--full-height m-page__container">
+                        <div class="m-stack m-stack--ver m-stack--desktop">
+                            <!-- begin::Horizontal Menu -->
+                            <div class="m-stack__item m-stack__item--middle m-stack__item--fluid">
+                                <button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-light " id="m_aside_header_menu_mobile_close_btn">
+                                    <i class="la la-close"></i>
+                                </button>
+                                <div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-dark m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-light m-aside-header-menu-mobile--submenu-skin-light ">
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        Html.RenderAction("Menu", "Admin");
+                                    }
+                                </div>
+                            </div>
+                            <!-- end::Horizontal Menu -->
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- end::Header -->
+            <!-- begin::Body -->
+            <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop 	m-container m-container--responsive m-container--xxl m-page__container m-body">
+                @RenderBody()
+            </div>
+            <!-- end::Body -->
+        </div>
+
+        <!--end::Base Scripts -->
+        <!--begin::Page Vendors -->
+        @*<script src="assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>*@
+        <!--end::Page Vendors -->
+        <!--begin::Page Snippets -->
+        @RenderSection("Scripts", false)
+    </body>
+</html>
