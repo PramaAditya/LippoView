@@ -194,11 +194,34 @@
                               <div class="latest_posts default-style kl-style-2">
                                  <div class="row gutter-sm">
                                     <a href="@Url.Content("~/Explore/Whatson")">
-                                       <div class="col-sm-4">
+                                       <div class="col-sm-12">
                                           <!-- Title -->
-                                          <div class="lp-title">
+                                          <div class="lp-title custom-title">
                                              <h3 class="m_title">WHAT'S ON</h3>
                                           </div>
+                                          <style>
+                                          .custom-title {
+                                          height: 74px !important;
+                                          display: flex !important;
+                                          align-items: center !important;
+                                          justify-content: left !important;
+                                          text-align: left !important;
+                                          padding: 8px !important;
+                                          margin-bottom: 31px !important;
+                                          }
+                                          .custom-title h3 {
+                                          font-size: 48px !important;
+                                          font-weight: 600 !important;
+                                          }
+                                          .post .img-responsive {
+                                             object-fit: cover !important;
+                                          }
+
+                                          .latest_posts.default-style.kl-style-2 .post:not(.lp-title) .m_title:after {
+                                             content: "";
+                                             display: none !important;
+                                          }
+                                          </style>
                                           <!--/ Title -->
                                        </div>
                                     </a>
@@ -206,45 +229,12 @@
                                        
                                         @if (Model.whatsOnList.Count > 0)
                                         {
-                                            var firstW = Model.whatsOnList[0];
-                                            <div class="col-sm-8">
-                                                <!-- Big post -->
-                                                <div class="post big-post" style="width: 100%; max-height: 350px; overflow: hidden;">
-                                                    <!-- Post link wrapper -->
-
-                                                    <a href="@Url.Content("~/WhatsOn/" + firstW.rowId)" class="hoverBorder">
-                                                        <!-- Border wrapper -->
-                                                        <span class="hoverBorderWrapper">
-                                                            <!-- Image -->
-                                                            <img width="750" height="350" src="@Url.Content("~/PImages/" + firstW.imageUrl)" class="img-responsive" alt="css3panels-alt-04" title="css3panels-alt-04" />
-                                                            <!--/ Image -->
-                                                            <!-- Hover border/shadow -->
-                                                            <span class="theHoverBorder"></span>
-                                                            <!--/ Hover border/shadow -->
-                                                        </span>
-                                                        <!--/ Border wrapper -->
-                                                    </a>
-                                                    <!--/ Post link wrapper -->
-                                                    <!-- Post details -->
-                                                    <div class="post-details">
-                                                        <!-- Title with link -->
-                                                        <!--<h3 class="m_title"><a href="@Url.Content("~/WhatsOn/" + firstW.rowId)">@firstW.title</a></h3>-->
-                                                        <!--/ Title with link -->
-                                                        <!-- Details & tags -->
-                                                        <!--/<em> <a href="@Url.Content("~/WhatsOn/" + firstW.rowId)">@firstW.date.ToString("dd MMMM yyyy") </a></em>-->
-                                                        <!--/ Details & tags -->
-                                                    </div>
-                                                    <!--/ Post details -->
-                                                </div>
-                                                <!--/ Big post -->
-                                            </div>
-                                            int maxWhatsOnCount = Model.whatsOnList.Count;
-                                            if (maxWhatsOnCount > 5) { maxWhatsOnCount = 5; }
-                                            for (int idx = 1; idx < maxWhatsOnCount; idx++)
+                                             int maxWhatsOnCount = Model.whatsOnList.Count;
+                                            if (maxWhatsOnCount > 4) { maxWhatsOnCount = 4; }
+                                            for (int idx = 0; idx < maxWhatsOnCount; idx++)
                                             {
                                                 var nextW = Model.whatsOnList[idx];
-                                                <!--/ col-sm-8 -->
-                                                <div class="col-xs-6 col-sm-3">
+                                                <div class="col-xs-6 col-sm-6">
                                                     <!-- Post -->
                                                     <div class="post">
                                                         <!-- Post link wrapper -->
