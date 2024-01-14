@@ -7,505 +7,578 @@
     <link rel="stylesheet" href="/css/responsive.css" type="text/css" media="all">
     <link rel="stylesheet" href="/css/base-sizing.css" type="text/css" media="all">
 }
-  <div class="kl-slideshow uh_light_gray kl-revolution-slider">
-               <div class="bgback">
-               </div>
-               <!-- Animated Sparkles -->
-               <div class="th-sparkles"></div>
-               <!--/ Animated Sparkles -->
-               <!-- START REVOLUTION SLIDER -->
-               <div id="rev_slider_18_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="car-dealership" style="margin:0px auto;background-color:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
-                  <!-- START REVOLUTION SLIDER 5.2.6 fullwidth mode -->
-                  <div id="rev_slider_18_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.2.6">
-                     <ul>
-                         @if(Model.featuredImages.Count > 0) {
-                            var featured = Model.featuredImages[0];
-                        <li data-index="rs-73" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="Power1.easeInOut" data-easeout="Power1.easeInOut" data-masterspeed="800" data-thumb="assets/banner-home-01.jpg" data-rotate="0" data-fstransition="fade" data-fsmasterspeed="800" data-fsslotamount="7" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                           @if(featured.showImage) {
+<style>
+   .rev_slider .tp-caption{
+      max-width: none !important;
+   }
+</style>
+<div class="kl-slideshow uh_light_gray kl-revolution-slider">
+    <div class="bgback">
+    </div>
+    <!-- Animated Sparkles -->
+    <div class="th-sparkles"></div>
+    <!--/ Animated Sparkles -->
+    <!-- START REVOLUTION SLIDER -->
+    <div id="rev_slider_18_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="car-dealership" style="margin:0px auto;background-color:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
+        <!-- START REVOLUTION SLIDER 5.2.6 fullwidth mode -->
+        <div id="rev_slider_18_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.2.6">
+            <ul>
+                @if (Model.featuredImages.Count > 0)
+                {
+                    var featured = Model.featuredImages[0];
+                    <li data-index="rs-73" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="Power1.easeInOut" data-easeout="Power1.easeInOut" data-masterspeed="800" data-thumb="assets/banner-home-01.jpg" data-rotate="0" data-fstransition="fade" data-fsmasterspeed="800" data-fsslotamount="7" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                        @if (featured.showImage)
+                        {
                             <!-- MAIN IMAGE -->
-                           <img src="@Url.Content("~/PImages/" + featured.imageUrl)" alt="" data-lazyload="@Url.Content("~/PImages/" + featured.imageUrl)" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
-                           }
-                               <!-- LAYERS -->
-                           <div class="tp-caption" id="slide-1-layer-2"   data-x="['left','left','center','center']" data-hoffset="['29','21','-4','-3']" data-y="['bottom','bottom','middle','middle']" data-voffset="['392','386','-110','-64']" data-fontsize="['72','62','50','28']" data-lineheight="['80','65','60','34']" data-width="['385','333','271','152']" data-height="['81','66','61','36']" data-whitespace="nowrap" data-type="text" data-responsive_offset="off" data-responsive="off" data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6; min-width: 485px; max-width: 385px; max-width: 101px; max-width: 81px; white-space: nowrap; font-size: 50px; line-height: 60px; font-weight: 400; color: rgba(255, 255, 255, 1.00);font-family:Lato;">
-                              @featured.title
-                           </div>
-                            @if(featured.showText) {
-                           <div class="tp-caption  " id="slide-1-layer-3" data-x="['left','left','center','center']" data-hoffset="['30','24','-3','-4']" data-y="['bottom','bottom','middle','middle']" data-voffset="['315','315','-46','-24']" data-fontsize="['30','26','22','16']" data-lineheight="['36','30','28','20']" data-width="['422','none','307','225']" data-height="['73','none','57','41']" data-whitespace="nowrap" data-type="text" data-responsive_offset="off" data-responsive="off" data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"}]' data-textAlign="['left','left','center','center']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 7; min-width: 422px; max-width: 422px; max-width: 73px; max-width: 73px; white-space: nowrap; font-size: 30px; line-height: 36px; font-weight: 300; color: rgba(255, 255, 255, 1.00);font-family:Lato;"> 
-                              @featured.text
-                              <br />
-                           </div>
-                            }
-                            @if(featured.showButton){
-                           <a class="tp-caption rev-btn " href="@featured.buttonUrl" target="_self" id="slide-1-layer-4" data-x="['left','left','center','center']" data-hoffset="['31','26','-2','-2']" data-y="['bottom','bottom','middle','middle']" data-voffset="['241','241','27','27']" data-lineheight="['28','28','28','16']" data-width="['148','148','210','151']" data-height="['53','53','54','42']" data-whitespace="nowrap" data-type="button" data-actions='' data-responsive_offset="off" data-responsive="off" data-frames='[{"delay":500,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","force":true,"to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bg:rgba(76, 171, 76, 1.00);bs:solid;bw:0 0 0 0;"}]' data-textAlign="['left','left','center','center']" data-paddingtop="[12,12,12,12]" data-paddingright="[35,35,35,35]" data-paddingbottom="[12,12,12,12]" data-paddingleft="[35,35,35,35]" style="z-index: 8; min-width: 148px; max-width: 148px; max-width: 53px; max-width: 53px; white-space: nowrap; font-size: 14px; line-height: 28px; font-weight: 700; color: rgba(255, 255, 255, 1.00);font-family:Lato;background-color:rgba(102, 204, 102, 1.00);border-color:rgba(0, 0, 0, 1.00);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
-                           @featured.buttonText 
-                           </a>
-                            }
-                        </li> 
-                         }
-                        <!-- SLIDE  -->
-                         @for(int idx = 1; idx < Model.featuredImages.Count; idx++) {
-                             var featured = Model.featuredImages[idx];
-                        <li data-index="rs-74" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="Power1.easeInOut" data-easeout="Power1.easeInOut" data-masterspeed="800" data-thumb="assets/100x50_bmw6-1.jpg" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                           <!-- MAIN IMAGE -->
-                            @if(featured.showImage) {
-                           <img src="@Url.Content("~/PImages/" + featured.imageUrl)" alt="" data-lazyload="@Url.Content("~/PImages/" + featured.imageUrl)" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
-                            }
-                                <!-- LAYERS -->
-                           <div class="tp-caption" id="slide-1-layer-2" data-x="['left','left','center','center']" data-hoffset="['29','21','-4','-3']" data-y="['bottom','bottom','middle','middle']" data-voffset="['392','386','-110','-64']" data-fontsize="['72','62','50','28']" data-lineheight="['80','65','60','34']" data-width="['510','333','271','152']" data-height="['81','66','61','36']" data-whitespace="nowrap" data-type="text" data-responsive_offset="off" data-responsive="off" data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6; min-width: 485px; max-width: 385px; max-width: 101px; max-width: 81px; white-space: nowrap; font-size: 50px; line-height: 60px; font-weight: 400; color: rgba(255, 255, 255, 1.00);font-family:Lato;">
-                              @featured.title
-                           </div>
-                            @if(featured.showText) {
-                           <div class="tp-caption  " id="slide-1-layer-3" data-x="['left','left','center','center']" data-hoffset="['30','24','-3','-4']" data-y="['bottom','bottom','middle','middle']" data-voffset="['315','315','-46','-24']" data-fontsize="['30','26','22','16']" data-lineheight="['36','30','28','20']" data-width="['422','none','307','225']" data-height="['73','none','57','41']" data-whitespace="nowrap" data-type="text" data-responsive_offset="off" data-responsive="off" data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"}]' data-textAlign="['left','left','center','center']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 7; min-width: 422px; max-width: 422px; max-width: 73px; max-width: 73px; white-space: nowrap; font-size: 30px; line-height: 36px; font-weight: 300; color: rgba(255, 255, 255, 1.00);font-family:Lato;"> 
-                              @featured.text
-                              <br />
-                           </div>
-                            }
-                            @if(featured.showButton){
-                           <a class="tp-caption rev-btn " href="@featured.buttonUrl" target="_self" id="slide-1-layer-4" data-x="['left','left','center','center']" data-hoffset="['31','26','-2','-2']" data-y="['bottom','bottom','middle','middle']" data-voffset="['241','241','27','27']" data-lineheight="['28','28','28','16']" data-width="['148','148','210','151']" data-height="['53','53','54','42']" data-whitespace="nowrap" data-type="button" data-actions='' data-responsive_offset="off" data-responsive="off" data-frames='[{"delay":500,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","force":true,"to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bg:rgba(76, 171, 76, 1.00);bs:solid;bw:0 0 0 0;"}]' data-textAlign="['left','left','center','center']" data-paddingtop="[12,12,12,12]" data-paddingright="[35,35,35,35]" data-paddingbottom="[12,12,12,12]" data-paddingleft="[35,35,35,35]" style="z-index: 8; min-width: 148px; max-width: 148px; max-width: 53px; max-width: 53px; white-space: nowrap; font-size: 14px; line-height: 28px; font-weight: 700; color: rgba(255, 255, 255, 1.00);font-family:Lato;background-color:rgba(102, 204, 102, 1.00);border-color:rgba(0, 0, 0, 1.00);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
-                           @featured.buttonText
-                           </a>
-                            }
-                        </li>
-                         }
-						 <!-- SLIDE  -->
+                            <img src="@Url.Content("~/PImages/" + featured.imageUrl)" alt="" data-lazyload="@Url.Content("~/PImages/" + featured.imageUrl)" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
+                        }
+                        <div data-frames='[{"delay":0,"speed":300,"frame":"0","from":"x:left;","to":"o:1;","ease":"power3.inOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"power3.inOut"}]' style="position: absolute; width: 52%; height: 100%; background-color: rgba(0, 128, 0, 0.5);clip-path: polygon(0 0, 100% 0%, 77% 100%, 0% 100%);"></div>
+                        <!-- LAYERS -->
+                        <div class="tp-caption" id="slide-1-layer-2" data-x="['left','left','center','center']" data-hoffset="['29','21','-4','-3']" data-y="['bottom','bottom','middle','middle']" data-voffset="['392','386','-110','-64']" data-fontsize="['72','62','50','28']" data-lineheight="['80','65','60','34']" data-width="['385','333','271','152']" data-height="['81','66','61','36']" data-whitespace="nowrap" data-type="text" data-responsive_offset="off" data-responsive="off" data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6; min-width: 485px; max-width: 385px; max-width: 101px; max-width: 81px; white-space: nowrap; font-size: 50px; line-height: 60px; font-weight: 400; color: rgba(255, 255, 255, 1.00);font-family:Lato;">
+                            @featured.title
+                        </div>
+                        @if (featured.showText)
+                        {
+                            <div class="tp-caption  " id="slide-1-layer-3" data-x="['left','left','center','center']" data-hoffset="['30','24','-3','-4']" data-y="['bottom','bottom','middle','middle']" data-voffset="['315','315','-46','-24']" data-fontsize="['30','26','22','16']" data-lineheight="['36','30','28','20']" data-width="['422','none','307','225']" data-height="['73','none','57','41']" data-whitespace="nowrap" data-type="text" data-responsive_offset="off" data-responsive="off" data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"}]' data-textAlign="['left','left','center','center']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 7; min-width: 422px; max-width: 422px; max-width: 73px; max-width: 73px; white-space: nowrap; font-size: 30px; line-height: 36px; font-weight: 300; color: rgba(255, 255, 255, 1.00);font-family:Lato;">
+                                @featured.text
+                                <br />
+                            </div>
+                        }
+                        @if (featured.showButton)
+                        {
+                            <a class="tp-caption rev-btn " href="@featured.buttonUrl" target="_self" id="slide-1-layer-4" data-x="['left','left','center','center']" data-hoffset="['31','26','-2','-2']" data-y="['bottom','bottom','middle','middle']" data-voffset="['241','241','27','27']" data-lineheight="['28','28','28','16']" data-width="['148','148','210','151']" data-height="['53','53','54','42']" data-whitespace="nowrap" data-type="button" data-actions='' data-responsive_offset="off" data-responsive="off" data-frames='[{"delay":500,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","force":true,"to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bg:rgba(76, 171, 76, 1.00);bs:solid;bw:0 0 0 0;"}]' data-textAlign="['left','left','center','center']" data-paddingtop="[12,12,12,12]" data-paddingright="[35,35,35,35]" data-paddingbottom="[12,12,12,12]" data-paddingleft="[35,35,35,35]" style="z-index: 8; min-width: 148px; max-width: 148px; max-width: 53px; max-width: 53px; white-space: nowrap; font-size: 14px; line-height: 28px; font-weight: 700; color: rgba(255, 255, 255, 1.00);font-family:Lato;background-color:rgba(102, 204, 102, 1.00);border-color:rgba(0, 0, 0, 1.00);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
+                                @featured.buttonText
+                            </a>
+                        }
+                    </li>
+                }
+                <!-- SLIDE  -->
+                @for (int idx = 1; idx < Model.featuredImages.Count; idx++)
+                {
+                    var featured = Model.featuredImages[idx];
+                    <li data-index="rs-74" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="Power1.easeInOut" data-easeout="Power1.easeInOut" data-masterspeed="800" data-thumb="assets/100x50_bmw6-1.jpg" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                        <!-- MAIN IMAGE -->
+                        @if (featured.showImage)
+                        {
+                            <img src="@Url.Content("~/PImages/" + featured.imageUrl)" alt="" data-lazyload="@Url.Content("~/PImages/" + featured.imageUrl)" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
+                        }
+                        <div data-frames='[{"delay":0,"speed":300,"frame":"0","from":"x:left;","to":"o:1;","ease":"power3.inOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"power3.inOut"}]' style="position: absolute; width: 52%; height: 100%; background-color: rgba(0, 128, 0, 0.5);clip-path: polygon(0 0, 100% 0%, 77% 100%, 0% 100%);"></div>
+                        <!-- LAYERS -->
+                        <div class="tp-caption" id="slide-1-layer-2" data-x="['left','left','center','center']" data-hoffset="['29','21','-4','-3']" data-y="['bottom','bottom','middle','middle']" data-voffset="['392','386','-110','-64']" data-fontsize="['72','62','50','28']" data-lineheight="['80','65','60','34']" data-width="['510','333','271','152']" data-height="['81','66','61','36']" data-whitespace="nowrap" data-type="text" data-responsive_offset="off" data-responsive="off" data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6; min-width: 485px; max-width: 385px; max-width: 101px; max-width: 81px; white-space: nowrap; font-size: 50px; line-height: 60px; font-weight: 400; color: rgba(255, 255, 255, 1.00);font-family:Lato;">
+                            @featured.title
+                        </div>
+                        @if (featured.showText)
+                        {
+                            <div class="tp-caption  " id="slide-1-layer-3" data-x="['left','left','center','center']" data-hoffset="['30','24','-3','-4']" data-y="['bottom','bottom','middle','middle']" data-voffset="['315','315','-46','-24']" data-fontsize="['30','26','22','16']" data-lineheight="['36','30','28','20']" data-width="['422','none','307','225']" data-height="['73','none','57','41']" data-whitespace="nowrap" data-type="text" data-responsive_offset="off" data-responsive="off" data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"}]' data-textAlign="['left','left','center','center']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 7; min-width: 422px; max-width: 422px; max-width: 73px; max-width: 73px; white-space: nowrap; font-size: 30px; line-height: 36px; font-weight: 300; color: rgba(255, 255, 255, 1.00);font-family:Lato;">
+                                @featured.text
+                                <br />
+                            </div>
+                        }
+                        @if (featured.showButton)
+                        {
+                            <a class="tp-caption rev-btn " href="@featured.buttonUrl" target="_self" id="slide-1-layer-4" data-x="['left','left','center','center']" data-hoffset="['31','26','-2','-2']" data-y="['bottom','bottom','middle','middle']" data-voffset="['241','241','27','27']" data-lineheight="['28','28','28','16']" data-width="['148','148','210','151']" data-height="['53','53','54','42']" data-whitespace="nowrap" data-type="button" data-actions='' data-responsive_offset="off" data-responsive="off" data-frames='[{"delay":500,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","force":true,"to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bg:rgba(76, 171, 76, 1.00);bs:solid;bw:0 0 0 0;"}]' data-textAlign="['left','left','center','center']" data-paddingtop="[12,12,12,12]" data-paddingright="[35,35,35,35]" data-paddingbottom="[12,12,12,12]" data-paddingleft="[35,35,35,35]" style="z-index: 8; min-width: 148px; max-width: 148px; max-width: 53px; max-width: 53px; white-space: nowrap; font-size: 14px; line-height: 28px; font-weight: 700; color: rgba(255, 255, 255, 1.00);font-family:Lato;background-color:rgba(102, 204, 102, 1.00);border-color:rgba(0, 0, 0, 1.00);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
+                                @featured.buttonText
+                            </a>
+                        }
+                    </li>
+                }
+                <!-- SLIDE  -->
 
-                     </ul>
-                     <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;">
-                     </div>
-                  </div>
-               </div>
-               <!-- END REVOLUTION SLIDER -->
-               <!-- Custom css for this slider -->
-               <style type="text/css">
-                  #rev_slider_18_1 .metis.tparrows{background:rgba(0,0,0,0.5); padding:10px; transition:all 0.3s; -webkit-transition:all 0.3s; width:60px; height:60px; box-sizing:border-box}
-                  #rev_slider_18_1 .metis.tparrows:hover{background:rgba(0,0,0,1)}
-                  #rev_slider_18_1 .metis.tparrows:before{color:rgb(255,255,255);   transition:all 0.3s; -webkit-transition:all 0.3s}
-                  #rev_slider_18_1 .metis.tparrows:hover:before{transform:scale(1.5)}
-                  .tp-bullets {  width: 71px; height: 14px;top: 95% !important; transform: matrix(1, 0, 0, 1, -35, -44); left: 50%;
-                  }
-                  .hermes .tp-bullet{overflow:hidden;  border-radius:50%;  width:14px;  height:14px;  background-color:rgba(0,0,0,0);  box-shadow:inset 0 0 0 2px rgb(255,255,255);  -webkit-transition:background 0.3s ease;  transition:background 0.3s ease;  position:absolute}
-                  .hermes .tp-bullet:hover{background-color:rgba(0,0,0,0.21)}
-                  .hermes .tp-bullet:after{content:' '; position:absolute; bottom:0; height:0; left:0; width:100%; background-color:rgb(255,255,255); box-shadow:0 0 1px rgb(255,255,255); -webkit-transition:height 0.3s ease; transition:height 0.3s ease}
-                  .hermes .tp-bullet.selected:after{height:100%}
-               </style>
-               <!-- END REVOLUTION SLIDER -->
+            </ul>
+            <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;">
             </div>
-            <section class="zn_section eluid6ccb6e28     section-sidemargins u-zindex-1   section--no " id="eluid6ccb6e28" data-anim-delay="700ms">
-               <div class="zn_section_size container zn-section-height--auto zn-section-content_algn--top ">
-                  <div class="row ">
-                     <div class="eluidb6d93c2c      col-md-12 col-sm-12   znColumnElement" id="eluidb6d93c2c">
-                        <div class="znColumnElement-innerWrapper-eluidb6d93c2c znColumnElement-innerWrapper znColumnElement-innerWrapper--valign-top znColumnElement-innerWrapper--halign-left ">
-                           <div class="znColumnElement-innerContent">
-                              <div class="grid-ibx grid-ibx--cols-4 grid-ibx--md-cols-2 grid-ibx--sm-cols-2 grid-ibx--xs-cols-1 grid-ibx--style-lined-full grid-ibx--hover-bg eluidd2146694 customshadow grid-ibx--theme-light element-scheme--light grid-ibx__flt-inline_left znBoxShadow-6 " data-anim-delay="700ms" id="eluidd2146694">
-                                 <div class="grid-ibx__inner">
-                                     <a href="@Url.Action("Index", "Explore", new {id = "getting-around"})">
-                                         <div class="grid-ibx__item grid-ibx-left  grid-ibx__item--type-img text-left grid-ibx__item-3">
-                                             <div class="grid-ibx__item-inner">
-                                                 <div class="grid-ibx__link clearfix" target="_self" itemprop="url">
-                                                     <div class="grid-ibx__icon-wrp">
-                                                         <img class="grid-ibx__icon" src="assets/arround.png" width="37" height="37" alt="" title="explore.png" />
-                                                     </div>
-                                                     <div class="grid-ibx__title-wrp">
-                                                         <h4 class="grid-ibx__title element-scheme__hdg1" itemprop="headline">
-                                                             GETTING AROUND
-                                                         </h4>
-                                                     </div>
-                                                     <div class="clearfix">
-                                                     </div>
-                                                     <div class="grid-ibx__desc-wrp">
-                                                         <p class="grid-ibx__desc">
-                                                             @Model.gettingArroundText
-                                                     </p>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </a>
-                                     <a href="@Url.Action("HowDoI", "TownManagement")">
-                                         <div class="grid-ibx__item grid-ibx-center  grid-ibx__item--type-img text-left grid-ibx__item-3">
-                                             <div class="grid-ibx__item-inner">
-                                                 <div class="grid-ibx__link clearfix" target="_self" itemprop="url">
-                                                     <div class="grid-ibx__icon-wrp">
-                                                         <img class="grid-ibx__icon" src="assets/how.png" width="37" height="37" alt="" title="explore.png" />
-                                                     </div>
-                                                     <div class="grid-ibx__title-wrp">
-                                                         <h4 class="grid-ibx__title element-scheme__hdg1" itemprop="headline">
-                                                             HOW DO I?
-                                                         </h4>
-                                                     </div>
-                                                     <div class="clearfix">
-                                                     </div>
-                                                     <div class="grid-ibx__desc-wrp">
-                                                         <p class="grid-ibx__desc">
-                                                             @Model.howDoIText
-                                                         </p>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     </a>
-                                     <a href="@Url.Action("Announcements", "TownManagement")">
-                                         <div class="grid-ibx__item grid-ibx-right grid-ibx__item--type-img text-left grid-ibx__item-3">
-                                             <div class="grid-ibx__item-inner">
-                                                 <div class="grid-ibx__link clearfix" target="_self" itemprop="url">
-                                                     <div class="grid-ibx__icon-wrp">
-                                                         <img class="grid-ibx__icon" src="assets/announce.png" width="37" height="37" alt="" title="explore.png" />
-                                                     </div>
-                                                     <div class="grid-ibx__title-wrp">
-                                                         <h4 class="grid-ibx__title element-scheme__hdg1" itemprop="headline">
-                                                             ANNOUNCEMENTS
-                                                         </h4>
-                                                     </div>
-                                                     <div class="clearfix">
-                                                     </div>
+        </div>
+    </div>
+    <!-- END REVOLUTION SLIDER -->
+    <!-- Custom css for this slider -->
+    <style type="text/css">
+        #rev_slider_18_1 .metis.tparrows {
+            background: rgba(0,0,0,0.5);
+            padding: 10px;
+            transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            width: 60px;
+            height: 60px;
+            box-sizing: border-box
+        }
 
-                                                     <div id="demo2" class="grid-ibx__desc-wrp scroll-text">
-                                                         <ul>
-@foreach (var announcement in Model.announcementList)
-{
-                                                             <li>
-                                                                 
-                                                                     <a href="@Url.Content("~/TownManagement/Announcements")" target="_blank">@announcement.text</a>
-                                                             </li>
-}
+            #rev_slider_18_1 .metis.tparrows:hover {
+                background: rgba(0,0,0,1)
+            }
 
+            #rev_slider_18_1 .metis.tparrows:before {
+                color: rgb(255,255,255);
+                transition: all 0.3s;
+                -webkit-transition: all 0.3s
+            }
 
-                                                         </ul>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     </a>
+            #rev_slider_18_1 .metis.tparrows:hover:before {
+                transform: scale(1.5)
+            }
+
+        .tp-bullets {
+            width: 71px;
+            height: 14px;
+            top: 95% !important;
+            transform: matrix(1, 0, 0, 1, -35, -44);
+            left: 50%;
+        }
+
+        .hermes .tp-bullet {
+            overflow: hidden;
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+            background-color: rgba(0,0,0,0);
+            box-shadow: inset 0 0 0 2px rgb(255,255,255);
+            -webkit-transition: background 0.3s ease;
+            transition: background 0.3s ease;
+            position: absolute
+        }
+
+            .hermes .tp-bullet:hover {
+                background-color: rgba(0,0,0,0.21)
+            }
+
+            .hermes .tp-bullet:after {
+                content: ' ';
+                position: absolute;
+                bottom: 0;
+                height: 0;
+                left: 0;
+                width: 100%;
+                background-color: rgb(255,255,255);
+                box-shadow: 0 0 1px rgb(255,255,255);
+                -webkit-transition: height 0.3s ease;
+                transition: height 0.3s ease
+            }
+
+            .hermes .tp-bullet.selected:after {
+                height: 100%
+            }
+    </style>
+    <!-- END REVOLUTION SLIDER -->
 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </section>
-            <section class="zn_section pbottom-20 eluid3c1269cc section-sidemargins    section--no " id="eluid3c1269cc" data-anim-delay="700ms">
-               <div class="zn_section_size container zn-section-height--auto zn-section-content_algn--top ">
-                  <div class="row ">
-                     <div class="container">
-                        <div class="row">
-                           <div class="col-sm-12">
-                              <!-- Latest posts new style 2 element  -->
-                              <div class="latest_posts default-style kl-style-2">
-                                 <div class="row gutter-sm">
-                                    <a href="@Url.Content("~/Explore/Whatson")">
-                                       <div class="col-sm-12">
-                                          <!-- Title -->
-                                          <div class="lp-title custom-title">
-                                             <h3 class="m_title">WHAT'S ON</h3>
-                                          </div>
-                                          <style>
-                                          .custom-title {
-                                          height: 74px !important;
-                                          display: flex !important;
-                                          align-items: center !important;
-                                          justify-content: left !important;
-                                          text-align: left !important;
-                                          padding: 8px !important;
-                                          margin-bottom: 31px !important;
-                                          }
-                                          .custom-title h3 {
-                                          font-size: 48px !important;
-                                          font-weight: 600 !important;
-                                          }
-                                          .post .img-responsive {
-                                             object-fit: cover !important;
-                                          }
-
-                                          .latest_posts.default-style.kl-style-2 .post:not(.lp-title) .m_title:after {
-                                             content: "";
-                                             display: none !important;
-                                          }
-                                          </style>
-                                          <!--/ Title -->
-                                       </div>
-                                    </a>
-                                    <!--/ col-sm-4 -->
-                                       
-                                        @if (Model.whatsOnList.Count > 0)
-                                        {
-                                             int maxWhatsOnCount = Model.whatsOnList.Count;
-                                            if (maxWhatsOnCount > 4) { maxWhatsOnCount = 4; }
-                                            for (int idx = 0; idx < maxWhatsOnCount; idx++)
-                                            {
-                                                var nextW = Model.whatsOnList[idx];
-                                                <div class="col-xs-6 col-sm-6">
-                                                    <!-- Post -->
-                                                    <div class="post">
-                                                        <!-- Post link wrapper -->
-                                                        <a href="@Url.Content("~/WhatsOn/" + nextW.rowId)" class="hoverBorder">
-                                                            <!-- Border wrapper -->
-                                                            <span class="hoverBorderWrapper">
-                                                                <!-- Image -->
-                                                                <img src="@Url.Content("~/PImages/" + nextW.imageUrl)" class="img-responsive" width="370" height="400" alt="unique" title="unique" />
-                                                                <!--/ Image -->
-                                                                <!-- Hover border/shadow -->
-                                                                <span class="theHoverBorder"></span>
-                                                                <!--/ Hover border/shadow -->
-                                                            </span>
-                                                            <!--/ Border wrapper -->
-                                                        </a>
-                                                        <!--/ Post link wrapper -->
-                                                        <!-- Post details -->
-                                                        <div class="post-details">
-                                                            <!-- Title with link -->
-                                                            <h3 class="m_title"><a href="@Url.Content("~/WhatsOn/" + nextW.rowId)">@nextW.title</a></h3>
-                                                            <!--/ Title with link -->
-                                                            <!-- Details & tags -->
-                                                            <em> <a href="@Url.Content("~/WhatsOn/" + nextW.rowId)">@nextW.date.ToString("dd MMMM yyyy")</a></em>
-                                                            <!--/ Details & tags -->
-                                                        </div>
-                                                        <!--/ Post details -->
-                                                    </div>
-                                                    <!--/ Post -->
+<section class="zn_section eluid6ccb6e28     section-sidemargins u-zindex-1   section--no " id="eluid6ccb6e28" data-anim-delay="700ms">
+    <div class="zn_section_size container zn-section-height--auto zn-section-content_algn--top ">
+        <div class="row ">
+            <div class="eluidb6d93c2c      col-md-12 col-sm-12   znColumnElement" id="eluidb6d93c2c">
+                <div class="znColumnElement-innerWrapper-eluidb6d93c2c znColumnElement-innerWrapper znColumnElement-innerWrapper--valign-top znColumnElement-innerWrapper--halign-left ">
+                    <div class="znColumnElement-innerContent">
+                        <div class="grid-ibx grid-ibx--cols-4 grid-ibx--md-cols-2 grid-ibx--sm-cols-2 grid-ibx--xs-cols-1 grid-ibx--style-lined-full grid-ibx--hover-bg eluidd2146694 customshadow grid-ibx--theme-light element-scheme--light grid-ibx__flt-inline_left znBoxShadow-6 " data-anim-delay="700ms" id="eluidd2146694">
+                            <div class="grid-ibx__inner">
+                                <a href="@Url.Action("Index", "Explore", new {id = "getting-around"})">
+                                    <div class="grid-ibx__item grid-ibx-left  grid-ibx__item--type-img text-left grid-ibx__item-3">
+                                        <div class="grid-ibx__item-inner">
+                                            <div class="grid-ibx__link clearfix" target="_self" itemprop="url">
+                                                <div class="grid-ibx__icon-wrp">
+                                                    <img class="grid-ibx__icon" src="assets/arround.png" width="37" height="37" alt="" title="explore.png" />
                                                 </div>
-                                                <!--/ col-xs-6 col-sm-3 -->
-                                            }
-                                        }
-                                 </div>
-                                 <!--/ .row .gutter-sm -->
-                              </div>
-                              <!--/ Latest posts new style 2 element  -->
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </section>
-            <section class="zn_section eluid049dd583 section-sidemargins section--no " id="eluid8a7a495a" data-anim-delay="700ms">
-               <div class="zn_section_size full_width zn-section-height--auto zn-section-content_algn--top ">
-                  <div class="row gutter-0">
-                     <div class="eluid740ce529 col-md-6 col-sm-6 znColumnElement" data-anim-delay="200ms" id="eluid740ce529">
-                        <div class="znColumnElement-innerWrapper-eluid740ce529 znColumnElement-innerWrapper znColumnElement-innerWrapper--valign-center znColumnElement-innerWrapper--halign-left ">
-                           <div class="znColumnElement-innerContent">
-                              <div class="kl-title-block clearfix tbk--text- tbk--left text-left tbk-symbol-- tbk-icon-pos--after-title eluid6c122489 zn-animateInViewport zn-anim-fadeIn zn-anim-duration--1000" data-anim-delay="200ms" style="animation-delay: 200ms;">
-                                 <h3 class="tbk__title" itemprop="headline">@Model.featureText.title</h3>
-                              </div>
-                              <div class="kl-title-block clearfix tbk--text- tbk--left text-left tbk-symbol-- tbk-icon-pos--after-title eluideac7f933 zn-animateInViewport zn-anim-fadeIn zn-anim-duration--1000" data-anim-delay="200ms" style="animation-delay: 200ms;">
-                                 <h4 class="tbk__subtitle" itemprop="alternativeHeadline">@Html.Raw(Model.featureText.text)</h4>
-                              </div>
-                              <div id="eluid1f9ac49c" class="zn_buttons_element eluid1f9ac49c text-left zn-animateInViewport zn-anim-fadeIn zn-anim-duration--1000" data-anim-delay="200ms" style="animation-delay: 200ms;">
-                                 <a href="@Model.featureText.buttonUrl" id="eluid1f9ac49c0" class="eluid1f9ac49c0 btn-element btn-element-0 btn btn-fullcolor btn-custom-color zn_dummy_value btn-icon--before btn--rounded" target="_self" itemprop="url"><span>@Model.featureText.buttonText</span></a>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="eluid60728b6a col-md-6 col-sm-6 znColumnElement" id="eluid60728b6a">
-                        <div class="znColumnElement-innerWrapper-eluid60728b6a znColumnElement-innerWrapper znColumnElement-innerWrapper--valign-top znColumnElement-innerWrapper--halign-left ">
-                           <div class="znColumnElement-innerContent">
-                              <div class="media-container eluidca458a44 media-container--type- kl-overlay-none ">
-                                 <div class="zn-bgSource ">
-                                    <div class="zn-bgSource-image" style="background-image:url(@Url.Content("~/PImages/" + Model.featureText.imageUrl));background-repeat:repeat;background-position:center center;background-size:cover;background-attachment:scroll">
+                                                <div class="grid-ibx__title-wrp">
+                                                    <h4 class="grid-ibx__title element-scheme__hdg1" itemprop="headline">
+                                                        GETTING AROUND
+                                                    </h4>
+                                                </div>
+                                                <div class="clearfix">
+                                                </div>
+                                                <div class="grid-ibx__desc-wrp">
+                                                    <p class="grid-ibx__desc">
+                                                        @Model.gettingArroundText
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                           </div>
+                                </a>
+                                <a href="@Url.Action("HowDoI", "TownManagement")">
+                                    <div class="grid-ibx__item grid-ibx-center  grid-ibx__item--type-img text-left grid-ibx__item-3">
+                                        <div class="grid-ibx__item-inner">
+                                            <div class="grid-ibx__link clearfix" target="_self" itemprop="url">
+                                                <div class="grid-ibx__icon-wrp">
+                                                    <img class="grid-ibx__icon" src="assets/how.png" width="37" height="37" alt="" title="explore.png" />
+                                                </div>
+                                                <div class="grid-ibx__title-wrp">
+                                                    <h4 class="grid-ibx__title element-scheme__hdg1" itemprop="headline">
+                                                        HOW DO I?
+                                                    </h4>
+                                                </div>
+                                                <div class="clearfix">
+                                                </div>
+                                                <div class="grid-ibx__desc-wrp">
+                                                    <p class="grid-ibx__desc">
+                                                        @Model.howDoIText
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="@Url.Action("Announcements", "TownManagement")">
+                                    <div class="grid-ibx__item grid-ibx-right grid-ibx__item--type-img text-left grid-ibx__item-3">
+                                        <div class="grid-ibx__item-inner">
+                                            <div class="grid-ibx__link clearfix" target="_self" itemprop="url">
+                                                <div class="grid-ibx__icon-wrp">
+                                                    <img class="grid-ibx__icon" src="assets/announce.png" width="37" height="37" alt="" title="explore.png" />
+                                                </div>
+                                                <div class="grid-ibx__title-wrp">
+                                                    <h4 class="grid-ibx__title element-scheme__hdg1" itemprop="headline">
+                                                        ANNOUNCEMENTS
+                                                    </h4>
+                                                </div>
+                                                <div class="clearfix">
+                                                </div>
+
+                                                <div id="demo2" class="grid-ibx__desc-wrp scroll-text">
+                                                    <ul>
+                                                        @foreach (var announcement in Model.announcementList)
+                                                        {
+                                                            <li>
+
+                                                                <a href="@Url.Content("~/TownManagement/Announcements")" target="_blank">@announcement.text</a>
+                                                            </li>
+                                                        }
+
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
-            </section>
-            <section class="zn_section eluidb5f7ed21     section-sidemargins    section--no " id="eluidc2f1eb8b" data-anim-delay="700ms">
-               <div class="full_width">
-                  <!-- Recent Work carousel 3 default style element -->
-                  <div class="recentwork_carousel recentwork_carousel_v3">
-                     <!-- Top container -->
-                     <div class="container recentwork_carousel__top-container">
-                        <div class="row">
-                           <div class="col-sm-12">
-                              <!-- Title -->
-                              <h3 class="recentwork_carousel__title m_title">PROMOTIONS</h3>
-                              <!--/ Title -->
-                              <!-- View all button -->
-                              <div class="btn btn-link">&nbsp;</div>
-                              <!--/ View all button -->
-                              <!-- Navigation controls -->
-                              <div class="controls recentwork_carousel__controls">
-                                 <a href="#" class="prev recentwork_carousel__prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-                                 <a href="#" class="next recentwork_carousel__next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-                              </div>
-                              <!--/ Navigation controls -->
-                           </div>
-                           <!--/ col-sm-12 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="zn_section pbottom-20 eluid3c1269cc section-sidemargins    section--no " id="eluid3c1269cc" data-anim-delay="700ms">
+    <div class="zn_section_size container zn-section-height--auto zn-section-content_algn--top ">
+        <div class="row ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- Latest posts new style 2 element  -->
+                        <div class="latest_posts default-style kl-style-2">
+                            <div class="row gutter-sm">
+                                <a href="@Url.Content("~/Explore/Whatson")">
+                                    <div class="col-sm-12">
+                                        <!-- Title -->
+                                        <div class="lp-title custom-title">
+                                            <h3 class="m_title">WHAT'S ON</h3>
+                                        </div>
+                                        <style>
+                                            .custom-title {
+                                                height: 74px !important;
+                                                display: flex !important;
+                                                align-items: center !important;
+                                                justify-content: left !important;
+                                                text-align: left !important;
+                                                padding: 8px !important;
+                                                margin-bottom: 31px !important;
+                                            }
+
+                                                .custom-title h3 {
+                                                    font-size: 48px !important;
+                                                    font-weight: 600 !important;
+                                                }
+
+                                            .post .img-responsive {
+                                                object-fit: cover !important;
+                                            }
+
+                                            .latest_posts.default-style.kl-style-2 .post:not(.lp-title) .m_title:after {
+                                                content: "";
+                                                display: none !important;
+                                            }
+                                        </style>
+                                        <!--/ Title -->
+                                    </div>
+                                </a>
+                                <!--/ col-sm-4 -->
+
+                                @if (Model.whatsOnList.Count > 0)
+                                {
+                                    int maxWhatsOnCount = Model.whatsOnList.Count;
+                                    if (maxWhatsOnCount > 4) { maxWhatsOnCount = 4; }
+                                    for (int idx = 0; idx < maxWhatsOnCount; idx++)
+                                    {
+                                        var nextW = Model.whatsOnList[idx];
+                                        <div class="col-xs-6 col-sm-6">
+                                            <!-- Post -->
+                                            <div class="post">
+                                                <!-- Post link wrapper -->
+                                                <a href="@Url.Content("~/WhatsOn/" + nextW.rowId)" class="hoverBorder">
+                                                    <!-- Border wrapper -->
+                                                    <span class="hoverBorderWrapper">
+                                                        <!-- Image -->
+                                                        <img src="@Url.Content("~/PImages/" + nextW.imageUrl)" class="img-responsive" width="370" height="400" alt="unique" title="unique" />
+                                                        <!--/ Image -->
+                                                        <!-- Hover border/shadow -->
+                                                        <span class="theHoverBorder"></span>
+                                                        <!--/ Hover border/shadow -->
+                                                    </span>
+                                                    <!--/ Border wrapper -->
+                                                </a>
+                                                <!--/ Post link wrapper -->
+                                                <!-- Post details -->
+                                                <div class="post-details">
+                                                    <!-- Title with link -->
+                                                    <h3 class="m_title"><a href="@Url.Content("~/WhatsOn/" + nextW.rowId)">@nextW.title</a></h3>
+                                                    <!--/ Title with link -->
+                                                    <!-- Details & tags -->
+                                                    <em> <a href="@Url.Content("~/WhatsOn/" + nextW.rowId)">@nextW.date.ToString("dd MMMM yyyy")</a></em>
+                                                    <!--/ Details & tags -->
+                                                </div>
+                                                <!--/ Post details -->
+                                            </div>
+                                            <!--/ Post -->
+                                        </div>
+                                                <!--/ col-xs-6 col-sm-3 -->
+                                    }
+                                }
+                            </div>
+                            <!--/ .row .gutter-sm -->
                         </div>
-                        <!--/ row -->
-                     </div>
-                     <!--/ Top container -->
-                     <!-- Carousel wrapper -->
-                     <div class="recentwork_carousel__crsl-wrapper">
-                        <div class="gridPhotoGallery__item gridPhotoGallery__item--sizer"></div>
-                        <ul class="recent_works3 fixclear recentwork_carousel__crsl gridPhotoGallery mfp-gallery misc gridPhotoGallery--ratio-square gridPhotoGallery--cols-4">
-                        @foreach(var promo in Model.promotionList) {
-                            <li class="gridPhotoGallery__item">
-                              <!-- Portfolio link container -->
-                              <a title="Image Promotion" class="gridPhotoGalleryItem--h1 gridPhotoGallery__link" data-lightbox="mfp" data-mfp="image" href="@Url.Content("~/PImages/" + promo.imageUrl)">
-                                 <!-- Hover container -->
-                                 <div class="hover recentwork_carousel__hover">
+                        <!--/ Latest posts new style 2 element  -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="zn_section eluid049dd583 section-sidemargins section--no " id="eluid8a7a495a" data-anim-delay="700ms">
+    <div class="zn_section_size full_width zn-section-height--auto zn-section-content_algn--top ">
+        <div class="row gutter-0">
+            <div class="eluid740ce529 col-md-6 col-sm-6 znColumnElement" data-anim-delay="200ms" id="eluid740ce529">
+                <div class="znColumnElement-innerWrapper-eluid740ce529 znColumnElement-innerWrapper znColumnElement-innerWrapper--valign-center znColumnElement-innerWrapper--halign-left ">
+                    <div class="znColumnElement-innerContent">
+                        <div class="kl-title-block clearfix tbk--text- tbk--left text-left tbk-symbol-- tbk-icon-pos--after-title eluid6c122489 zn-animateInViewport zn-anim-fadeIn zn-anim-duration--1000" data-anim-delay="200ms" style="animation-delay: 200ms;">
+                            <h3 class="tbk__title" itemprop="headline">@Model.featureText.title</h3>
+                        </div>
+                        <div class="kl-title-block clearfix tbk--text- tbk--left text-left tbk-symbol-- tbk-icon-pos--after-title eluideac7f933 zn-animateInViewport zn-anim-fadeIn zn-anim-duration--1000" data-anim-delay="200ms" style="animation-delay: 200ms;">
+                            <h4 class="tbk__subtitle" itemprop="alternativeHeadline">@Html.Raw(Model.featureText.text)</h4>
+                        </div>
+                        <div id="eluid1f9ac49c" class="zn_buttons_element eluid1f9ac49c text-left zn-animateInViewport zn-anim-fadeIn zn-anim-duration--1000" data-anim-delay="200ms" style="animation-delay: 200ms;">
+                            <a href="@Model.featureText.buttonUrl" id="eluid1f9ac49c0" class="eluid1f9ac49c0 btn-element btn-element-0 btn btn-fullcolor btn-custom-color zn_dummy_value btn-icon--before btn--rounded" target="_self" itemprop="url"><span>@Model.featureText.buttonText</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="eluid60728b6a col-md-6 col-sm-6 znColumnElement" id="eluid60728b6a">
+                <div class="znColumnElement-innerWrapper-eluid60728b6a znColumnElement-innerWrapper znColumnElement-innerWrapper--valign-top znColumnElement-innerWrapper--halign-left ">
+                    <div class="znColumnElement-innerContent">
+                        <div class="media-container eluidca458a44 media-container--type- kl-overlay-none ">
+                            <div class="zn-bgSource ">
+                                <div class="zn-bgSource-image" style="background-image:url(@Url.Content("~/PImages/" + Model.featureText.imageUrl));background-repeat:repeat;background-position:center center;background-size:cover;background-attachment:scroll">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="zn_section eluidb5f7ed21     section-sidemargins    section--no " id="eluidc2f1eb8b" data-anim-delay="700ms">
+    <div class="full_width">
+        <!-- Recent Work carousel 3 default style element -->
+        <div class="recentwork_carousel recentwork_carousel_v3">
+            <!-- Top container -->
+            <div class="container recentwork_carousel__top-container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- Title -->
+                        <h3 class="recentwork_carousel__title m_title">PROMOTIONS</h3>
+                        <!--/ Title -->
+                        <!-- View all button -->
+                        <div class="btn btn-link">&nbsp;</div>
+                        <!--/ View all button -->
+                        <!-- Navigation controls -->
+                        <div class="controls recentwork_carousel__controls">
+                            <a href="#" class="prev recentwork_carousel__prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                            <a href="#" class="next recentwork_carousel__next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                        </div>
+                        <!--/ Navigation controls -->
+                    </div>
+                    <!--/ col-sm-12 -->
+                </div>
+                <!--/ row -->
+            </div>
+            <!--/ Top container -->
+            <!-- Carousel wrapper -->
+            <div class="recentwork_carousel__crsl-wrapper">
+                <div class="gridPhotoGallery__item gridPhotoGallery__item--sizer"></div>
+                <ul class="recent_works3 fixclear recentwork_carousel__crsl gridPhotoGallery mfp-gallery misc gridPhotoGallery--ratio-square gridPhotoGallery--cols-4">
+                    @foreach (var promo in Model.promotionList)
+                    {
+                        <li class="gridPhotoGallery__item">
+                            <!-- Portfolio link container -->
+                            <a title="Image Promotion" class="gridPhotoGalleryItem--h1 gridPhotoGallery__link" data-lightbox="mfp" data-mfp="image" href="@Url.Content("~/PImages/" + promo.imageUrl)">
+                                <!-- Hover container -->
+                                <div class="hover recentwork_carousel__hover">
                                     <!-- Background image with custom height -->
                                     <div style="height: 280px; background-image:url('@Url.Content("~/PImages/" + promo.imageUrl)');" class="recentwork_carousel__img">
                                     </div>
                                     <i class="kl-icon glyphicon glyphicon-search circled-icon ci-large"></i>
-                                 </div>
-                                 <!--/ Hover container -->
-                                 <!-- Content details -->
-                                 <div class="details recentwork_carousel__details">
+                                </div>
+                                <!--/ Hover container -->
+                                <!-- Content details -->
+                                <div class="details recentwork_carousel__details">
                                     <i class="kl-icon glyphicon glyphicon-search circled-icon ci-large"></i>
-                                 </div>
-                                 <!--/ Content details -->
-                              </a>
-                              <!--/ Portfolio link container -->
-                           </li>
-                        }
-                        </ul>
-                     </div>
-                     <!--/ Carousel wrapper - .recentwork_carousel__crsl-wrapper -->
-                  </div>
-                  <!--/ Recent Work carousel 3 default style element -->
-               </div>
-            </section>
+                                </div>
+                                <!--/ Content details -->
+                            </a>
+                            <!--/ Portfolio link container -->
+                        </li>
+                    }
+                </ul>
+            </div>
+            <!--/ Carousel wrapper - .recentwork_carousel__crsl-wrapper -->
+        </div>
+        <!--/ Recent Work carousel 3 default style element -->
+    </div>
+</section>
 
 @section BottomContent {
-<div class="fix-footer">
-    @if(Model.emergencyList.Count > 0) {
+    <div class="fix-footer">
+        @if (Model.emergencyList.Count > 0)
+        {
             <div class="ph-content-v-center">
-                    <div>
-                        <div class="container">
-                            <div class="row">
+                <div>
+                    <div class="container">
+                        <div class="row">
                             <div class="content">
-                                                    <div class="simple-marquee-container">
-                                                           
-                                                            <div class="marquee-sibling">
-															 <i class="glyphicon glyphicon-warning-sign icon-white flipX-icon xs-icon" data-count="1"></i>
-															 &nbsp;<span>EMERGENCY NOTICE </span>
-                                                            </div>
-                                                            <div class="marquee">
-                                                                    <ul class="marquee-content-items">
-                                                                        @foreach (var emergencyText in Model.emergencyList)
-                                                                        {
-                                                                            <li>@emergencyText</li>
-                                                                        }
-                                                                    </ul>
-                                                            </div>
-                                                    </div>
-                                            </div>
+                                <div class="simple-marquee-container">
+
+                                    <div class="marquee-sibling">
+                                        <i class="glyphicon glyphicon-warning-sign icon-white flipX-icon xs-icon" data-count="1"></i>
+                                        &nbsp;<span>EMERGENCY NOTICE </span>
+                                    </div>
+                                    <div class="marquee">
+                                        <ul class="marquee-content-items">
+                                            @foreach (var emergencyText in Model.emergencyList)
+                                            {
+                                                <li>@emergencyText</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
-    }   
+        }
     </div>
 }
 @section ExecuteJavaScript {
     var tpj=jQuery;
-         	
-         	var revapi18;
-         	tpj(document).ready(function() {
-         		if(tpj("#rev_slider_18_1").revolution == undefined){
-         			revslider_showDoubleJqueryError("#rev_slider_18_1");
-         		}else{
-         			revapi18 = tpj("#rev_slider_18_1").show().revolution({
-         				sliderType:"standard",
-         				sliderLayout:"fullwidth",
-         				dottedOverlay:"none",
-         				delay:9000,
-         				navigation: {
-         					keyboardNavigation:"off",
-         					keyboard_direction: "horizontal",
-         					mouseScrollNavigation:"off",
-                                                               mouseScrollReverse:"default",
-         					onHoverStop:"off",
-         					touch:{
-         						touchenabled:"on",
-         						swipe_threshold: 75,
-         						swipe_min_touches: 1,
-         						swipe_direction: "horizontal",
-         						drag_block_vertical: false
-         					}
-         					,
-         					arrows: {
-         						style:"metis",
-         						enable:true,
-         						hide_onmobile:false,
-         						hide_onleave:false,
-         						tmp:'',
-         						left: {
-         							h_align:"left",
-         							v_align:"center",
-         							h_offset:0,
-                                           v_offset:0
-         						},
-         						right: {
-         							h_align:"right",
-         							v_align:"center",
-         							h_offset:0,
-                                           v_offset:0
-         						}
-         					}
-         					,
-         					bullets: {
-         						enable:true,
-         						hide_onmobile:true,
-         						hide_under:768,
-         						style:"hermes",
-         						hide_onleave:false,
-         						direction:"horizontal",
-         						h_align:"center",
-         						v_align:"bottom",
-         						h_offset:0,
-         						v_offset:30,
-                                       space:5,
-         						tmp:''
-         					}
-         				},
-         				responsiveLevels:[1240,1024,778,480],
-         				visibilityLevels:[1240,1024,778,480],
-         				gridwidth:[1240,1024,778,480],
-         				gridheight:[650,600,550,450],
-         				lazyType:"smart",
-         				parallax: {
-         					type:"scroll",
-         					origo:"enterpoint",
-         					speed:400,
-         					levels:[5,10,15,20,25,30,35,40,45,46,47,48,49,50,51,55],
-         					type:"scroll",
-         					disable_onmobile:"on"
-         				},
-         				shadow:0,
-         				spinner:"off",
-         				stopLoop:"on",
-         				stopAfterLoops:0,
-         				stopAtSlide:1,
-         				shuffle:"off",
-         				autoHeight:"off",
-         				disableProgressBar:"on",
-         				hideThumbsOnMobile:"off",
-         				hideSliderAtLimit:0,
-         				hideCaptionAtLimit:0,
-         				hideAllCaptionAtLilmit:0,
-         				debugMode:false,
-         				fallbacks: {
-         					simplifyAll:"off",
-         					nextSlideOnWindowFocus:"off",
-         					disableFocusListener:false,
-         				}
-         			});
-         		}
-         	});	/*ready*/
+
+    var revapi18;
+    tpj(document).ready(function() {
+    if(tpj("#rev_slider_18_1").revolution == undefined){
+    revslider_showDoubleJqueryError("#rev_slider_18_1");
+    }else{
+    revapi18 = tpj("#rev_slider_18_1").show().revolution({
+    sliderType:"standard",
+    sliderLayout:"fullwidth",
+    dottedOverlay:"none",
+    delay:9000,
+    navigation: {
+    keyboardNavigation:"off",
+    keyboard_direction: "horizontal",
+    mouseScrollNavigation:"off",
+    mouseScrollReverse:"default",
+    onHoverStop:"off",
+    touch:{
+    touchenabled:"on",
+    swipe_threshold: 75,
+    swipe_min_touches: 1,
+    swipe_direction: "horizontal",
+    drag_block_vertical: false
+    }
+    ,
+    arrows: {
+    style:"metis",
+    enable:true,
+    hide_onmobile:false,
+    hide_onleave:false,
+    tmp:'',
+    left: {
+    h_align:"left",
+    v_align:"center",
+    h_offset:0,
+    v_offset:0
+    },
+    right: {
+    h_align:"right",
+    v_align:"center",
+    h_offset:0,
+    v_offset:0
+    }
+    }
+    ,
+    bullets: {
+    enable:true,
+    hide_onmobile:true,
+    hide_under:768,
+    style:"hermes",
+    hide_onleave:false,
+    direction:"horizontal",
+    h_align:"center",
+    v_align:"bottom",
+    h_offset:0,
+    v_offset:30,
+    space:5,
+    tmp:''
+    }
+    },
+    responsiveLevels:[1240,1024,778,480],
+    visibilityLevels:[1240,1024,778,480],
+    gridwidth:[1240,1024,778,480],
+    gridheight:[650,600,550,450],
+    lazyType:"smart",
+    parallax: {
+    type:"scroll",
+    origo:"enterpoint",
+    speed:400,
+    levels:[5,10,15,20,25,30,35,40,45,46,47,48,49,50,51,55],
+    type:"scroll",
+    disable_onmobile:"on"
+    },
+    shadow:0,
+    spinner:"off",
+    stopLoop:"on",
+    stopAfterLoops:0,
+    stopAtSlide:1,
+    shuffle:"off",
+    autoHeight:"off",
+    disableProgressBar:"on",
+    hideThumbsOnMobile:"off",
+    hideSliderAtLimit:0,
+    hideCaptionAtLimit:0,
+    hideAllCaptionAtLilmit:0,
+    debugMode:false,
+    fallbacks: {
+    simplifyAll:"off",
+    nextSlideOnWindowFocus:"off",
+    disableFocusListener:false,
+    }
+    });
+    }
+    });	/*ready*/
 
     $( document ).ready(function() {
 
-      $('#demo2').scrollbox({
-        linear: true,
-        step: 1,
-        delay: 0,
-        speed: 100
-      });
- 
-      $('.simple-marquee-container').SimpleMarquee();
+    $('#demo2').scrollbox({
+    linear: true,
+    step: 1,
+    delay: 0,
+    speed: 100
+    });
+
+    $('.simple-marquee-container').SimpleMarquee();
     });
 }
