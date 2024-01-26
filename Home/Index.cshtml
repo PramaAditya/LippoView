@@ -421,21 +421,16 @@
         <!-- Recent Work carousel 3 default style element -->
         <div class="recentwork_carousel recentwork_carousel_v3">
             <!-- Top container -->
-            <div class="container recentwork_carousel__top-container">
+            <div class="container recentwork_carousel__top-container" style="padding-bottom:0px;">
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12  latest_posts default-style kl-style-2">
                         <!-- Title -->
-                        <h3 class="recentwork_carousel__title m_title">PROMOTIONS</h3>
-                        <!--/ Title -->
-                        <!-- View all button -->
-                        <div class="btn btn-link">&nbsp;</div>
-                        <!--/ View all button -->
-                        <!-- Navigation controls -->
-                        <div class="controls recentwork_carousel__controls">
-                            <a href="#" class="prev recentwork_carousel__prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-                            <a href="#" class="next recentwork_carousel__next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                        <div class="lp-title custom-title">
+                            <h3 class="m_title">PROMOTIONS</h3>
                         </div>
-                        <!--/ Navigation controls -->
+                        <!--/ Title -->
+                        
+                       
                     </div>
                     <!--/ col-sm-12 -->
                 </div>
@@ -443,33 +438,152 @@
             </div>
             <!--/ Top container -->
             <!-- Carousel wrapper -->
-            <div class="recentwork_carousel__crsl-wrapper">
-                <div class="gridPhotoGallery__item gridPhotoGallery__item--sizer"></div>
-                <ul class="recent_works3 fixclear recentwork_carousel__crsl gridPhotoGallery mfp-gallery misc gridPhotoGallery--ratio-square gridPhotoGallery--cols-4">
+            <div id="promotion-slider-wrapper" class="container" style="position:relative;margin-bottom: 90px;">
+                <div class="nav-custom">
+                    <span class="prev-btn">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="40" height="40" transform="matrix(-1 0 0 1 40 0)" fill="black" fill-opacity="0.6" />
+                            <path d="M17.176 27.0251C17.2883 27.1377 17.4408 27.2012 17.5999 27.2014C17.759 27.2016 17.9117 27.1386 18.0244 27.0263L24.6052 20.4683C24.6669 20.407 24.7158 20.3341 24.7492 20.2537C24.7826 20.1734 24.7998 20.0873 24.7998 20.0003C24.7998 19.9133 24.7826 19.8272 24.7492 19.7469C24.7158 19.6666 24.6669 19.5936 24.6052 19.5323L18.0244 12.9755C17.969 12.9183 17.9027 12.8727 17.8294 12.8413C17.7562 12.81 17.6774 12.7936 17.5978 12.793C17.5181 12.7924 17.4391 12.8077 17.3654 12.838C17.2917 12.8682 17.2248 12.9129 17.1686 12.9693C17.1123 13.0257 17.0678 13.0928 17.0378 13.1665C17.0077 13.2403 16.9927 13.3193 16.9935 13.399C16.9943 13.4787 17.0109 13.5574 17.0425 13.6305C17.074 13.7037 17.1198 13.7698 17.1772 13.8251L23.374 20.0003L17.1772 26.1767C17.0645 26.2891 17.0011 26.4416 17.0009 26.6007C17.0007 26.7598 17.0637 26.9124 17.176 27.0251Z" fill="#FAFAFA" />
+                        </svg>
+                    </span>
+                    <span class="next-btn">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="40" height="40" transform="matrix(-1 0 0 1 40 0)" fill="black" fill-opacity="0.6" />
+                            <path d="M17.176 27.0251C17.2883 27.1377 17.4408 27.2012 17.5999 27.2014C17.759 27.2016 17.9117 27.1386 18.0244 27.0263L24.6052 20.4683C24.6669 20.407 24.7158 20.3341 24.7492 20.2537C24.7826 20.1734 24.7998 20.0873 24.7998 20.0003C24.7998 19.9133 24.7826 19.8272 24.7492 19.7469C24.7158 19.6666 24.6669 19.5936 24.6052 19.5323L18.0244 12.9755C17.969 12.9183 17.9027 12.8727 17.8294 12.8413C17.7562 12.81 17.6774 12.7936 17.5978 12.793C17.5181 12.7924 17.4391 12.8077 17.3654 12.838C17.2917 12.8682 17.2248 12.9129 17.1686 12.9693C17.1123 13.0257 17.0678 13.0928 17.0378 13.1665C17.0077 13.2403 16.9927 13.3193 16.9935 13.399C16.9943 13.4787 17.0109 13.5574 17.0425 13.6305C17.074 13.7037 17.1198 13.7698 17.1772 13.8251L23.374 20.0003L17.1772 26.1767C17.0645 26.2891 17.0011 26.4416 17.0009 26.6007C17.0007 26.7598 17.0637 26.9124 17.176 27.0251Z" fill="#FAFAFA" />
+                        </svg>
+                    </span>
+                </div>
+                <ul class="promotion-slider" style="padding-left:20px; padding-right:20px; margin-left:-30px; margin-right:-30px;">
                     @foreach (var promo in Model.promotionList)
                     {
-                        <li class="gridPhotoGallery__item">
+                        <li class="" style="margin-left:10px;margin-right:10px;">
                             <!-- Portfolio link container -->
-                            <a title="Image Promotion" class="gridPhotoGalleryItem--h1 gridPhotoGallery__link" data-lightbox="mfp" data-mfp="image" href="@Url.Content("~/PImages/" + promo.imageUrl)">
-                                <!-- Hover container -->
-                                <div class="hover recentwork_carousel__hover">
-                                    <!-- Background image with custom height -->
-                                    <div style="height: 280px; background-image:url('@Url.Content("~/PImages/" + promo.imageUrl)');" class="recentwork_carousel__img">
-                                    </div>
-                                    <i class="kl-icon glyphicon glyphicon-search circled-icon ci-large"></i>
-                                </div>
-                                <!--/ Hover container -->
-                                <!-- Content details -->
-                                <div class="details recentwork_carousel__details">
-                                    <i class="kl-icon glyphicon glyphicon-search circled-icon ci-large"></i>
-                                </div>
-                                <!--/ Content details -->
+                            <a title="Image Promotion" style="height: auto; width:100%; display:block;" data-lightbox="mfp" data-mfp="image" href="@Url.Content("~/PImages/" + promo.imageUrl)">
+                                <img src="@Url.Content("~/PImages/" + promo.imageUrl)" style="width:100%; height:100%; object-fit:contain; object-position: center center;" />
                             </a>
                             <!--/ Portfolio link container -->
                         </li>
                     }
                 </ul>
+                
+                <style>
+                    .nav-custom {
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: auto;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-left: -48px;
+                        margin-right: -48px;
+                        pointer-events: none;
+                        z-index: 100;
+                        left: 0;
+                        right: 0;
+                        margin-top: -70px;
+                    }
+
+                        .nav-custom .prev-btn, .nav-custom .next-btn {
+                            pointer-events: all;
+                            height: 40px;
+                            cursor: pointer;
+                        }
+
+                        .nav-custom .prev-btn {
+                            transform: rotate(180deg);
+                        }
+
+                        .nav-custom .next-btn {
+                        }
+
+                        .dots-custom{
+                            position: relative;
+                        }
+
+                    .dots-custom .slick-dots {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                        .dots-custom .slick-dots li{
+                            margin:0 2px;
+                            width:fit-content;
+                            height:fit-content;
+                            display:flex;
+                            justify-content:center;
+                            align-items:center;
+                        }
+
+                        .dots-custom .slick-dots li button{
+                            width:8px !important;
+                            height:8px !important;
+                            padding:0px;
+                            border-radius:100%;
+                            background-color: white;
+                            border: 1px solid #C70000;
+                            outline:none;
+                            cursor:pointer;
+                            display:flex;
+                            justify-content:center;
+                            align-items:center;
+                        }
+
+                        .dots-custom .slick-dots .slick-active button {
+                            background-color: #C70000;
+                        }
+
+                        .dots-custom .slick-dots li button:before {
+                            display: none;
+                        }
+                </style>
+                <div class="dots-custom"></div>
             </div>
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    var slider = $('.promotion-slider').slick({
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        autoplay: true,
+                        dots: true,
+                        arrows: false, // disable default arrows
+                        autoplaySpeed: 5000,
+                        speed: 2000,
+                        appendDots: $('.dots-custom'),
+                        centerMode: false,
+                        responsive: [
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    slidesToShow: 1
+                                }
+                            }
+                        ]
+                    });
+
+                    // Pause autoplay on hover
+                    slider.on('mouseenter', function () {
+                        $(this).slick('slickPause');
+                    });
+
+                    // Resume autoplay when hover off
+                    slider.on('mouseleave', function () {
+                        $(this).slick('slickPlay');
+                    });
+
+                    // Use slick API methods to control the slider
+                    $('.prev-btn').click(function () {
+                        slider.slick('slickPrev');
+                    });
+
+                    $('.next-btn').click(function () {
+                        slider.slick('slickNext');
+                    });
+                });
+            </script>
             <!--/ Carousel wrapper - .recentwork_carousel__crsl-wrapper -->
         </div>
         <!--/ Recent Work carousel 3 default style element -->
