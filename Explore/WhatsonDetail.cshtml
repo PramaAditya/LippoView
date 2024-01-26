@@ -86,14 +86,72 @@
                             <!--/ Post header -->
                             <!-- Post body -->
                             <div class="itemBody">
-                                <!-- Blog Image -->
-                                <a data-lightbox="image" href="@Url.Content("~/PImages/" + Model.whatsOn.imageUrl)" class="hoverBorder pull-left" style="margin-right: 20px;margin-bottom:4px;">
-                                    <span class="hoverBorderWrapper">
-                                        <img src="@Url.Content("~/PImages/" + Model.whatsOn.imageUrl)" alt="Post Image" title="whatsond" />
-                                        <span class="theHoverBorder"></span>
-                                    </span>
-                                </a>
-                                <!--/ Blog Image -->
+                                <style>
+                                    .responsive-media-wrapper {
+                                        float: left;
+                                        margin-right: 20px;
+                                        margin-bottom: 4px;
+                                        position: relative;
+                                    }
+
+                                    .responsive-video-wrapper {
+                                        position: relative;
+                                        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+                                        padding-top: 25px;
+                                        height: 0;
+                                    }
+
+                                        .responsive-video-wrapper iframe,
+                                        .responsive-video-wrapper video {
+                                            position: absolute;
+                                            top: 0;
+                                            left: 0;
+                                            width: 100%;
+                                            height: 100%;
+                                        }
+                                </style>
+
+                                <!-- Media content -->
+                                @if (true)
+                                {
+    <!-- Embed YouTube Video -->
+                                    <div style="height:300px; width:500px;">
+
+                                                <iframe src="https://www.youtube.com/embed/GSdb1riHXME?si=mBQxUnQXsdFBnfDC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+ 
+                                    </div>
+                                }
+                                else if (true)
+                                {
+    <!-- Video.js Player -->
+                                    <div class="responsive-media-wrapper">
+                                        <span class="hoverBorderWrapper">
+                                            <div style="height:300px; width:500px;">
+                                                <video id="my-video" class="video-js vjs-fill" controls preload="auto" data-setup="{}">
+                                                    <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+                                                    <p class="vjs-no-js">
+                                                        To view this video please enable JavaScript, and consider upgrading to a web browser that
+                                                        <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                                                    </p>
+                                                </video>
+                                            </div>
+                                            <span class="theHoverBorder"></span>
+                                        </span>
+                                    </div>
+                                }
+                                else
+                                {
+    <!-- Blog Image -->
+                                    <a data-lightbox="image" href="@Url.Content("~/PImages/" + Model.whatsOn.imageUrl)" class="hoverBorder pull-left" style="margin-right: 20px;margin-bottom:4px;">
+                                        <span class="hoverBorderWrapper">
+                                            <img src="@Url.Content("~/PImages/" + Model.whatsOn.imageUrl)" alt="Post Image" title="whatsond" />
+                                            <span class="theHoverBorder"></span>
+                                        </span>
+                                    </a>
+    <!--/ Blog Image -->
+                                }
+
+
                                 <!-- Blog Content -->
                                 @Html.Raw(Model.whatsOn.description)
                                 <!--/ Blog Content -->
