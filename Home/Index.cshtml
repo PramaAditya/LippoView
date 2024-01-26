@@ -297,47 +297,82 @@
                                     </div>
                                 </a>
                                 <!--/ col-sm-4 -->
+                                <style>
+                                    .responsive-video-wrapper {
+                                        position: relative;
+                                        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+                                        padding-top: 25px;
+                                        height: 0;
+                                    }
+
+                                        .responsive-video-wrapper iframe,
+                                        .responsive-video-wrapper video {
+                                            position: absolute;
+                                            top: 0;
+                                            left: 0;
+                                            width: 100%;
+                                            height: 100%;
+                                        }
+
+                                </style>
 
                                 @if (Model.whatsOnList.Count > 0)
                                 {
-                                    int maxWhatsOnCount = Model.whatsOnList.Count;
-                                    if (maxWhatsOnCount > 4) { maxWhatsOnCount = 4; }
+                                    int maxWhatsOnCount = Model.whatsOnList.Count > 4 ? 4 : Model.whatsOnList.Count;
                                     for (int idx = 0; idx < maxWhatsOnCount; idx++)
                                     {
                                         var nextW = Model.whatsOnList[idx];
                                         <div class="col-xs-6 col-sm-6">
                                             <!-- Post -->
                                             <div class="post">
-                                                <!-- Post link wrapper -->
-                                                <a href="@Url.Content("~/WhatsOn/" + nextW.rowId)" class="hoverBorder">
-                                                    <!-- Border wrapper -->
-                                                    <span class="hoverBorderWrapper">
-                                                        <!-- Image -->
-                                                        <img src="@Url.Content("~/PImages/" + nextW.imageUrl)" class="img-responsive" width="370" height="400" alt="unique" title="unique" />
-                                                        <!--/ Image -->
-                                                        <!-- Hover border/shadow -->
-                                                        <span class="theHoverBorder"></span>
-                                                        <!--/ Hover border/shadow -->
-                                                    </span>
-                                                    <!--/ Border wrapper -->
-                                                </a>
-                                                <!--/ Post link wrapper -->
+                                                <!-- Media content -->
+                                                @*@if (nextW.hasYoutubeVideo)*@
+                                                @if (false)
+                                                {
+    <!-- Embed YouTube Video -->
+                                                    <div class="responsive-video-wrapper">
+                                                        <iframe src="https://www.youtube.com/embed/GSdb1riHXME?si=mBQxUnQXsdFBnfDC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                                    </div>
+                                                }
+                                                else if (true)
+                                                {
+    <!-- Video.js Player -->
+                                                    <!-- Video.js Player -->
+                                                    <div style="height:300px;">
+                                                        <video id="my-video" class="video-js vjs-fill" controls preload="auto" data-setup="{}">
+                                                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+                                                            <p class="vjs-no-js">
+                                                                To view this video please enable JavaScript, and consider upgrading to a web browser that
+                                                                <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                                                            </p>
+                                                        </video>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+    <!-- Image -->
+                                                    <a href="@Url.Content("~/WhatsOn/" + nextW.rowId)" class="hoverBorder">
+                                                        <span class="hoverBorderWrapper">
+                                                            <img src="@Url.Content("~/PImages/" + nextW.imageUrl)" class="img-responsive" alt="unique" title="unique" />
+                                                            <span class="theHoverBorder"></span>
+                                                        </span>
+                                                    </a>
+                                                }
+                                                <!--/ Media content -->
                                                 <!-- Post details -->
                                                 <div class="post-details">
-                                                    <!-- Title with link -->
                                                     <h3 class="m_title"><a href="@Url.Content("~/WhatsOn/" + nextW.rowId)">@nextW.title</a></h3>
-                                                    <!--/ Title with link -->
-                                                    <!-- Details & tags -->
-                                                    <em> <a href="@Url.Content("~/WhatsOn/" + nextW.rowId)">@nextW.date.ToString("dd MMMM yyyy")</a></em>
-                                                    <!--/ Details & tags -->
+                                                    <em><a href="@Url.Content("~/WhatsOn/" + nextW.rowId)">@nextW.date.ToString("dd MMMM yyyy")</a></em>
                                                 </div>
                                                 <!--/ Post details -->
                                             </div>
                                             <!--/ Post -->
                                         </div>
-                                                <!--/ col-xs-6 col-sm-3 -->
+        <!--/ col-xs-6 col-sm-6 -->
                                     }
                                 }
+
+
                             </div>
                             <!--/ .row .gutter-sm -->
                         </div>
