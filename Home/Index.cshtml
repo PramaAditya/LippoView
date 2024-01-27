@@ -27,7 +27,13 @@
                 {
                     var featured = Model.featuredImages[0];
                     <li data-index="rs-73" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="Power1.easeInOut" data-easeout="Power1.easeInOut" data-masterspeed="800" data-thumb="assets/banner-home-01.jpg" data-rotate="0" data-fstransition="fade" data-fsmasterspeed="800" data-fsslotamount="7" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                        @if (featured.showImage)
+                        @if (true)
+                        {
+                            <video autoplay muted loop style="position: absolute; top: 0; left: 0; min-width: 100%; min-height: 100%;">
+                                <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                            </video>
+                        }
+                        else if (featured.showImage)
                         {
                             <!-- MAIN IMAGE -->
                             <img src="@Url.Content("~/PImages/" + featured.imageUrl)" alt="" data-lazyload="@Url.Content("~/PImages/" + featured.imageUrl)" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
@@ -57,9 +63,15 @@
                 {
                     var featured = Model.featuredImages[idx];
                     <li data-index="rs-74" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="Power1.easeInOut" data-easeout="Power1.easeInOut" data-masterspeed="800" data-thumb="assets/100x50_bmw6-1.jpg" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                        <!-- MAIN IMAGE -->
-                        @if (featured.showImage)
+                        @if (true)
                         {
+                            <video autoplay muted loop style="position: absolute; top: 0; left: 0; min-width: 100%; min-height: 100%;">
+                                <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                            </video>
+                        }
+                        else if (featured.showImage)
+                        {
+                            <!-- MAIN IMAGE -->
                             <img src="@Url.Content("~/PImages/" + featured.imageUrl)" alt="" data-lazyload="@Url.Content("~/PImages/" + featured.imageUrl)" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
                         }
                         <div data-frames='[{"delay":0,"speed":300,"frame":"0","from":"x:left;","to":"o:1;","ease":"power3.inOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"power3.inOut"}]' style="position: absolute; width: 52%; height: 100%; background-color: rgba(0, 128, 0, 0.5);clip-path: polygon(0 0, 100% 0%, 77% 100%, 0% 100%);"></div>
