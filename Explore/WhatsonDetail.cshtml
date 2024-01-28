@@ -3,7 +3,161 @@
 <section class="hg_section ptop-50">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-3">
+            <div class="col-md-9 col-sm-9 col-md-pull-3 col-sm-pull-3">
+                <!-- Post content -->
+
+                <div id="th-content-post">
+                    <!-- Post div wrapper -->
+                    <div>
+                        @if (Model.whatsOn != null)
+                        {
+                        <!-- Post page title -->
+                            <h1 class="page-title black">@Model.whatsOn.title</h1>
+                        <!--/ Post page title -->
+                        }
+                        <!-- Post layout -->
+                        <div class="itemView clearfix eBlog">
+                            @if (Model.whatsOn != null)
+                            {
+                            <!-- Post header -->
+                                <div class="itemHeader">
+                                    <!-- Post details -->
+                                    <div class="post_details">
+                                        <!-- Author -->
+                                        <span class="itemAuthor">
+                                            by <a href="#"><strong>@Model.whatsOn.author</strong></a>
+                                        </span>
+                                        <!--/ Author -->
+                                        <!-- Separator -->
+                                        <span class="infSep"> / </span>
+                                        <!--/ Separator -->
+                                        <!-- Date created -->
+                                        <span class="itemDateCreated"><span class="glyphicon glyphicon-calendar"></span> @Model.whatsOn.date.ToString("dddd, dd MMMM yyyy")</span>
+                                        <!--/ Date created -->
+                                        <!-- Separator -->
+                                        <span class="infSep"> / </span>
+                                        <!--/ Separator -->
+                                        <!-- Comments block -->
+                                        <span class="itemCommentsBlock"></span>
+                                        <!--/ Comments block -->
+                                    </div>
+                                    <!--/ Post details -->
+                                </div>
+                            <!--/ Post header -->
+                            <!-- Post body -->
+                                <div class="itemBody">
+                                    <style>
+                                        .responsive-media-wrapper {
+                                            float: left;
+                                            margin-right: 20px;
+                                            margin-bottom: 4px;
+                                            position: relative;
+                                        }
+
+                                        .responsive-video-wrapper {
+                                            position: relative;
+                                            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+                                            padding-top: 25px;
+                                            height: 0;
+                                        }
+
+                                            .responsive-video-wrapper iframe,
+                                            .responsive-video-wrapper video {
+                                                position: absolute;
+                                                top: 0;
+                                                left: 0;
+                                                width: 100%;
+                                                height: 100%;
+                                            }
+                                    </style>
+
+                                    <!-- Media content -->
+                                    @if (true)
+                                    {
+    <!-- Embed YouTube Video -->
+                                        <div style="height:300px; width:500px;">
+
+                                            <iframe src="https://www.youtube.com/embed/GSdb1riHXME?si=mBQxUnQXsdFBnfDC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+                                        </div>
+                                    }
+                                    else if (true)
+                                    {
+    <!-- Video.js Player -->
+                                        <div class="responsive-media-wrapper">
+                                            <span class="hoverBorderWrapper">
+                                                <div style="height:300px; width:500px;">
+                                                    <video id="my-video" class="video-js vjs-fill" controls preload="auto" data-setup="{}">
+                                                        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+                                                        <p class="vjs-no-js">
+                                                            To view this video please enable JavaScript, and consider upgrading to a web browser that
+                                                            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                                                        </p>
+                                                    </video>
+                                                </div>
+                                                <span class="theHoverBorder"></span>
+                                            </span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+    <!-- Blog Image -->
+                                        <a data-lightbox="image" href="@Url.Content("~/PImages/" + Model.whatsOn.imageUrl)" class="hoverBorder pull-left" style="margin-right: 20px;margin-bottom:4px;">
+                                            <span class="hoverBorderWrapper">
+                                                <img src="@Url.Content("~/PImages/" + Model.whatsOn.imageUrl)" alt="Post Image" title="whatsond" />
+                                                <span class="theHoverBorder"></span>
+                                            </span>
+                                        </a>
+    <!--/ Blog Image -->
+                                    }
+
+
+                                    <!-- Blog Content -->
+                                    @Html.Raw(Model.whatsOn.description)
+                                    <!--/ Blog Content -->
+                                </div>
+                            <!--/ Post body -->
+                                <div class="clear"></div>
+                            }
+                            <!-- Related articles -->
+                            <div class="related-articles">
+                                <!-- Title -->
+                                <h3 class="rta-title">WHAT YOU CAN READ NEXT</h3>
+                                <!--/ Title -->
+                                <div class="row">
+                                    @foreach (var other in Model.others)
+                                    {
+                                        <div class="col-sm-4">
+                                            <!-- Related article post -->
+                                            <div class="rta-post">
+                                                <!-- Image -->
+                                                <a href="@Url.Content("~/WhatsOn/" + other.rowId)">
+                                                    <img src="@Url.Content("~/PImages/" + other.imageUrl)" class="img-responsive" width="370" height="240" alt="">
+                                                </a>
+                                                <!--/ Image -->
+                                                <!-- Title -->
+                                                <h5>
+                                                    <a href="@Url.Content("~/WhatsOn/" + other.rowId)">@other.shortDesc</a>
+                                                </h5>
+                                                <!--/ Title -->
+                                            </div>
+                                            <!--/ Related article post .rta-post -->
+                                        </div>
+                                    <!--/ col-sm-4 -->
+                                    }
+                                </div>
+                                <!--/ row -->
+                            </div>
+                            <!--/ Related articles -->
+                        </div>
+                        <!--/ Post layout -->
+                    </div>
+                    <!--/ Post div wrapper -->
+                </div>
+                <!--/ Post content -->
+            </div>
+            <!--/ col-md-9 col-sm-9 -->
+            <div class="col-md-3 col-sm-3 col-md-pull-9 col-sm-pull-9">
                 <!-- Sidebar -->
                 <div id="sidebar-widget" class="sidebar">
                     <div class="widget zn-sidebar-widget widget_meta" id="meta-2">
@@ -43,160 +197,7 @@
                 <!--/ Sidebar -->
             </div>
             <!--/ col-md-3 col-sm-3 -->
-            <div class="col-md-9 col-sm-9">
-                <!-- Post content -->
-
-                <div id="th-content-post">
-                    <!-- Post div wrapper -->
-                    <div>
-                        @if (Model.whatsOn != null)
-                        {
-                        <!-- Post page title -->
-                        <h1 class="page-title black">@Model.whatsOn.title</h1>
-                        <!--/ Post page title -->
-                        }
-                        <!-- Post layout -->
-                        <div class="itemView clearfix eBlog">
-                            @if (Model.whatsOn != null)
-                            {
-                            <!-- Post header -->
-                            <div class="itemHeader">
-                                <!-- Post details -->
-                                <div class="post_details">
-                                    <!-- Author -->
-                                    <span class="itemAuthor">
-                                        by <a href="#"><strong>@Model.whatsOn.author</strong></a>
-                                    </span>
-                                    <!--/ Author -->
-                                    <!-- Separator -->
-                                    <span class="infSep"> / </span>
-                                    <!--/ Separator -->
-                                    <!-- Date created -->
-                                    <span class="itemDateCreated"><span class="glyphicon glyphicon-calendar"></span> @Model.whatsOn.date.ToString("dddd, dd MMMM yyyy")</span>
-                                    <!--/ Date created -->
-                                    <!-- Separator -->
-                                    <span class="infSep"> / </span>
-                                    <!--/ Separator -->
-                                    <!-- Comments block -->
-                                    <span class="itemCommentsBlock"></span>
-                                    <!--/ Comments block -->
-                                </div>
-                                <!--/ Post details -->
-                            </div>
-                            <!--/ Post header -->
-                            <!-- Post body -->
-                            <div class="itemBody">
-                                <style>
-                                    .responsive-media-wrapper {
-                                        float: left;
-                                        margin-right: 20px;
-                                        margin-bottom: 4px;
-                                        position: relative;
-                                    }
-
-                                    .responsive-video-wrapper {
-                                        position: relative;
-                                        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-                                        padding-top: 25px;
-                                        height: 0;
-                                    }
-
-                                        .responsive-video-wrapper iframe,
-                                        .responsive-video-wrapper video {
-                                            position: absolute;
-                                            top: 0;
-                                            left: 0;
-                                            width: 100%;
-                                            height: 100%;
-                                        }
-                                </style>
-
-                                <!-- Media content -->
-                                @if (true)
-                                {
-    <!-- Embed YouTube Video -->
-                                    <div style="height:300px; width:500px;">
-
-                                                <iframe src="https://www.youtube.com/embed/GSdb1riHXME?si=mBQxUnQXsdFBnfDC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
- 
-                                    </div>
-                                }
-                                else if (true)
-                                {
-    <!-- Video.js Player -->
-                                    <div class="responsive-media-wrapper">
-                                        <span class="hoverBorderWrapper">
-                                            <div style="height:300px; width:500px;">
-                                                <video id="my-video" class="video-js vjs-fill" controls preload="auto" data-setup="{}">
-                                                    <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
-                                                    <p class="vjs-no-js">
-                                                        To view this video please enable JavaScript, and consider upgrading to a web browser that
-                                                        <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                                                    </p>
-                                                </video>
-                                            </div>
-                                            <span class="theHoverBorder"></span>
-                                        </span>
-                                    </div>
-                                }
-                                else
-                                {
-    <!-- Blog Image -->
-                                    <a data-lightbox="image" href="@Url.Content("~/PImages/" + Model.whatsOn.imageUrl)" class="hoverBorder pull-left" style="margin-right: 20px;margin-bottom:4px;">
-                                        <span class="hoverBorderWrapper">
-                                            <img src="@Url.Content("~/PImages/" + Model.whatsOn.imageUrl)" alt="Post Image" title="whatsond" />
-                                            <span class="theHoverBorder"></span>
-                                        </span>
-                                    </a>
-    <!--/ Blog Image -->
-                                }
-
-
-                                <!-- Blog Content -->
-                                @Html.Raw(Model.whatsOn.description)
-                                <!--/ Blog Content -->
-                            </div>
-                            <!--/ Post body -->
-                            <div class="clear"></div>
-                            }
-                            <!-- Related articles -->
-                            <div class="related-articles">
-                                <!-- Title -->
-                                <h3 class="rta-title">WHAT YOU CAN READ NEXT</h3>
-                                <!--/ Title -->
-                                <div class="row">
-                                    @foreach (var other in Model.others)
-                                    {
-                                    <div class="col-sm-4">
-                                        <!-- Related article post -->
-                                        <div class="rta-post">
-                                            <!-- Image -->
-                                            <a href="@Url.Content("~/WhatsOn/" + other.rowId)">
-                                                <img src="@Url.Content("~/PImages/" + other.imageUrl)" class="img-responsive" width="370" height="240" alt="">
-                                            </a>
-                                            <!--/ Image -->
-                                            <!-- Title -->
-                                            <h5>
-                                                <a href="@Url.Content("~/WhatsOn/" + other.rowId)">@other.shortDesc</a>
-                                            </h5>
-                                            <!--/ Title -->
-                                        </div>
-                                        <!--/ Related article post .rta-post -->
-                                    </div>
-                                    <!--/ col-sm-4 -->
-                                    }
-                                </div>
-                                <!--/ row -->
-                            </div>
-                            <!--/ Related articles -->
-                        </div>
-                        <!--/ Post layout -->
-                    </div>
-                    <!--/ Post div wrapper -->
-                </div>
-                <!--/ Post content -->
-            </div>
-            <!--/ col-md-9 col-sm-9 -->
+            
         </div>
         <!--/ row -->
     </div>
