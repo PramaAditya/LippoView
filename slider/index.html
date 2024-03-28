@@ -1,211 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slider</title>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Slider</title>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="slider.js"></script>
-    <link rel="stylesheet" href="slider.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-</head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <script src="slider.js"></script>
+        <link rel="stylesheet" href="slider.css">
+    </head>
 
-<body>
-    <section class="slide">
-        <div class="slider-container">
-            <ul class="slider-wrapper" id="slider">
-                <li class="slide-current">
-                    <!--Code for an image-->
-                    <img
-                        src="https://static.guim.co.uk/sys-images/Sport/Pix/pictures/2014/10/13/1413197912172/Anfield-014.jpg" />
-                    <!--Code for an image-->
-                    <div class="overlay green">
-                        <div class="overlay__text">
-                            Hello One and All
+    <body>
+        <section class="pram__slide">
+            <div class="slider-container">
+                <ul class="slider-wrapper" id="pram__slider">
+                    <li class="slide-current">
+                        <!--Code for an image-->
+                        <img
+                        src="https://static.guim.co.uk/sys-images/Sport/Pix/pictures/2014/10/13/1413197912172/Anfield-014.jpg"/>
+                        <!--Code for an image-->
+                        <div class="pram_overlay green">
+                            <div class="pram_overlay__items">
+                                <div class="pram_overlay__text">
+                                    Hello One and All
+                                </div>
+                                <div class="pram_overlay__subtext">
+                                    Community of students & adults
+                                </div>
+                                <a class="pram_overlay__button">
+                                    Tet Tot
+                                </a>
+                            </div>
                         </div>
-                        <a class="overlay__button">
-                            Tet Tot
-                        </a>
-                    </div>
-                    <!--Custom HTML-->
-                </li>
+                        <!--Custom HTML-->
+                    </li>
 
-                <li class="video" data-type="video"
+                    <li class="video" data-type="video"
                     data-video="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
                     data-muted="true">
-                    <div class="include"></div>
-                    <div class="overlay blue">
-                        <div class="overlay__text">
-                            Vibrant Lifestyle  
-                        </div>
-                        <div class="overlay__subtext">
-                            Community of students & adults
-                        </div>
-                    </div>
-                </li>
+                        <div class="include"></div>
+                        <div class="pram_overlay blue">
+                            <div class="pram_overlay__items">
 
-                <li>
-                    <!--Code for an image-->
-                    <img
-                        src="https://static.guim.co.uk/sys-images/Sport/Pix/pictures/2014/10/13/1413197912172/Anfield-014.jpg" />
-                    <!--Code for an image-->
-                    <div class="overlay green">
-                        <div class="overlay__text">
-                            Hello One and All
+                                <div class="pram_overlay__text">
+                                    Vibrant Lifestyle  
+                                </div>
+                                <div class="pram_overlay__subtext">
+                                    Community of students & adults
+                                </div>
+                                <a class="pram_overlay__button">
+                                    Tet Tot
+                                </a>
+                            </div>
                         </div>
-                        <a class="overlay__button">
-                            Tet Tot
-                        </a>
-                    </div>
-                    <!--Custom HTML-->
-                </li>
+                    </li>
 
-                <li class="video" data-type="video"
-                    data-video="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-                    data-muted="true">
-                    <div class="include"></div>
-                    <div class="overlay blue">
-                        <div class="overlay__text">
-                            Vibrant Lifestyle  
-                        </div>
-                        <div class="overlay__subtext">
-                            Community of students & adults
-                        </div>
-                    </div>
-                </li>
+                    <!--HTML for HTML5 video with muted-->
 
-                <li class="video" data-type="video"
-                    data-video="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-                    data-muted="true">
-                    <div class="include"></div>
-                    <div class="overlay blue">
-                        <div class="overlay__text">
-                            Vibrant Lifestyle  
-                        </div>
-                        <div class="overlay__subtext">
-                            Community of students & adults
-                        </div>
-                    </div>
-                </li>
-
-                <!--HTML for HTML5 video with muted-->
-
-            </ul>
-            <div class="drt-control control-left" id="lft-control">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                </ul>
+                <div class="drt-control control-left" id="lft-control">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                </svg>
-            </div>
-            <div class="drt-control control-right" id="rht-control">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/>
+                    </svg>
+                </div>
+                <div class="drt-control control-right" id="rht-control">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                </svg>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
+                    </svg>
 
+                </div>
+                <div class="tempo-bar" id="barra"></div>
+                <ul class="slider-controls" id="slider-controls"></ul>
             </div>
-            <div class="tempo-bar" id="barra"></div>
-            <ul class="slider-controls" id="slider-controls"></ul>
-        </div>
-    </section>
-    <script>
-        $(document).ready(function ($) {
-            $("#slider").QCslider({ duration: 7000 });
-        });
-    </script>
-    <style>
-        .overlay:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 46.5%;
-            height: 100%;
-            clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
-            opacity: 0.5;
-            z-index: 0;
-            animation: slideInLeft;
-            animation-duration: 1s;
-        }
-
-        @media (max-width: 767px) {
-            .overlay:before {
-                clip-path: polygon(0 0, 100% 0%, 50% 100%, 0% 100%);
-            }
-        }
-
-        .overlay.green:before {
-            background: green;
-        }
-        .overlay.blue::before{
-            background: blue;
-        }
-
-        .overlay{
-            display: flex !important;
-            flex-direction: column;
-            justify-content: center;
-            background-color: rgb(0, 0, 0,0.2) !important;
-        }
-
-        .overlay__text,.overlay__button,.overlay__subtext{
-            font-family: Lato, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            position: relative;
-            color:white;
-            z-index: 90;
-            left: 155px;
-            animation: slideInLeft;
-            animation-duration: 1s;
-        }
-
-
-        .overlay__text{
-            margin-top: -100px;
-            font-size: 72px;
-            font-weight: 400;
-            animation-delay: .1s;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .overlay__subtext{
-            font-size: 30px;
-            font-weight: 300;
-        }
-        
-
-        .overlay__button{
-            animation-delay: .2s;
-            min-width: 148px;
-            max-width: 148px;
-            white-space: nowrap;
-            font-size: 14px;
-            line-height: 28px;
-            font-weight: 700;
-            color: rgb(255, 255, 255);
-            background-color: rgb(102, 204, 102);
-            border-color: rgb(0, 0, 0);
-            border-radius: 3px;
-            outline: none;
-            box-shadow: rgb(153, 153, 153) 0px 0px 0px 0px;
-            box-sizing: border-box;
-            cursor: pointer;
-            visibility: inherit;
-            transition: none 0s ease 0s;
-            text-align: left;
-            margin: 0px;
-            margin-top: 40px;
-            padding: 12px 35px;
-            letter-spacing: 0px;
-            min-height: 53px;
-            max-height: 53px;
-            opacity: 1;
-        }
-        .overlay__button:hover{
-            background-color: rgb(76, 171, 76);
-        }
-    </style>
-</body>
+        </section>
+        <script>
+            $(document).ready(function ($) {
+                $("#pram__slider").QCslider({
+                    autoplay:false,
+                    duration: 5000
+                    });
+            });
+        </script>
+    </body>
 
 </html>
