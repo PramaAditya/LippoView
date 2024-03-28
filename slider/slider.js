@@ -27,7 +27,8 @@
 
 		options_default = {
 			start: 0,
-			duration: 8000
+			duration: 8000,
+			autoplay: true
 		}
 
 		console.log("QCSlider V1.4.3");
@@ -76,13 +77,15 @@
 			
 
 			if(!vel.hasClass("video")){
-				$('#barra').animate({
-					width:"100%"
-				}, 
-				settings.duration,
-				"linear",
-				startSlider
-				);
+				if (settings.autoplay){
+					$('#barra').animate({
+						width:"100%"
+					}, 
+					settings.duration,
+					"linear",
+					startSlider
+					);
+				}
 			}else{
 				var vurl = vel.attr("data-video"),
 					vidp = "player"+currentSlider,

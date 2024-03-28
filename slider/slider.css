@@ -18,7 +18,7 @@
     padding: 0;
   }
   
-  section.slide {
+  section.pram__slide {
     position: relative;
     float: left;
     display: block;
@@ -26,11 +26,11 @@
     height: var(--height-slider);
   }
   @media only screen and (max-width: 766px) {
-    section.slide {
+    section.pram__slide {
       height: var(--height-responsive);
     }
   }
-  section.slide .slider-container {
+  section.pram__slide .slider-container {
     width: 100%;
     height: 100%;
     float: left;
@@ -40,7 +40,7 @@
     position: relative;
     background-color: #FFFFFF;
   }
-  section.slide .slider-container .slider-wrapper {
+  section.pram__slide .slider-container .slider-wrapper {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -48,18 +48,18 @@
     height: 100%;
     position: relative;
   }
-  section.slide .slider-container .slider-wrapper li {
+  section.pram__slide .slider-container .slider-wrapper li {
     display: none;
   }
-  section.slide .slider-container .slider-wrapper li.slide-current {
+  section.pram__slide .slider-container .slider-wrapper li.slide-current {
     display: block;
   }
-  section.slide .slider-container .slider-wrapper li.video {
+  section.pram__slide .slider-container .slider-wrapper li.video {
     height: 100%;
     position: relative;
     background: #000000;
   }
-  section.slide .slider-container .slider-wrapper li.video .include {
+  section.pram__slide .slider-container .slider-wrapper li.video .include {
     top: 0;
     left: 0;
     width: 100%;
@@ -67,7 +67,7 @@
     margin: 0 auto;
     position: absolute;
   }
-  section.slide .slider-container .slider-wrapper li.video .include::before {
+  section.pram__slide .slider-container .slider-wrapper li.video .include::before {
     top: 0;
     left: 0;
     z-index: 4;
@@ -76,7 +76,7 @@
     height: 100%;
     position: absolute;
   }
-  section.slide .slider-container .slider-wrapper li.video .include iframe, section.slide .slider-container .slider-wrapper li.video .include object, section.slide .slider-container .slider-wrapper li.video .include embed, section.slide .slider-container .slider-wrapper li.video .include video {
+  section.pram__slide .slider-container .slider-wrapper li.video .include iframe, section.pram__slide .slider-container .slider-wrapper li.video .include object, section.pram__slide .slider-container .slider-wrapper li.video .include embed, section.pram__slide .slider-container .slider-wrapper li.video .include video {
     top: 0;
     left: 0;
     z-index: 2;
@@ -85,7 +85,7 @@
     position: absolute;
     object-fit: cover;
   }
-  section.slide .slider-container .slider-wrapper li img {
+  section.pram__slide .slider-container .slider-wrapper li img {
     position: absolute;
     top: 0;
     left: 0;
@@ -94,7 +94,7 @@
     height: 100%;
     object-fit: cover;
   }
-  section.slide .slider-container .slider-wrapper li .overlay {
+  section.pram__slide .slider-container .slider-wrapper li .overlay {
     top: 0;
     left: 0;
     width: 100%;
@@ -104,7 +104,7 @@
     position: absolute;
     background: rgba(0, 0, 0, 0);
   }
-  section.slide .slider-container .drt-control {
+  section.pram__slide .slider-container .drt-control {
     top: 40%;
     z-index: 90;
     color: white;
@@ -121,25 +121,25 @@
     transition: all 0.5s;
     background: rgba(0, 0, 0, var(--opacity-slide));
   }
-  section.slide .slider-container .drt-control svg{
+  section.pram__slide .slider-container .drt-control svg{
     width: 24px;
     height: 24px;
   }
 
-  section.slide .slider-container .drt-control:hover {
+  section.pram__slide .slider-container .drt-control:hover {
     background: black;
   }
-  section.slide .slider-container .drt-control.control-left {
+  section.pram__slide .slider-container .drt-control.control-left {
     left: 0px;
   }
-  section.slide .slider-container .drt-control.control-right {
+  section.pram__slide .slider-container .drt-control.control-right {
     right: 0px;
 
   }
-  section.slide .slider-container .slider-controls {
+  section.pram__slide .slider-container .slider-controls {
     z-index: 90;
     width: 100%;
-    bottom: 50px;
+    bottom: 70px;
     padding: 5px;
     text-align: center;
     margin-bottom: 0px;
@@ -147,7 +147,7 @@
     padding-bottom: 15px;
   }
  
-  section.slide .slider-container .slider-controls li {
+  section.pram__slide .slider-container .slider-controls li {
     zoom: 1;
     width: 14px;
     height: 14px;
@@ -159,10 +159,10 @@
     background: rgba(0,0,0, 0.1);
     border: 1px solid white;
   }
-  section.slide .slider-container .slider-controls li.active {
+  section.pram__slide .slider-container .slider-controls li.active {
     background: var(--color-slider);
   }
-  section.slide .slider-container .tempo-bar {
+  section.pram__slide .slider-container .tempo-bar {
     position: absolute;
     bottom: 0px;
     height: 5px;
@@ -172,3 +172,111 @@
     display: block;
     float: left;
   }
+
+  .pram_overlay__items {
+    content: "";
+    position: relative;
+    top: 0;
+    left: 0;
+    width: fit-content;
+    height: 100%;
+    clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
+    z-index: 10;
+    animation: slideInLeft;
+    animation-duration: 1s;
+    display: flex;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    padding-left:155px;
+    padding-right: 150px;
+}
+
+@media (max-width: 767px) {
+    section.pram__slide .slider-container .slider-controls {
+      bottom: 0px;
+    }
+    .pram_overlay__items {
+        clip-path: polygon(0 0, 100% 0%, 80% 100%, 0% 100%);
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+    .pram_overlay__text{
+        font-size: 60px !important;
+        line-height: 1;
+    }
+    .pram_overlay__subtext{
+        margin-top: 10px;
+    }
+}
+
+.pram_overlay.green .pram_overlay__items {
+    background: rgba(0, 128, 0, 0.5);
+
+}
+.pram_overlay.blue .pram_overlay__items {
+    background: rgba(0, 0, 255, 0.5);
+}
+
+.pram_overlay {
+    background-color: rgb(0, 0, 0, 0.2) !important;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.pram_overlay__button,
+.pram_overlay__subtext,
+.pram_overlay__text {
+    font-family: Lato, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: relative;
+    color: white;
+    z-index: 90;
+    
+    animation: slideInLeft;
+    animation-duration: 1s;
+    display: block;
+}
+
+.pram_overlay__text {
+    margin-top: -100px;
+    font-size: 72px;
+    font-weight: 400;
+    animation-delay: 0.1s;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.pram_overlay__subtext {
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.pram_overlay__button {
+    animation-delay: 0.2s;
+    min-width: 148px;
+    max-width: 148px;
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 28px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    background-color: rgb(102, 204, 102);
+    border-color: rgb(0, 0, 0);
+    border-radius: 3px;
+    outline: none;
+    box-shadow: rgb(153, 153, 153) 0 0 0 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    visibility: inherit;
+    transition: none 0s ease 0s;
+    text-align: left;
+    margin: 40px 0 0;
+    padding: 12px 35px;
+    letter-spacing: 0;
+    min-height: 53px;
+    max-height: 53px;
+    opacity: 1;
+}
+.pram_overlay__button:hover {
+    background-color: rgb(76, 171, 76);
+}
