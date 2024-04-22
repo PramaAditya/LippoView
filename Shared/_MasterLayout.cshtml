@@ -89,6 +89,22 @@
             z-index: 1000;
         }
     </style>
+    <script>
+        // Function to convert a string to title case
+        function toTitleCase(str) {
+            return str.replace(/\w\S*/g, function(txt) {
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            });
+        }
+
+        // Select all the elements
+        const elements = document.querySelectorAll('.main-nav ul ul.sub-menu .menu-item a');
+
+        // Apply title case to each element's text
+        elements.forEach(element => {
+            element.textContent = toTitleCase(element.textContent);
+        });
+    </script>
     <div id="page_wrapper">
         <header id="header" class="site-header  style14 cta_button   header--fixed   sticky-resize headerstyle--image_color site-header--absolute nav-th--light sheader-sh--default" data-original-sticky-textscheme="sh--default" role="banner" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
             <div class="site-header-wrapper sticky-top-area">
